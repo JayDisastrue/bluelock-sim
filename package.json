@@ -10,7 +10,9 @@
     "lint": "eslint src --max-warnings 0",
     "test": "vitest run",
     "preview": "vite preview",
-    "assets": "node scripts/fetch-wiki-assets.mjs"
+    "assets": "node scripts/fetch-wiki-assets.mjs",
+    "voice:export": "tsx scripts/export-voice-script.ts",
+    "e2e": "node e2e/opening.mjs && node e2e/features.mjs"
   },
   "dependencies": {
     "immer": "^11.1.21",
@@ -30,8 +32,10 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.13.0",
     "jsdom": "^29.1.1",
+    "playwright-core": "^1.64.0",
     "postcss": "^8.5.29",
     "tailwindcss": "^3.4.19",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.71.1",
     "vite": "^8.3.4",
