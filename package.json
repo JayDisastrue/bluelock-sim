@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "assets": "node scripts/fetch-wiki-assets.mjs",
     "voice:export": "tsx scripts/export-voice-script.ts",
-    "e2e": "node e2e/opening.mjs && node e2e/features.mjs"
+    "e2e": "node e2e/opening.mjs && node e2e/features.mjs",
+    "assets:scan": "node scripts/scan-assets.mjs"
   },
   "dependencies": {
     "immer": "^11.1.21",

@@ -10,6 +10,13 @@ public/assets/
   voice/                 <lineId>.mp3           voice lines (see "Voice")
 ```
 
+> The committed `manifest.json` is intentionally empty (the art is never pushed, and the GitHub Pages site is public). `npm run assets` / `npm run assets:scan` regenerate it **locally**; don't commit your local version.
+
+## Fastest way to swap art: drop files, run one command
+Put images in `public/assets/portraits/` or `public/assets/backgrounds/`, then run **`npm run assets:scan`**. It rewrites `manifest.json` from the files it finds, so you never edit the manifest by hand.
+- `portraits/<id>.png` → default art for that character (`player` for your own character); `portraits/<id>_<emotion>.png` → emotion art. If two files share a name, the newest wins, so you can overwrite fetched art simply by dropping your own file in.
+- `backgrounds/<bgId>.jpg` → that scene's background. The scan prints which background ids are still missing.
+
 ## Portraits
 - Key = character id (`ego`, `bachira`, …) or `player`. Original characters use their ids (`sora`, `reiji`, …).
 - Manifest: `"portraits": { "sora": { "default": "portraits/sora.png", "furious": "portraits/sora_furious.png" } }`. An emotion-specific file (`neutral, smirk, furious, shocked, despair, flow, metavision, devoured`) wins over `default`.
@@ -25,8 +32,8 @@ public/assets/
 ## Voice lines (easy replaceable files)
 Every spoken line has a stable id `<scriptId>:<beatIndex>`; its slot is `public/assets/voice/<id with ":" → "_">.mp3`.
 1. `npm run voice:export` → `docs/voice-script.csv` / `.json` listing **file, id, speaker, origin, text** for every spoken line.
-2. Put an audio file at that path (record it, generate it with a TTS service you are licensed to use, etc.). Origin-specific wording has its own slot `…@<origin>.mp3`, checked first. Files can also be mapped in the manifest under `"voice"`.
-3. No code changes. Missing files are silently skipped. Inner-monologue lines are not voiced.
+2. Put an audio file at that path (record it, generate it with a TTS service you are licensed to use, etc.). Origin-specific wording has its own slot `…@<origin>.mp3`, checked first. Any audio format a browser plays works (mp3/ogg/wav/m4a).
+3. Run `npm run assets:scan` so the game indexes the new files. No code changes; lines without a file stay silent. Inner-monologue lines are not voiced.
 Do not use voice models cloned from real voice actors without their consent.
 
 ## SFX / music
