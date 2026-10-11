@@ -1,6 +1,6 @@
 # Importing art and audio
 
-You add files; one command wires them up. Nothing in the project ships with copyrighted art or audio.
+You add files; one command wires them up. The project ships with no third-party art or audio; the only image is one AI-generated original character (`sora.png`).
 
 ```
 public/assets/
@@ -15,7 +15,7 @@ public/assets/
 2. `npm run assets:scan`
 3. Refresh the page (`npm run dev`). Missing files fall back gracefully; nothing crashes.
 
-By default these folders are **gitignored**: your files stay on your machine, and the public GitHub Pages site shows the generated fallbacks. To publish art you own the rights to, delete the three `public/assets/...` lines in `.gitignore` and commit the files.
+**Publishing:** these folders are *not* gitignored, so anything you drop in is committed with `git add -A` and, after merging to `main`, appears on the public GitHub Pages site. Only commit art and audio you are happy to publish. To keep files private instead, add `public/assets/portraits/*`, `public/assets/backgrounds/*` and `public/assets/voice/*` to `.gitignore`.
 
 ## Character PNGs
 | | |

@@ -1,8 +1,13 @@
 {
-  "portraits": {},
+  "portraits": {
+    "sora": {
+      "default": "portraits/sora.png"
+    }
+  },
   "backgrounds": {},
   "impacts": {},
   "weapons": {},
   "models": {},
-  "voice": {}
+  "voice": {},
+  "voiceBanks": {}
 }
