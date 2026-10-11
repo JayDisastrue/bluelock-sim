@@ -84,22 +84,29 @@ export const Op = z.enum(['>=', '>', '<=', '<', '==', '!='])
 export type Op = z.infer<typeof Op>
 
 // ───────────────────────── portraits ─────────────────────────
-export const HAIR_IDS = ['spiky', 'swept', 'shaggy', 'buzz', 'undercut', 'curly', 'long', 'mohawk'] as const
-export const EYE_IDS = ['sharp', 'round', 'narrow', 'droopy'] as const
-export const BROW_IDS = ['straight', 'thick', 'thin', 'arched'] as const
-export const MARK_IDS = ['none', 'scar', 'bandage', 'mole', 'freckles'] as const
+export const FACE_IDS = ['oval', 'round', 'square', 'long', 'heart', 'sharp'] as const
+export const HAIR_IDS = ['spiky', 'swept', 'shaggy', 'buzz', 'undercut', 'curly', 'long', 'mohawk', 'bob', 'ponytail', 'side_part', 'topknot', 'wavy', 'pixie', 'afro', 'braid'] as const
+export const EYE_IDS = ['sharp', 'round', 'narrow', 'droopy', 'upturned', 'wide', 'almond', 'heavy_lid'] as const
+export const BROW_IDS = ['straight', 'thick', 'thin', 'arched', 'angled', 'soft'] as const
+export const NOSE_IDS = ['small', 'straight', 'pointed', 'broad'] as const
+export const MARK_IDS = ['none', 'scar', 'bandage', 'mole', 'freckles', 'eyebags', 'bruise'] as const
+export const ACCESSORY_IDS = ['none', 'headband', 'glasses', 'earring', 'hair_clip'] as const
 
+/** Part ids are plain strings: the built-ins above plus any ids added by dropping images in public/assets/player/<slot>/. */
 export const PortraitSpec = z.object({
   skin: z.string(),
-  hair: z.enum(HAIR_IDS),
+  face: z.string().default('oval'),
+  hair: z.string(),
   hairColor: z.string(),
-  eyes: z.enum(EYE_IDS),
+  eyes: z.string(),
   eyeColor: z.string(),
-  brow: z.enum(BROW_IDS),
+  brow: z.string(),
+  nose: z.string().default('straight'),
   kit: z.string(),
   accent: z.string(),
   build: z.enum(['lean', 'mid', 'broad']),
-  mark: z.enum(MARK_IDS),
+  mark: z.string(),
+  accessory: z.string().default('none'),
 })
 export type PortraitSpec = z.infer<typeof PortraitSpec>
 
@@ -193,6 +200,8 @@ export const EffectSchema = z.discriminatedUnion('t', [
     duration: z.enum(['match', 'permanent']).default('match'),
   }),
   z.object({ t: z.literal('modifyMatchScript'), matchId: z.string(), patch: z.record(z.string(), z.unknown()) }),
+  z.object({ t: z.literal('changePosition'), position: Position }),
+  z.object({ t: z.literal('changeFoot'), foot: z.enum(['left', 'right', 'both']) }),
   // bookkeeping
   z.object({ t: z.literal('adjust'), key: ResKey, delta: z.number() }),
   z.object({ t: z.literal('adjustRep'), axis: RepAxis, delta: z.number() }),
@@ -206,6 +215,7 @@ export const EffectSchema = z.discriminatedUnion('t', [
   }),
   z.object({ t: z.literal('setArc'), id: z.string(), chapter: z.number().int().default(1) }),
 ])
+export const EFFECT_TYPES = EffectSchema.options.map((o) => o.shape.t.def.values[0] as string)
 export type Effect = z.infer<typeof EffectSchema>
 export type EffectInput = z.input<typeof EffectSchema>
 
@@ -475,7 +485,7 @@ export const MemoryEntry = z.object({
 export type MemoryEntry = z.infer<typeof MemoryEntry>
 
 export const RippleChange = z.object({
-  kind: z.enum(['relationship', 'status', 'flag', 'scene', 'weapon', 'trait', 'roster', 'eliminated', 'resource', 'rep', 'tag']),
+  kind: z.enum(['relationship', 'status', 'flag', 'scene', 'weapon', 'trait', 'roster', 'eliminated', 'resource', 'rep', 'tag', 'role']),
   text: z.string(),
   npc: z.string().optional(),
   tone: z.enum(['good', 'bad', 'neutral']).default('neutral'),

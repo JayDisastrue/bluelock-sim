@@ -81,6 +81,12 @@ export function applyEffect(d: GameState, e: Effect, source: string): void {
     case 'modifyMatchScript':
       d.matchPatches.push({ matchId: e.matchId, patch: e.patch, source })
       return
+    case 'changePosition':
+      d.player.position = e.position
+      return
+    case 'changeFoot':
+      d.player.handedness = e.foot
+      return
     case 'adjust':
       switch (e.key) {
         case 'ap': d.life.ap = clamp(d.life.ap + e.delta, 0, d.life.apMax); return

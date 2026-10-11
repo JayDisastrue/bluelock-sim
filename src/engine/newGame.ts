@@ -5,7 +5,8 @@ import type { ContentDB } from './types'
 export interface NewGameConfig {
   name: string
   portrait: PortraitSpec
-  position: Position
+  /** everyone enters Blue Lock as a striker; the story can change it later (changePosition effect) */
+  position?: Position
   handedness: 'left' | 'right' | 'both'
   origin: OriginId
   egoType: EgoType
@@ -45,7 +46,7 @@ export function createGame(cfg: NewGameConfig, content: Pick<ContentDB, 'origins
       name: cfg.name.trim() || 'Player',
       origin: cfg.origin,
       portrait: cfg.portrait,
-      position: cfg.position,
+      position: cfg.position ?? 'ST',
       handedness: cfg.handedness,
       egoType: cfg.egoType,
       weaponSeed: cfg.weaponSeed,

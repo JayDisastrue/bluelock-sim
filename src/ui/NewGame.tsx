@@ -1,21 +1,20 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { content } from '../content'
+import { OPENING_SCRIPT, content } from '../content'
+import { useManifest } from '../assets'
 import { Portrait } from '../cutscene/Portrait'
+import { PALETTES, PART_SLOTS, SLOT_LABEL, normalizePortrait, optionLabel, optionsFor, randomPortrait, randomSlot, type PartSlot } from '../cutscene/parts'
 import { DEFAULT_PORTRAIT, usePreviewPlayer } from '../cutscene/previewPlayer'
+import { SvgPortrait } from '../cutscene/SvgPortrait'
+import { rollFate, type Fate } from '../engine/fate'
 import { useMeta } from '../engine/meta'
 import { EGO_BIAS } from '../engine/newGame'
-import { BROW_IDS, EGO_TYPES, EYE_IDS, HAIR_IDS, MARK_IDS, POSITIONS, type EgoType, type OriginId, type PortraitSpec, type Position } from '../engine/schemas'
+import { EGO_TYPES, type EgoType, type OriginId, type PortraitSpec } from '../engine/schemas'
 import { useSettings } from '../engine/settings'
-import { useGame, liveApi } from '../engine/store'
-import { OPENING_SCRIPT } from '../content'
+import { useGame } from '../engine/store'
 import { Screen } from './Screen'
 import { useUi } from './uiStore'
 
-const SKIN = ['#fbe0c8', '#f0d0b0', '#e0b896', '#c99572', '#9a6a48', '#6b4630']
-const HAIR_C = ['#14141a', '#3b2a1f', '#6a4a2a', '#c9a64a', '#d9d9e3', '#b0463c', '#1f6bff', '#8a5aa8']
-const EYE_C = ['#2a2a30', '#4a3a2a', '#2a6a4a', '#2a4a8a', '#c9a227', '#7a1f1f', '#6aa0ff']
-const KIT = ['#1f6bff', '#e5233b', '#2a8a5a', '#101014', '#f2efe6', '#8a5aa8', '#e5a23b']
 const STEPS = ['Identity', 'Appearance', 'Origin', 'Ego & Weapon', 'Confirm'] as const
 
 const EGO_INFO: Record<EgoType, { name: string; desc: string }> = {
@@ -26,7 +25,12 @@ const EGO_INFO: Record<EgoType, { name: string; desc: string }> = {
   monarch: { name: 'Monarch', desc: '“Everyone orbits me.” Ego and Flow lead.' },
 }
 
-function Swatches({ colors, value, onPick, label }: { colors: string[]; value: string; onPick: (c: string) => void; label: string }) {
+/** Which part of the portrait each slot's thumbnail zooms into. */
+const CROP: Record<PartSlot, string> = {
+  face: '40 40 120 150', hair: '30 14 140 150', eyes: '52 92 96 50', brow: '52 88 96 44', nose: '68 104 64 52', mark: '48 90 104 76', accessory: '30 20 140 170',
+}
+
+function Swatches({ colors, value, onPick, label }: { colors: readonly string[]; value: string; onPick: (c: string) => void; label: string }) {
   return (
     <div role="radiogroup" aria-label={label} style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
       {colors.map((c) => (
@@ -37,42 +41,41 @@ function Swatches({ colors, value, onPick, label }: { colors: string[]; value: s
   )
 }
 
-function Choices<T extends string>({ items, value, onPick, label }: { items: readonly T[]; value: T; onPick: (v: T) => void; label: string }) {
-  return (
-    <div role="radiogroup" aria-label={label} style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-      {items.map((i) => (
-        <button key={i} role="radio" aria-checked={value === i} className={`btn small ${value === i ? 'blue' : ''}`} onClick={() => onPick(i)}>{i}</button>
-      ))}
-    </div>
-  )
+function Dice({ onClick, label }: { onClick: () => void; label: string }) {
+  return <button className="btn small" onClick={onClick} aria-label={label} title={label} data-testid={`dice-${label}`}>🎲</button>
 }
 
 export function NewGame() {
   const nav = useNavigate()
+  const manifest = useManifest()
+  const parts = manifest.playerParts
   const [step, setStep] = useState(0)
   const [name, setName] = useState('')
-  const [position, setPosition] = useState<Position>('ST')
-  const [hand, setHand] = useState<'left' | 'right' | 'both'>('right')
   const portrait = usePreviewPlayer((s) => s.portrait)
   const setPortrait = usePreviewPlayer((s) => s.setPortrait)
   const [origin, setOrigin] = useState<OriginId>('fallen_ace')
   const [ego, setEgo] = useState<EgoType>('predator')
-  const [weapon, setWeapon] = useState('direct_shot')
+  const seedable = useMemo(() => Object.values(content.weapons).filter((w) => w.seedable), [])
+  const [fate, setFate] = useState<Fate>(() => rollFate(seedable))
   const romance = useSettings((s) => s.romance)
   const setSettings = useSettings((s) => s.set)
   const unlocked = useMeta((s) => s.unlockedOrigins)
   const newGame = useGame((s) => s.newGame)
-  const playLive = useUi((s) => s.playLive)
+  const playLive = useUi((u) => u.playLive)
   const set = <K extends keyof PortraitSpec>(k: K, v: PortraitSpec[K]) => setPortrait({ ...portrait, [k]: v })
+  // once images are imported for a slot, the drawn defaults are no longer offered: snap the current look onto offered parts
+  useEffect(() => {
+    const n = normalizePortrait(portrait, parts)
+    if (n !== portrait) setPortrait(n)
+  }, [parts, portrait, setPortrait])
   const o = content.origins[origin]!
-  const seedable = useMemo(() => Object.values(content.weapons).filter((w) => w.seedable), [])
   const canNext = step === 0 ? name.trim().length > 0 : true
 
   const start = () => {
-    newGame({ name, portrait, position, handedness: hand, origin, egoType: ego, weaponSeed: weapon, romanceEnabled: romance })
+    // position is always striker; strong foot and starting weapon are the rolled fate
+    newGame({ name, portrait, handedness: fate.foot, origin, egoType: ego, weaponSeed: fate.weapon, romanceEnabled: romance })
     nav('/hub')
     playLive([OPENING_SCRIPT])
-    void liveApi
   }
 
   return (
@@ -89,8 +92,17 @@ export function NewGame() {
               <label style={{ display: 'grid', gap: 4 }}>Name
                 <input type="text" value={name} maxLength={24} onChange={(e) => setName(e.target.value)} placeholder="Your name" autoFocus data-testid="name-input" />
               </label>
-              <div><div>Position</div><Choices items={POSITIONS} value={position} onPick={setPosition} label="Position" /></div>
-              <div><div>Strong foot</div><Choices items={['left', 'right', 'both'] as const} value={hand} onPick={setHand} label="Handedness" /></div>
+              <div className="panel-card" data-testid="position-locked">
+                <div className="slash-title">Position: Striker (ST)</div>
+                <div style={{ color: '#9fa6b8', fontSize: '.9rem' }}>Everyone enters Blue Lock as a striker. Your position can change later through the story and your choices.</div>
+              </div>
+              <div className="panel-card" data-testid="fate-foot">
+                <div style={{ display: 'flex', gap: 8, alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div><div className="slash-title">Strong foot: <span data-testid="foot-value">{fate.foot === 'both' ? 'Both (ambidextrous)' : fate.foot}</span></div>
+                    <div style={{ color: '#9fa6b8', fontSize: '.9rem' }}>Rolled by fate. It can change with the story.</div></div>
+                  <Dice label="Re-roll foot" onClick={() => setFate({ ...fate, foot: rollFate(seedable).foot })} />
+                </div>
+              </div>
               <label style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                 <input type="checkbox" checked={romance} onChange={(e) => setSettings({ romance: e.target.checked })} /> Enable romance &amp; friendships subplots
               </label>
@@ -98,16 +110,40 @@ export function NewGame() {
           )}
           {step === 1 && (
             <>
-              <div>Skin<Swatches colors={SKIN} value={portrait.skin} onPick={(c) => set('skin', c)} label="Skin" /></div>
-              <div>Hair style<Choices items={HAIR_IDS} value={portrait.hair} onPick={(v) => set('hair', v)} label="Hair style" /></div>
-              <div>Hair colour<Swatches colors={HAIR_C} value={portrait.hairColor} onPick={(c) => set('hairColor', c)} label="Hair colour" /></div>
-              <div>Eyes<Choices items={EYE_IDS} value={portrait.eyes} onPick={(v) => set('eyes', v)} label="Eye shape" /></div>
-              <div>Eye colour<Swatches colors={EYE_C} value={portrait.eyeColor} onPick={(c) => set('eyeColor', c)} label="Eye colour" /></div>
-              <div>Brows<Choices items={BROW_IDS} value={portrait.brow} onPick={(v) => set('brow', v)} label="Brows" /></div>
-              <div>Kit<Swatches colors={KIT} value={portrait.kit} onPick={(c) => set('kit', c)} label="Kit" /></div>
-              <div>Build<Choices items={['lean', 'mid', 'broad'] as const} value={portrait.build} onPick={(v) => set('build', v)} label="Build" /></div>
-              <div>Mark<Choices items={MARK_IDS} value={portrait.mark} onPick={(v) => set('mark', v)} label="Mark" /></div>
-              <button className="btn small" onClick={() => setPortrait(DEFAULT_PORTRAIT)}>Reset</button>
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+                <button className="btn primary" onClick={() => setPortrait(randomPortrait(Math.random, parts))} data-testid="randomize-all">🎲 Randomize everything</button>
+                <button className="btn small" onClick={() => setPortrait(DEFAULT_PORTRAIT)}>Reset</button>
+                <span style={{ color: '#9fa6b8', fontSize: '.85rem' }}>Mix and match every part. Your imported part images (public/assets/player/) replace the drawn options for their slot automatically.</span>
+              </div>
+              {PART_SLOTS.map((slot) => (
+                <section key={slot} aria-label={SLOT_LABEL[slot]}>
+                  <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 6 }}>
+                    <b className="slash-title">{SLOT_LABEL[slot]}</b>
+                    <Dice label={`Random ${SLOT_LABEL[slot]}`} onClick={() => setPortrait(randomSlot(portrait, slot, Math.random, parts))} />
+                  </div>
+                  <div role="radiogroup" aria-label={SLOT_LABEL[slot]} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(78px, 1fr))', gap: 6 }}>
+                    {optionsFor(slot, parts).map((opt) => {
+                      const on = portrait[slot] === opt.id
+                      return (
+                        <button key={opt.id} role="radio" aria-checked={on} onClick={() => set(slot, opt.id)} data-testid={`part-${slot}-${opt.id}`}
+                          title={optionLabel(opt.id) + (opt.image ? ' (imported image)' : '')}
+                          style={{ padding: 2, background: '#0a0c14', border: on ? '3px solid #e5233b' : '2px solid #3a4468', cursor: 'pointer', color: '#cfd6ee', fontSize: '.7rem', display: 'grid', gap: 2 }}>
+                          <div className="thumb"><SvgPortrait spec={{ ...portrait, [slot]: opt.id }} crop={CROP[slot]} parts={parts} label={`${SLOT_LABEL[slot]} ${optionLabel(opt.id)}`} /></div>
+                          <span style={{ textTransform: 'capitalize' }}>{optionLabel(opt.id)}{opt.image ? ' ◆' : ''}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                </section>
+              ))}
+              <div>Skin<Swatches colors={PALETTES.skin} value={portrait.skin} onPick={(c) => set('skin', c)} label="Skin" /></div>
+              <div>Hair colour<Swatches colors={PALETTES.hairColor} value={portrait.hairColor} onPick={(c) => set('hairColor', c)} label="Hair colour" /></div>
+              <div>Eye colour<Swatches colors={PALETTES.eyeColor} value={portrait.eyeColor} onPick={(c) => set('eyeColor', c)} label="Eye colour" /></div>
+              <div>Kit<Swatches colors={PALETTES.kit} value={portrait.kit} onPick={(c) => set('kit', c)} label="Kit" /></div>
+              <div>Accent<Swatches colors={PALETTES.accent} value={portrait.accent} onPick={(c) => set('accent', c)} label="Accent" /></div>
+              <div role="radiogroup" aria-label="Build" style={{ display: 'flex', gap: 6, alignItems: 'center' }}>Build
+                {(['lean', 'mid', 'broad'] as const).map((b) => <button key={b} role="radio" aria-checked={portrait.build === b} className={`btn small ${portrait.build === b ? 'blue' : ''}`} onClick={() => set('build', b)}>{b}</button>)}
+              </div>
             </>
           )}
           {step === 2 && (
@@ -139,24 +175,22 @@ export function NewGame() {
                   ))}
                 </div>
               </div>
-              <div>
-                <div className="slash-title">Starting weapon</div>
-                <div style={{ display: 'grid', gap: 8, marginTop: 6 }}>
-                  {seedable.map((w) => (
-                    <button key={w.id} aria-pressed={weapon === w.id} onClick={() => setWeapon(w.id)} className="panel-card" style={{ textAlign: 'left', color: 'inherit', cursor: 'pointer', borderColor: weapon === w.id ? '#e5233b' : '#242a40' }}>
-                      <b>{w.name}</b> · {w.summary}<div style={{ color: '#9fa6b8', fontSize: '.85rem' }}>{w.levels.map((l) => l.name).join(' → ')}</div>
-                    </button>
-                  ))}
+              <div className="panel-card" data-testid="fate-weapon">
+                <div style={{ display: 'flex', gap: 8, alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div className="slash-title">Starting weapon (rolled): <span data-testid="weapon-value">{content.weapons[fate.weapon]?.name}</span></div>
+                  <Dice label="Re-roll weapon" onClick={() => setFate({ ...fate, weapon: rollFate(seedable).weapon })} />
                 </div>
+                <div style={{ color: '#cfd6ee' }}>{content.weapons[fate.weapon]?.summary}</div>
+                <div style={{ color: '#9fa6b8', fontSize: '.85rem' }}>{content.weapons[fate.weapon]?.levels.map((l) => l.name).join(' → ')} · weapons can be gained, evolved and corrupted by the story.</div>
               </div>
             </>
           )}
           {step === 4 && (
             <div style={{ display: 'grid', gap: 6 }}>
               <div className="slash-title" style={{ fontSize: '1.4rem' }}>{name}</div>
-              <div>{o.name} · {position} · {hand}-footed · {EGO_INFO[ego].name}</div>
+              <div>{o.name} · Striker (ST) · {fate.foot === 'both' ? 'two-footed' : `${fate.foot}-footed`} · {EGO_INFO[ego].name}</div>
               <div style={{ color: '#cfd6ee', fontStyle: 'italic' }}>{o.past}</div>
-              <div>Starting weapon: <b>{content.weapons[weapon]?.name}</b></div>
+              <div>Starting weapon: <b>{content.weapons[fate.weapon]?.name}</b></div>
               <div>Tags: {o.tags.map((t) => <span key={t} className="chip" style={{ marginRight: 4 }}>{t}</span>)}</div>
               <div style={{ color: '#9fa6b8' }}>Your opening scene will diverge: you’ll be approached by <b>{content.characters[o.approachedBy]?.name}</b>, and Ego will aim at your wound.</div>
             </div>

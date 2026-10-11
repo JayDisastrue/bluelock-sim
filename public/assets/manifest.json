@@ -1,7 +1,28 @@
 {
   "portraits": {
+    "dante": {
+      "default": "portraits/dante.png"
+    },
+    "kisaragi": {
+      "default": "portraits/kisaragi.png"
+    },
+    "lukas": {
+      "default": "portraits/lukas.png"
+    },
+    "mio": {
+      "default": "portraits/mio.png"
+    },
+    "reiji": {
+      "default": "portraits/reiji.png"
+    },
     "sora": {
       "default": "portraits/sora.png"
+    },
+    "tomas": {
+      "default": "portraits/tomas.png"
+    },
+    "haruka": {
+      "default": "portraits/haruka.png"
     }
   },
   "backgrounds": {},
@@ -9,5 +30,6 @@
   "weapons": {},
   "models": {},
   "voice": {},
-  "voiceBanks": {}
+  "voiceBanks": {},
+  "playerParts": {}
 }

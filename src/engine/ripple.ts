@@ -88,6 +88,9 @@ export function buildRipple(
   const dC = after.life.composure - before.life.composure
   if (Math.abs(dC) >= 5) changes.push({ kind: 'resource', tone: dC > 0 ? 'good' : 'bad', text: `Composure ${sign(dC)}` })
 
+  if (after.player.position !== before.player.position) changes.push({ kind: 'role', tone: 'neutral', text: `Position changed: ${before.player.position} → ${after.player.position}` })
+  if (after.player.handedness !== before.player.handedness) changes.push({ kind: 'role', tone: 'neutral', text: `Strong foot is now ${after.player.handedness}` })
+
   // something scheduled to come back
   const newlyScheduled = after.scheduled.slice(before.scheduled.length)
   let hint = opts.choice?.reveal
