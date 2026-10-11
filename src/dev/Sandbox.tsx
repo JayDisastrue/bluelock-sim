@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { content } from '../content'
 import { createPreviewApi } from '../engine/preview'
 import { useMeta } from '../engine/meta'
-import { ORIGIN_IDS, REL_FIELDS, REL_STATUSES, SKILLS, type RelStatus } from '../engine/schemas'
+import { ORIGIN_IDS, POSITIONS, REL_FIELDS, REL_STATUSES, SKILLS, type Position, type RelStatus } from '../engine/schemas'
 import { DEFAULT_PORTRAIT } from '../cutscene/previewPlayer'
 import { ensureRel, getRel } from '../engine/relationships'
 import { useGame } from '../engine/store'
@@ -149,6 +149,12 @@ export function Sandbox() {
           ] as [string, number, (d: NonNullable<typeof s>, n: number) => void][]).map(([label, v, set]) => (
             <label key={label} style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'center' }}>{label}<Num label={label} value={v} onChange={(n) => sandbox((d) => set(d, n))} /></label>
           ))}
+          <label style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'center' }}>Position
+            <select aria-label="Position" value={s.player.position} data-testid="sandbox-position" onChange={(e) => sandbox((d) => { d.player.position = e.target.value as Position })}>{POSITIONS.map((p) => <option key={p}>{p}</option>)}</select>
+          </label>
+          <label style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'center' }}>Strong foot
+            <select aria-label="Strong foot" value={s.player.handedness} data-testid="sandbox-foot" onChange={(e) => sandbox((d) => { d.player.handedness = e.target.value as 'left' | 'right' | 'both' })}>{['left', 'right', 'both'].map((p) => <option key={p}>{p}</option>)}</select>
+          </label>
           <div>
             Injuries: {s.life.injuries.map((i) => `${i.part} ${i.weeksLeft}w`).join(', ') || 'none'}{' '}
             <button className="btn small" onClick={() => sandbox((d) => { d.life.injuries.push({ part: 'knee', severity: 'moderate', weeksLeft: 4 }) })}>+ knee</button>{' '}

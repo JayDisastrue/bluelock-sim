@@ -3,9 +3,6 @@
     "dante": {
       "default": "portraits/dante.png"
     },
-    "haruka": {
-      "default": "portraits/haruka.png"
-    },
     "kisaragi": {
       "default": "portraits/kisaragi.png"
     },
@@ -23,6 +20,9 @@
     },
     "tomas": {
       "default": "portraits/tomas.png"
+    },
+    "haruka": {
+      "default": "portraits/haruka.png"
     }
   },
   "backgrounds": {},
@@ -30,5 +30,6 @@
   "weapons": {},
   "models": {},
   "voice": {},
-  "voiceBanks": {}
+  "voiceBanks": {},
+  "playerParts": {}
 }

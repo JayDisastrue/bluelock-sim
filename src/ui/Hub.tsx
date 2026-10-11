@@ -51,7 +51,7 @@ export function Hub() {
           <div style={{ height: 140 }}><Portrait who="player" /></div>
           <div>
             <div className="slash-title" style={{ fontSize: '1.5rem' }}>{s.player.name}</div>
-            <div style={{ color: '#cfd6ee' }}>{ORIGIN_NAMES[s.player.origin]} · {s.player.position} · age {s.life.age} · arc: {content.arcs[s.arc.id]?.name}</div>
+            <div style={{ color: '#cfd6ee' }}>{ORIGIN_NAMES[s.player.origin]} · {s.player.position} · {s.player.handedness === 'both' ? 'two-footed' : `${s.player.handedness}-footed`} · age {s.life.age} · arc: {content.arcs[s.arc.id]?.name}</div>
             <div style={{ color: '#9fa6b8', fontSize: '.85rem', marginTop: 4 }}>
               ⚑ <b>PLACEHOLDER HUB</b>: the AP planner, training and event inbox arrive in M3. This week-advance is real: scheduled consequences fire when due.
             </div>

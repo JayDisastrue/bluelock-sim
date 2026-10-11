@@ -10,6 +10,8 @@ export interface Manifest {
   /** exact per-line recordings: file stem → path */
   voice?: Record<string, string>
   /** random clips per character: id → { default: [...], <emotion>: [...] } */
+  /** imported player-creator parts: slot → option id → { default, <emotion> } image paths */
+  playerParts?: Record<string, Record<string, { default?: string } & Partial<Record<string, string>>>>
   voiceBanks?: Record<string, { default?: string[] } & Partial<Record<string, string[]>>>
 }
 const EMPTY: Manifest = { portraits: {}, backgrounds: {}, impacts: {}, weapons: {}, models: {} }

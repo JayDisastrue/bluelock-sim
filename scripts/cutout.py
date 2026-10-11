@@ -3,6 +3,10 @@
 
   python3 scripts/cutout.py input.png output.png          # one file
   python3 scripts/cutout.py inputs_dir/ public/assets/portraits/   # a folder (uses file names as ids)
+  python3 scripts/cutout.py in.png out.png --pockets 200   # also remove smaller enclosed white pockets
+
+Stray white spots are background trapped between two parts of the character (e.g. between a ponytail and a hood).
+Lower --pockets (default 2500) until they disappear; stop before painted whites (stripes, shirts, numbers) go too.
 
 Removes white regions that touch the border AND large enclosed white pockets (e.g. between an arm and the torso).
 Small white details inside the character (jersey numbers, stripes, highlights) are kept. Output is a transparent PNG
@@ -17,7 +21,7 @@ WHITE = 246          # a pixel is "white" when all channels >= this
 MIN_POCKET = 2500    # enclosed white regions at least this many pixels are background too
 
 
-def cutout(src: Path, dst: Path) -> None:
+def cutout(src: Path, dst: Path, min_pocket: int = MIN_POCKET) -> None:
     im = Image.open(src).convert('RGB')
     w, h = im.size
     data = im.tobytes()
@@ -40,7 +44,7 @@ def cutout(src: Path, dst: Path) -> None:
                 if n >= 0 and white[n] and not seen[n]:
                     seen[n] = 1
                     q.append(n)
-        if touches or len(comp) >= MIN_POCKET:
+        if touches or len(comp) >= min_pocket:
             for p in comp:
                 remove[p] = 1
     alpha = Image.frombytes('L', (w, h), bytes(0 if r else 255 for r in remove))
@@ -63,11 +67,17 @@ def cutout(src: Path, dst: Path) -> None:
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
+    args = sys.argv[1:]
+    pockets = MIN_POCKET
+    if '--pockets' in args:
+        i = args.index('--pockets')
+        pockets = int(args[i + 1])
+        del args[i:i + 2]
+    if len(args) != 2:
         sys.exit(__doc__)
-    a, b = Path(sys.argv[1]), Path(sys.argv[2])
+    a, b = Path(args[0]), Path(args[1])
     if a.is_dir():
         for f in sorted(a.glob('*.png')) + sorted(a.glob('*.jpg')):
-            cutout(f, b / (f.stem + '.png'))
+            cutout(f, b / (f.stem + '.png'), pockets)
     else:
-        cutout(a, b)
+        cutout(a, b, pockets)

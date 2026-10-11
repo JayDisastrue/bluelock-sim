@@ -2,6 +2,8 @@
 //   portraits/<id>.png            default art for a character id (or "player")
 //   portraits/<id>_<emotion>.png  emotion-specific art: neutral smirk furious shocked despair flow metavision devoured (or "manga")
 //   backgrounds/<bgId>.jpg        scene background (ids listed below)
+//   player/<slot>/<id>.png        player-creator part image (slots: face hair eyes brow nose mark accessory; 1000x1300, see player/README.md)
+//   player/<slot>/<id>_<emotion>.png   emotion variant of a part (eyes/brow/nose/mark)
 //   voice/<scriptId>_<n>.mp3      exact voice line (file names come from `npm run voice:export`)
 //   voice/<characterId>/*.mp3     random clips for that character (grunts, laughs, short phrases)
 //   voice/<characterId>/<emotion>/*.mp3   random clips used only for lines with that emotion
@@ -35,6 +37,18 @@ const backgrounds = {}
 for (const { f } of files('backgrounds')) backgrounds[f.replace(IMG, '')] = `backgrounds/${f}`
 manifest.backgrounds = backgrounds
 
+const PART_SLOTS = ['face', 'hair', 'eyes', 'brow', 'nose', 'mark', 'accessory']
+const playerParts = {}
+for (const slot of PART_SLOTS) {
+  for (const { f } of files(`player/${slot}`)) {
+    const stem = f.replace(IMG, '')
+    const m = stem.match(new RegExp(`^(.+)_(${EMOTIONS.join('|')})$`))
+    const [id, key] = m ? [m[1], m[2]] : [stem, 'default']
+    ;((playerParts[slot] ??= {})[id] ??= {})[key] = `player/${slot}/${f}`
+  }
+}
+manifest.playerParts = playerParts
+
 const AUDIO = /\.(mp3|ogg|wav|m4a|webm)$/i
 const voice = {}      // exact lines:  voice/<scriptId>_<n>.mp3
 const voiceBanks = {} // random clips: voice/<characterId>/*.mp3  and  voice/<characterId>/<emotion>/*.mp3
@@ -58,6 +72,7 @@ manifest.voiceBanks = voiceBanks
 
 writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n')
 console.log(`portraits: ${Object.keys(portraits).length} characters (${Object.values(portraits).reduce((n, e) => n + Object.keys(e).length, 0)} files)`)
+console.log(`player parts: ${Object.values(playerParts).reduce((n, o) => n + Object.keys(o).length, 0)} options across ${Object.keys(playerParts).length} slots`)
 console.log(`voice: ${Object.keys(voice).length} exact lines, ${Object.keys(voiceBanks).length} character banks (${Object.values(voiceBanks).reduce((n, b) => n + Object.values(b).flat().length, 0)} clips)`)
 console.log(`backgrounds: ${Object.keys(backgrounds).length}/${BG_IDS.length}`)
 const missing = BG_IDS.filter((id) => !backgrounds[id])
