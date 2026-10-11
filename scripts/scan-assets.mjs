@@ -2,7 +2,9 @@
 //   portraits/<id>.png            default art for a character id (or "player")
 //   portraits/<id>_<emotion>.png  emotion-specific art: neutral smirk furious shocked despair flow metavision devoured (or "manga")
 //   backgrounds/<bgId>.jpg        scene background (ids listed below)
-//   voice/<file>.mp3              voice lines (file names come from `npm run voice:export`)
+//   voice/<scriptId>_<n>.mp3      exact voice line (file names come from `npm run voice:export`)
+//   voice/<characterId>/*.mp3     random clips for that character (grunts, laughs, short phrases)
+//   voice/<characterId>/<emotion>/*.mp3   random clips used only for lines with that emotion
 // If several files share a name with different extensions, the most recently modified one wins.
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 
@@ -34,13 +36,29 @@ for (const { f } of files('backgrounds')) backgrounds[f.replace(IMG, '')] = `bac
 manifest.backgrounds = backgrounds
 
 const AUDIO = /\.(mp3|ogg|wav|m4a|webm)$/i
-const voice = {}
-for (const f of existsSync(`${ROOT}/voice`) ? readdirSync(`${ROOT}/voice`) : []) if (AUDIO.test(f)) voice[f.replace(AUDIO, '')] = `voice/${f}`
+const voice = {}      // exact lines:  voice/<scriptId>_<n>.mp3
+const voiceBanks = {} // random clips: voice/<characterId>/*.mp3  and  voice/<characterId>/<emotion>/*.mp3
+const vdir = `${ROOT}/voice`
+for (const e of existsSync(vdir) ? readdirSync(vdir, { withFileTypes: true }) : []) {
+  if (e.isFile() && AUDIO.test(e.name)) voice[e.name.replace(AUDIO, '')] = `voice/${e.name}`
+  if (e.isDirectory()) {
+    const bank = {}
+    for (const f of readdirSync(`${vdir}/${e.name}`, { withFileTypes: true })) {
+      if (f.isFile() && AUDIO.test(f.name)) (bank.default ??= []).push(`voice/${e.name}/${f.name}`)
+      if (f.isDirectory()) {
+        const emo = EMOTIONS.includes(f.name) ? f.name : 'default'
+        for (const g of readdirSync(`${vdir}/${e.name}/${f.name}`)) if (AUDIO.test(g)) (bank[emo] ??= []).push(`voice/${e.name}/${f.name}/${g}`)
+      }
+    }
+    if (Object.keys(bank).length) voiceBanks[e.name] = bank
+  }
+}
 manifest.voice = voice
+manifest.voiceBanks = voiceBanks
 
 writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n')
 console.log(`portraits: ${Object.keys(portraits).length} characters (${Object.values(portraits).reduce((n, e) => n + Object.keys(e).length, 0)} files)`)
-console.log(`voice: ${Object.keys(voice).length} files`)
+console.log(`voice: ${Object.keys(voice).length} exact lines, ${Object.keys(voiceBanks).length} character banks (${Object.values(voiceBanks).reduce((n, b) => n + Object.values(b).flat().length, 0)} clips)`)
 console.log(`backgrounds: ${Object.keys(backgrounds).length}/${BG_IDS.length}`)
 const missing = BG_IDS.filter((id) => !backgrounds[id])
 if (missing.length) console.log(`  missing backgrounds: ${missing.join(', ')}`)

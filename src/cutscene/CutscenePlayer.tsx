@@ -15,15 +15,16 @@ import './cutscene.css'
 
 const SPEED_CPS = { slow: 28, normal: 55, fast: 110, instant: Infinity } as const
 
+/** Renders the typed part visibly and the rest invisibly, so the line keeps its final size from the first character. */
 function Emphasized({ text, shown }: { text: string; shown: number }) {
   const runs = parseEmphasis(text)
   const starts = runs.reduce<number[]>((acc, _r, i) => [...acc, i === 0 ? 0 : acc[i - 1]! + runs[i - 1]!.text.length], [])
   return (
     <>
       {runs.map((r, i) => {
-        const part = r.text.slice(0, Math.max(0, shown - starts[i]!))
-        if (!part) return null
-        return r.em ? <span className="em" key={i}>{part}</span> : <span key={i}>{part}</span>
+        const n = Math.max(0, Math.min(r.text.length, shown - starts[i]!))
+        const inner = <>{r.text.slice(0, n)}{n < r.text.length && <span className="ghost">{r.text.slice(n)}</span>}</>
+        return r.em ? <span className="em" key={i}>{inner}</span> : <span key={i}>{inner}</span>
       })}
     </>
   )
@@ -47,35 +48,37 @@ function useTypewriter(text: string, cps: number, active: boolean) {
   return { shown, total, complete: () => setTyped(total), done: shown >= total }
 }
 
-function DialogueBox({ b, playerName, cps, active, onTypedChange, completeRef }: {
-  b: Extract<Blocking, { t: 'line' }>
-  playerName: string
+interface TypedProps {
   cps: number
   active: boolean
   onTypedChange: (done: boolean) => void
   completeRef: React.MutableRefObject<(() => void) | null>
-}) {
-  const tw = useTypewriter(b.text, cps, active)
+}
+
+/** Keyed per line by its parent so the typewriter restarts, while the box around it stays put. */
+function TypedText({ text, cps, active, onTypedChange, completeRef }: TypedProps & { text: string }) {
+  const tw = useTypewriter(text, cps, active)
   useEffect(() => { completeRef.current = tw.complete }, [tw.complete, completeRef])
   useEffect(() => { onTypedChange(tw.done) }, [tw.done, onTypedChange])
+  return <Emphasized text={text} shown={tw.shown} />
+}
+
+function DialogueBox({ b, playerName, typed, ...rest }: TypedProps & { b: Extract<Blocking, { t: 'line' }>; playerName: string; typed: boolean }) {
   const name = b.who === 'player' ? playerName : (content.characters[b.who]?.short ?? b.who)
   return (
     <div className={`dialogue ${b.mono ? 'mono' : ''}`} role="log" aria-live="polite">
       <div className="nametag"><span>{b.mono ? `${name} · thinking` : name}</span></div>
-      <div className="text"><Emphasized text={b.text} shown={tw.shown} /></div>
-      {tw.done && <div className="next" aria-hidden>▼</div>}
+      <div className="text"><TypedText key={b.id} text={b.text} {...rest} /></div>
+      {typed && <div className="next" aria-hidden>▼</div>}
     </div>
   )
 }
 
-function NarrationBox({ text, cps, active, onTypedChange, completeRef }: { text: string; cps: number; active: boolean; onTypedChange: (d: boolean) => void; completeRef: React.MutableRefObject<(() => void) | null> }) {
-  const tw = useTypewriter(text, cps, active)
-  useEffect(() => { completeRef.current = tw.complete }, [tw.complete, completeRef])
-  useEffect(() => { onTypedChange(tw.done) }, [tw.done, onTypedChange])
+function NarrationBox({ text, typed, ...rest }: TypedProps & { text: string; typed: boolean }) {
   return (
     <div className="narration" role="log" aria-live="polite">
-      <Emphasized text={text} shown={tw.shown} />
-      {tw.done && <span className="next" aria-hidden>▼</span>}
+      <TypedText key={text} text={text} {...rest} />
+      {typed && <span className="next" aria-hidden>▼</span>}
     </div>
   )
 }
@@ -188,11 +191,13 @@ function ChoiceMenu({ prompt, choices, onPick, timed, onTimeout }: {
           data-testid={`choice-${v.choice.id}`}
         >
           <span className="key">{i + 1}</span>
-          <span>{v.choice.label}</span>
-          <span style={{ display: 'flex', gap: '.6cqw', alignItems: 'center' }}>
-            {v.costLabel && <span className="chip">−{v.costLabel}</span>}
-            {v.choice.tone && <span className="chip">{TONE_GLYPH[v.choice.tone]} {v.choice.tone}</span>}
-          </span>
+          <span className="lbl">{v.choice.label}</span>
+          {(v.costLabel || v.choice.tone) && (
+            <span className="meta">
+              {v.costLabel && <span className="chip">−{v.costLabel}</span>}
+              {v.choice.tone && <span className="chip">{TONE_GLYPH[v.choice.tone]} {v.choice.tone}</span>}
+            </span>
+          )}
           {!v.available && v.reason && <span className="why">🔒 {v.reason}</span>}
         </button>
       ))}
@@ -272,7 +277,7 @@ export function CutscenePlayer({ scriptId, api, onDone, onClose }: CutscenePlaye
   }, [runner, settings.reducedMotion, settings.shake, settings.flash])
   useEffect(() => { playFx() }, [playFx])
   useEffect(() => { void music(runner.music) }, [runner.music, runner.version])
-  useEffect(() => { if (cur?.t === 'line' && !cur.mono) void voice(cur.id, api.get().player.origin) }, [cur, api])
+  useEffect(() => { if (cur?.t === 'line' && !cur.mono) void voice(cur.id, api.get().player.origin, cur.who, cur.emotion) }, [cur, api])
   useEffect(() => () => void music(undefined), [])
 
   useEffect(() => {
@@ -358,8 +363,8 @@ export function CutscenePlayer({ scriptId, api, onDone, onClose }: CutscenePlaye
           )}
           {monoLine && <div className="mono-vignette" />}
 
-          {cur?.t === 'line' && <DialogueBox key={cur.id} b={cur} playerName={playerName} cps={cps} active={!runner.ripple} onTypedChange={setTyped} completeRef={completeRef} />}
-          {cur?.t === 'narration' && <NarrationBox key={runner.version} text={cur.text} cps={cps} active={!runner.ripple} onTypedChange={setTyped} completeRef={completeRef} />}
+          {cur?.t === 'line' && <DialogueBox b={cur} playerName={playerName} typed={typed} cps={cps} active={!runner.ripple} onTypedChange={setTyped} completeRef={completeRef} />}
+          {cur?.t === 'narration' && <NarrationBox text={cur.text} typed={typed} cps={cps} active={!runner.ripple} onTypedChange={setTyped} completeRef={completeRef} />}
           {cur?.t === 'panel' && <PanelSequence b={cur} bg={runner.bg} fast={fast || skip} revealed={revealed} setRevealed={setRevealed} />}
           {cur?.t === 'impact' && <ImpactCard b={cur} fast={fast || skip} onDone={advance} />}
           {cur?.t === 'cutIn' && <CutInCard b={cur} />}

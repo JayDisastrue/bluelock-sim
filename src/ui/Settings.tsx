@@ -37,6 +37,11 @@ export function SettingsScreen() {
         <Row label="Colour-blind palette"><input type="checkbox" checked={s.colorblind} onChange={(e) => s.set({ colorblind: e.target.checked })} /></Row>
         <Row label="Romance & friendship subplots"><input type="checkbox" checked={s.romance} onChange={(e) => s.set({ romance: e.target.checked })} /></Row>
         <Row label="Music"><input type="checkbox" checked={s.music} onChange={(e) => s.set({ music: e.target.checked })} /></Row>
+        <Row label="Character voice clips">
+          <select value={s.voiceChance} onChange={(e) => s.set({ voiceChance: Number(e.target.value) as typeof s.voiceChance })} aria-label="Character voice clips">
+            <option value={1}>Every line</option><option value={0.6}>Often</option><option value={0.3}>Sometimes</option><option value={0}>Off</option>
+          </select>
+        </Row>
         <Row label="Sound effects & voice"><input type="checkbox" checked={s.sfx} onChange={(e) => s.set({ sfx: e.target.checked })} /></Row>
         <div style={{ marginTop: 12 }}>
           <button className="btn small" onClick={() => { if (confirm('Clear the cutscene gallery and bonus-origin unlocks?')) reset() }}>Reset gallery &amp; unlocks</button>

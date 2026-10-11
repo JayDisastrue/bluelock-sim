@@ -13,3 +13,19 @@ export const voiceFile = (lineId: string, origin?: string): string =>
 
 /** Manifest key for a voice file: its file name without extension. */
 export const voiceKey = (lineId: string, origin?: string): string => voiceFile(lineId, origin).replace(/^voice\//, '').replace(/\.mp3$/, '')
+
+export interface VoiceBanks {
+  [character: string]: { default?: string[] } & Partial<Record<string, string[]>>
+}
+
+/**
+ * Picks a random clip from a character's voice bank (grunts, laughs, "hm"...). Prefers the bank for the line's emotion,
+ * falls back to the character's default bank. Never repeats `last` when there is an alternative.
+ */
+export function pickBankClip(banks: VoiceBanks | undefined, who: string, emotion: string | undefined, last: string | undefined, rand: () => number): string | undefined {
+  const bank = banks?.[who]
+  const pool = (emotion && bank?.[emotion]?.length ? bank[emotion] : bank?.default) ?? []
+  if (pool.length === 0) return undefined
+  const options = pool.length > 1 ? pool.filter((f) => f !== last) : pool
+  return options[Math.floor(rand() * options.length)]
+}

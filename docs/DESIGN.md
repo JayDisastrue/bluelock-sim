@@ -24,7 +24,7 @@ Content is data (`src/content`), engine is code (`src/engine`). The engine is **
 `line, narration, panel, impact, choice, timedChoice, cutIn, shake, flash, bgChange, music, setFlag, branch, wait` + `enter, exit, aura, vision, label, goto, effects`. Every beat takes an optional `when` guard. Lines support per-origin `variants`, `*emphasis*`, `{player}` templates. Timed choices carry `defaultChoiceId` and `timeoutEffects`; timing out is a real choice with consequences.
 
 ## Assets
-`public/assets/manifest.json` maps ids → files. Missing/unlisted → generated SVG layered portraits and SVG backgrounds. `npm run assets` pulls colored character art from the fan wiki (gitignored, personal use).
+`public/assets/manifest.json` maps ids → files. Missing/unlisted → generated SVG portraits (player and original characters only), a silhouette for canon characters, and gradient backgrounds. Art and audio are imported by the user (`npm run assets:scan`; see ASSETS.md).
 
 ## Milestones
 M1 store/save/relationships/flags/schemas+validation/Sandbox · M2 cutscene engine, portraits, creation wizard, origin-divergent opening · M3 Life Hub loop · M4 match engine · M5 Tag Test + First Selection · M6+ later arcs, 3D, audio.

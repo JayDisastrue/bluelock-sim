@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { decodeSaveCode, encodeSaveCode } from '../engine/savecode'
 import { AUTOSAVE_KEY, SLOT_COUNT, deleteSave, listSlots, parseSave, readSave, slotKey, writeSave, type SlotSummary } from '../engine/save'
 import { ORIGIN_NAMES } from '../engine/text'
 import type { OriginId } from '../engine/schemas'
@@ -13,6 +14,8 @@ export function SaveLoad() {
   const [slots, setSlots] = useState<SlotSummary[]>(() => listSlots())
   const [msg, setMsg] = useState<string>('')
   const file = useRef<HTMLInputElement>(null)
+  const [code, setCode] = useState('')
+  const [paste, setPaste] = useState('')
   const refresh = () => setSlots(listSlots())
 
   const doLoad = (key: string) => {
@@ -35,6 +38,24 @@ export function SaveLoad() {
     if (!r.ok) return setMsg(`Import failed: ${r.error}`)
     load(r.save.data)
     setMsg('Imported.')
+    nav('/hub')
+  }
+  const makeCode = async () => {
+    if (!state) return
+    const c = await encodeSaveCode(state, `${state.player.name} week ${state.meta.turn}`)
+    setCode(c)
+    try {
+      await navigator.clipboard.writeText(c)
+      setMsg(`Save code copied (${c.length.toLocaleString()} characters). Paste it on any device under “Load from code”.`)
+    } catch {
+      setMsg('Save code ready below. Select it and copy (clipboard access was blocked).')
+    }
+  }
+  const loadCode = async () => {
+    const r = await decodeSaveCode(paste)
+    if (!r.ok) return setMsg(`Could not load code: ${r.error}`)
+    load(r.save.data)
+    setMsg('Loaded from code.')
     nav('/hub')
   }
   return (
@@ -63,6 +84,16 @@ export function SaveLoad() {
           <button className="btn small" onClick={() => file.current?.click()}>Import save (JSON)</button>
           <input ref={file} type="file" accept="application/json,.json" hidden data-testid="import-input" onChange={(e) => { const f = e.target.files?.[0]; if (f) void importJson(f); e.target.value = '' }} />
           <span style={{ color: '#9fa6b8', fontSize: '.85rem' }}>{SLOT_COUNT} manual slots + autosave ({AUTOSAVE_KEY}). Saves are validated and versioned.</span>
+        </div>
+        <div className="panel-card" style={{ display: 'grid', gap: 8 }} data-testid="share">
+          <div className="slash-title">Share across devices</div>
+          <div style={{ color: '#9fa6b8', fontSize: '.85rem' }}>Saves are stored per browser. A save code is your whole game as one copy-pasteable string: generate it here, paste it on another device. It is checksummed, so a cut-off or edited paste is rejected instead of breaking a game.</div>
+          <div><button className="btn small" disabled={!state} onClick={() => void makeCode()} data-testid="make-code">Copy save code</button></div>
+          {code && <textarea readOnly value={code} rows={3} aria-label="Save code" data-testid="code-out" onFocus={(e) => e.currentTarget.select()} style={{ fontFamily: 'monospace', fontSize: '.75rem', width: '100%' }} />}
+          <label style={{ display: 'grid', gap: 4 }}>Load from code
+            <textarea value={paste} onChange={(e) => setPaste(e.target.value)} rows={3} placeholder="BLEL1.…" aria-label="Paste save code" data-testid="code-in" style={{ fontFamily: 'monospace', fontSize: '.75rem', width: '100%' }} />
+          </label>
+          <div><button className="btn small primary" disabled={!paste.trim()} onClick={() => void loadCode()} data-testid="load-code">Load code</button></div>
         </div>
         {msg && <div role="status" className="panel-card" style={{ borderColor: '#e5233b' }}>{msg}</div>}
       </div>

@@ -47,7 +47,7 @@ export function Hub() {
           <Link className="btn small" to="/">Menu</Link>
         </div>
 
-        <div className="panel-card" style={{ borderColor: '#e5233b', display: 'grid', gridTemplateColumns: '120px 1fr auto', gap: '1rem', alignItems: 'center' }}>
+        <div className="panel-card hub-head" style={{ borderColor: '#e5233b' }}>
           <div style={{ height: 140 }}><Portrait who="player" /></div>
           <div>
             <div className="slash-title" style={{ fontSize: '1.5rem' }}>{s.player.name}</div>

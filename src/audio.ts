@@ -1,6 +1,6 @@
 import { assetUrl, loadManifest } from './assets'
 import { useSettings } from './engine/settings'
-import { voiceKey } from './engine/voice'
+import { pickBankClip, voiceKey, type VoiceBanks } from './engine/voice'
 
 /**
  * Audio facade. Calls are safe no-ops when files are missing, so sound can be dropped into
@@ -37,13 +37,23 @@ export async function play(id: string): Promise<void> {
   void a?.play().catch(() => {})
 }
 
-/** Plays the voice file for a line if one is indexed in the manifest (origin variant first, then generic). Silent otherwise. */
-export async function voice(lineId: string, origin?: string): Promise<void> {
-  if (!useSettings.getState().sfx) return
-  const m = (await loadManifest()) as unknown as { voice?: Record<string, string> }
-  const file = m.voice?.[lineId] ?? (origin ? m.voice?.[voiceKey(lineId, origin)] : undefined) ?? m.voice?.[voiceKey(lineId)]
-  if (!file) return
-  void make(assetUrl(file), false)?.play().catch(() => {})
+const lastClip = new Map<string, string>()
+
+/**
+ * Voice for a spoken line. Order: exact recording for this line (origin variant first), then a random clip from the
+ * speaker's voice bank (chance set in Settings). Silent when nothing is indexed.
+ */
+export async function voice(lineId: string, origin: string | undefined, who: string, emotion?: string): Promise<void> {
+  const { sfx, voiceChance } = useSettings.getState()
+  if (!sfx) return
+  const m = (await loadManifest()) as unknown as { voice?: Record<string, string>; voiceBanks?: VoiceBanks }
+  const exact = m.voice?.[lineId] ?? (origin ? m.voice?.[voiceKey(lineId, origin)] : undefined) ?? m.voice?.[voiceKey(lineId)]
+  let file = exact
+  if (!file && Math.random() < voiceChance) {
+    file = pickBankClip(m.voiceBanks, who, emotion, lastClip.get(who), Math.random)
+    if (file) lastClip.set(who, file)
+  }
+  if (file) void make(assetUrl(file), false)?.play().catch(() => {})
 }
 
 export async function music(track: string | undefined): Promise<void> {

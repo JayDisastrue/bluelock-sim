@@ -3,5 +3,10 @@ dist
 *.log
 .DS_Store
 shots
-# Copyrighted wiki art: fetched locally via `npm run assets`, never committed
-public/assets/portraits/
+# Your imported art/audio stays private by default (the GitHub Pages site is public).
+# To publish your own original art/audio, delete these lines and commit the files.
+public/assets/portraits/*
+public/assets/backgrounds/*
+public/assets/voice/*
+!public/assets/*/.gitkeep
+!public/assets/*/README.md
