@@ -30,3 +30,13 @@ input[type='text'], input[type='number'], select, textarea { background: #0a0c14
 input[type='range'] { accent-color: #e5233b; }
 table { border-collapse: collapse; }
 th, td { padding: .25rem .6rem; text-align: left; }
+
+/* responsive layouts for non-cutscene screens */
+.wizard-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 1.5rem; }
+.hub-head { display: grid; grid-template-columns: 120px 1fr auto; gap: 1rem; align-items: center; }
+@media (max-width: 820px) {
+  .wizard-grid { grid-template-columns: 1fr; }
+  .wizard-grid > .preview { order: -1; height: 240px !important; position: static !important; }
+  .hub-head { grid-template-columns: 90px 1fr; }
+  .hub-head > :last-child { grid-column: 1 / -1; justify-items: start !important; }
+}

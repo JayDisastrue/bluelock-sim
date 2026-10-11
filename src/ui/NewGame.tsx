@@ -82,7 +82,7 @@ export function NewGame() {
           <li key={s} className="chip" style={{ color: i === step ? '#fff' : i < step ? '#6ea0ff' : '#5a6280', background: i === step ? '#e5233b' : 'transparent' }} aria-current={i === step ? 'step' : undefined}>{i + 1}. {s}</li>
         ))}
       </ol>
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: '1.5rem' }}>
+      <div className="wizard-grid">
         <div className="panel-card" style={{ display: 'grid', gap: '1rem', alignContent: 'start' }}>
           {step === 0 && (
             <>
@@ -168,7 +168,7 @@ export function NewGame() {
               : <button className="btn primary" onClick={start} data-testid="start">Enter Blue Lock</button>}
           </div>
         </div>
-        <div className="panel-card" style={{ height: 360, padding: 0, background: 'linear-gradient(180deg,#181c2c,#05060a)', position: 'sticky', top: 12 }} aria-label="Portrait preview">
+        <div className="panel-card preview" style={{ height: 360, padding: 0, background: 'linear-gradient(180deg,#181c2c,#05060a)', position: 'sticky', top: 12 }} aria-label="Portrait preview">
           <div style={{ height: '100%', padding: '1rem 2rem 0' }}><Portrait who="player" emotion={step === 4 ? 'smirk' : 'neutral'} /></div>
         </div>
       </div>

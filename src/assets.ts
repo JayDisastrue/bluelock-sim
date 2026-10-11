@@ -7,7 +7,10 @@ export interface Manifest {
   impacts: Record<string, string>
   weapons: Record<string, string>
   models: Record<string, string>
+  /** exact per-line recordings: file stem → path */
   voice?: Record<string, string>
+  /** random clips per character: id → { default: [...], <emotion>: [...] } */
+  voiceBanks?: Record<string, { default?: string[] } & Partial<Record<string, string[]>>>
 }
 const EMPTY: Manifest = { portraits: {}, backgrounds: {}, impacts: {}, weapons: {}, models: {} }
 

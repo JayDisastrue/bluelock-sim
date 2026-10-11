@@ -10,9 +10,8 @@
     "lint": "eslint src --max-warnings 0",
     "test": "vitest run",
     "preview": "vite preview",
-    "assets": "node scripts/fetch-wiki-assets.mjs",
     "voice:export": "tsx scripts/export-voice-script.ts",
-    "e2e": "node e2e/opening.mjs && node e2e/features.mjs",
+    "e2e": "node e2e/opening.mjs && node e2e/features.mjs && node e2e/savecode.mjs",
     "assets:scan": "node scripts/scan-assets.mjs"
   },
   "dependencies": {

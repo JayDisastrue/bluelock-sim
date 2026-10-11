@@ -1,43 +1,57 @@
-# Assets
+# Importing art and audio
 
-Everything visual and audible is **referenced by ID through `public/assets/manifest.json`**. If a file is missing, the game falls back (see below) and never crashes, so you can drop art/audio in at any time without touching code.
+You add files; one command wires them up. The project ships with no third-party art or audio; the only image is one AI-generated original character (`sora.png`).
 
 ```
 public/assets/
-  manifest.json          id → file maps (portraits, backgrounds, impacts, weapons, models, sfx, music, voice)
-  portraits/             <id>.png|webp          character art
-  backgrounds/           <bgId>.jpg|png|webp    scene backgrounds
-  voice/                 <lineId>.mp3           voice lines (see "Voice")
+  portraits/     character art           → portraits/README.md
+  backgrounds/   scene backgrounds       → backgrounds/README.md
+  voice/         voice clips and sounds  → voice/README.md
+  manifest.json  generated; do not edit
 ```
 
-> The committed `manifest.json` is intentionally empty (the art is never pushed, and the GitHub Pages site is public). `npm run assets` / `npm run assets:scan` regenerate it **locally**; don't commit your local version.
+## The 3-step workflow
+1. Drop files in the folder, named as below.
+2. `npm run assets:scan`
+3. Refresh the page (`npm run dev`). Missing files fall back gracefully; nothing crashes.
 
-## Fastest way to swap art: drop files, run one command
-Put images in `public/assets/portraits/` or `public/assets/backgrounds/`, then run **`npm run assets:scan`**. It rewrites `manifest.json` from the files it finds, so you never edit the manifest by hand.
-- `portraits/<id>.png` → default art for that character (`player` for your own character); `portraits/<id>_<emotion>.png` → emotion art. If two files share a name, the newest wins, so you can overwrite fetched art simply by dropping your own file in.
-- `backgrounds/<bgId>.jpg` → that scene's background. The scan prints which background ids are still missing.
+**Publishing:** these folders are *not* gitignored, so anything you drop in is committed with `git add -A` and, after merging to `main`, appears on the public GitHub Pages site. Only commit art and audio you are happy to publish. To keep files private instead, add `public/assets/portraits/*`, `public/assets/backgrounds/*` and `public/assets/voice/*` to `.gitignore`.
 
-## Portraits
-- Key = character id (`ego`, `bachira`, …) or `player`. Original characters use their ids (`sora`, `reiji`, …).
-- Manifest: `"portraits": { "sora": { "default": "portraits/sora.png", "furious": "portraits/sora_furious.png" } }`. An emotion-specific file (`neutral, smirk, furious, shocked, despair, flow, metavision, devoured`) wins over `default`.
-- Best: transparent PNG/WebP, full or 3⁄4 body, ~1000–1500 px wide × 1500–2200 px tall. The stage crops to a bust automatically.
-- Fallbacks: the player and **original** characters → generated layered SVG portrait (the creation wizard edits it). **Canon** characters with no file → a neutral silhouette (never a hand-drawn likeness).
-- `npm run assets` (`scripts/fetch-wiki-assets.mjs`) downloads colored character art for the 15 canon cast from the Blue Lock fan wiki and writes the manifest + `SOURCES.json`. These files are copyrighted fan-wiki images, so they are **gitignored** and for personal, non-commercial local use only; never commit or redistribute them.
+## Character PNGs
+| | |
+|---|---|
+| Format | PNG or WebP, **transparent background** |
+| Size | **1200 × 1800** (2:3); minimum 800 × 1200; under 2 MB |
+| Framing | front/¾ view, head near the top, same head size and position for every character; the game crops to the upper ~60% |
+| Name | `<characterId>.png`; `player.png` for your character |
+| Expressions (optional) | `<id>_neutral/smirk/furious/shocked/despair/flow/metavision/devoured.png`; missing ones use `<id>.png` |
+
+**Character ids:** `ego anri bachira barou chigiri kunigami raichi rin sae nagi reo noel_noa isagi gagamaru oliver_aiku` (canon) · `sora reiji mio haruka dante lukas tomas kisaragi` (original) · `player`.
+Characters with no image show a plain silhouette (canon) or a generated SVG portrait (player and originals).
 
 ## Backgrounds
-- Ids: `black letter room_z cafeteria locker_room training_pitch tunnel stadium monitor_wall ego_office old_pitch academy_gate street_cage bench_dusk`.
-- Drop `public/assets/backgrounds/<id>.jpg` and add `"backgrounds": { "cafeteria": "backgrounds/cafeteria.jpg" }`. 1920×1080 (16:9) recommended.
-- Fallback: a plain CSS gradient (no drawn scenery).
+JPG/WebP/PNG, **1920 × 1080**, under 1.5 MB, no baked-in text, calm bottom third.
+**Ids:** `black letter room_z cafeteria locker_room training_pitch tunnel stadium monitor_wall ego_office old_pitch academy_gate street_cage bench_dusk` → `backgrounds/<id>.jpg`. Missing ones show a gradient.
 
-## Voice lines (easy replaceable files)
-Every spoken line has a stable id `<scriptId>:<beatIndex>`; its slot is `public/assets/voice/<id with ":" → "_">.mp3`.
-1. `npm run voice:export` → `docs/voice-script.csv` / `.json` listing **file, id, speaker, origin, text** for every spoken line.
-2. Put an audio file at that path (record it, generate it with a TTS service you are licensed to use, etc.). Origin-specific wording has its own slot `…@<origin>.mp3`, checked first. Any audio format a browser plays works (mp3/ogg/wav/m4a).
-3. Run `npm run assets:scan` so the game indexes the new files. No code changes; lines without a file stay silent. Inner-monologue lines are not voiced.
-Do not use voice models cloned from real voice actors without their consent.
+## Voice and sounds
+**Random character clips** (grunts, laughs, short phrases):
+```
+voice/<characterId>/*.mp3              any file, picked at random when that character speaks
+voice/<characterId>/<emotion>/*.mp3    only for lines with that emotion
+```
+- Make 5+ clips per character; the same clip never plays twice in a row.
+- Mono MP3, 44.1 kHz, silence trimmed, similar loudness (~−16 LUFS), 0.2–3 s.
+- Settings → *Character voice clips* sets how often (every line / often / sometimes / off).
 
-## SFX / music
-Declare in manifest: `"sfx": { "don": "audio/sfx/don.mp3" }`, `"music": { "selection-tension": "audio/music/tension.mp3" }`. `src/audio.ts` no-ops when absent. Track ids used by scripts: `memory-hush envelope selection-tension dorm-calm`.
+**Exact line recordings** (optional): `npm run voice:export` writes `docs/voice-script.csv`; put a file at each listed path (e.g. `voice/opening.main_23.mp3`). Origin-specific wording has `…@<origin>.mp3`. Exact recordings beat random clips.
 
-## 3D (Phase 2, not built)
-Planned: stylized low-poly models under `models/` with license + source recorded here per file (Mixamo / CC0 only).
+Inner-monologue lines are never voiced.
+
+## Sound effects and music
+Not auto-scanned. Add to `manifest.json` by hand: `"sfx": { "don": "audio/sfx/don.mp3" }`, `"music": { "selection-tension": "audio/music/tension.mp3" }`. Track ids used by scenes: `memory-hush envelope selection-tension dorm-calm`.
+
+## Check what's wired
+`npm run assets:scan` prints counts and the background ids still missing.
+
+## 3D (not built)
+Phase-2 idea: low-poly models under `models/` with license and source recorded here.

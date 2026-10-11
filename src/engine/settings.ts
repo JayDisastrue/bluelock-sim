@@ -14,11 +14,13 @@ export interface Settings {
   autoDelayMs: number
   music: boolean
   sfx: boolean
+  /** chance that a spoken line without its own recording plays a random clip from the speaker's voice bank */
+  voiceChance: 0 | 0.3 | 0.6 | 1
 }
 
 export const DEFAULT_SETTINGS: Settings = {
   textSpeed: 'normal', reducedMotion: false, shake: true, flash: true, timerScale: 1, fontScale: 1,
-  colorblind: false, romance: true, autoDelayMs: 1800, music: true, sfx: true,
+  colorblind: false, romance: true, autoDelayMs: 1800, music: true, sfx: true, voiceChance: 0.6,
 }
 
 const KEY = 'blel.settings'
