@@ -1,0 +1,66 @@
+{
+ "hair": {
+  "spiky": "short spiky black hair, sharp upward tufts",
+  "swept": "neat swept-back sandy hair",
+  "shaggy": "messy shaggy ash-brown hair with a long fringe over one eye",
+  "buzz": "very short buzz cut",
+  "undercut": "undercut: short sides, longer swept top",
+  "curly": "short tight curly dark hair",
+  "long": "long straight hair past the shoulders",
+  "mohawk": "mohawk with shaved sides",
+  "bob": "chin-length bob with straight fringe",
+  "ponytail": "hair tied in a high ponytail",
+  "side_part": "neat side-parted hair",
+  "topknot": "hair in a topknot with shaved sides",
+  "wavy": "medium wavy hair",
+  "pixie": "short pixie cut",
+  "afro": "rounded afro",
+  "braid": "single long braid over one shoulder"
+ },
+ "eyes": {
+  "sharp": "narrow sharp predatory eyes",
+  "round": "big round friendly eyes",
+  "narrow": "thin narrow eyes",
+  "droopy": "droopy sleepy eyes",
+  "upturned": "upturned cat-like eyes",
+  "wide": "wide open eyes",
+  "almond": "almond-shaped calm eyes",
+  "heavy_lid": "heavy-lidded half-open eyes"
+ },
+ "brow": {
+  "straight": "straight medium eyebrows",
+  "thick": "thick bold eyebrows",
+  "thin": "thin delicate eyebrows",
+  "arched": "high arched eyebrows",
+  "angled": "sharply angled aggressive eyebrows",
+  "soft": "soft low gently curved eyebrows"
+ },
+ "nose": {
+  "small": "a small simple nose",
+  "straight": "a straight defined nose",
+  "pointed": "a pointed narrow nose",
+  "broad": "a broad nose"
+ },
+ "mark": {
+  "scar": "a thin scar across the left cheek",
+  "bandage": "a small bandage on the left cheek",
+  "mole": "a small mole under the right eye",
+  "freckles": "freckles across the nose and cheeks",
+  "eyebags": "faint eyebags under both eyes",
+  "bruise": "a bruise on the right cheekbone"
+ },
+ "accessory": {
+  "headband": "a sports headband across the forehead",
+  "glasses": "thin-rimmed round glasses",
+  "earring": "a small stud earring in the left ear",
+  "hair_clip": "a hair clip on the right side"
+ },
+ "face": {
+  "oval": "an oval face with medium skin",
+  "round": "a round soft face with medium skin",
+  "square": "a square strong-jawed face with medium skin",
+  "long": "a long narrow face with medium skin",
+  "heart": "a heart-shaped face with a pointed chin and medium skin",
+  "sharp": "a sharp angular face with a narrow chin and medium skin"
+ }
+}
