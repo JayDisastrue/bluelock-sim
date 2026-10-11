@@ -32,8 +32,8 @@ Put images in `public/assets/portraits/` or `public/assets/backgrounds/`, then r
 ## Voice lines (easy replaceable files)
 Every spoken line has a stable id `<scriptId>:<beatIndex>`; its slot is `public/assets/voice/<id with ":" → "_">.mp3`.
 1. `npm run voice:export` → `docs/voice-script.csv` / `.json` listing **file, id, speaker, origin, text** for every spoken line.
-2. Put an audio file at that path (record it, generate it with a TTS service you are licensed to use, etc.). Origin-specific wording has its own slot `…@<origin>.mp3`, checked first. Files can also be mapped in the manifest under `"voice"`.
-3. No code changes. Missing files are silently skipped. Inner-monologue lines are not voiced.
+2. Put an audio file at that path (record it, generate it with a TTS service you are licensed to use, etc.). Origin-specific wording has its own slot `…@<origin>.mp3`, checked first. Any audio format a browser plays works (mp3/ogg/wav/m4a).
+3. Run `npm run assets:scan` so the game indexes the new files. No code changes; lines without a file stay silent. Inner-monologue lines are not voiced.
 Do not use voice models cloned from real voice actors without their consent.
 
 ## SFX / music

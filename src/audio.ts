@@ -1,6 +1,6 @@
 import { assetUrl, loadManifest } from './assets'
 import { useSettings } from './engine/settings'
-import { voiceFile } from './engine/voice'
+import { voiceKey } from './engine/voice'
 
 /**
  * Audio facade. Calls are safe no-ops when files are missing, so sound can be dropped into
@@ -37,27 +37,13 @@ export async function play(id: string): Promise<void> {
   void a?.play().catch(() => {})
 }
 
-const missing = new Set<string>()
-
-/** Plays the voice file for a line if one exists (manifest entry, origin variant, then generic). Silent otherwise. */
+/** Plays the voice file for a line if one is indexed in the manifest (origin variant first, then generic). Silent otherwise. */
 export async function voice(lineId: string, origin?: string): Promise<void> {
   if (!useSettings.getState().sfx) return
   const m = (await loadManifest()) as unknown as { voice?: Record<string, string> }
-  const candidates = [
-    m.voice?.[lineId],
-    origin ? voiceFile(lineId, origin) : undefined,
-    voiceFile(lineId),
-  ].filter((x): x is string => !!x && !missing.has(x))
-  for (const file of candidates) {
-    const ok = await new Promise<boolean>((resolve) => {
-      const a = make(assetUrl(file), false)
-      if (!a) return resolve(false)
-      a.addEventListener('error', () => { missing.add(file); resolve(false) }, { once: true })
-      a.addEventListener('canplaythrough', () => { void a.play().catch(() => {}); resolve(true) }, { once: true })
-      a.load()
-    })
-    if (ok) return
-  }
+  const file = m.voice?.[lineId] ?? (origin ? m.voice?.[voiceKey(lineId, origin)] : undefined) ?? m.voice?.[voiceKey(lineId)]
+  if (!file) return
+  void make(assetUrl(file), false)?.play().catch(() => {})
 }
 
 export async function music(track: string | undefined): Promise<void> {

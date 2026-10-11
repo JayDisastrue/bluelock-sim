@@ -2,6 +2,7 @@
 //   portraits/<id>.png            default art for a character id (or "player")
 //   portraits/<id>_<emotion>.png  emotion-specific art: neutral smirk furious shocked despair flow metavision devoured (or "manga")
 //   backgrounds/<bgId>.jpg        scene background (ids listed below)
+//   voice/<file>.mp3              voice lines (file names come from `npm run voice:export`)
 // If several files share a name with different extensions, the most recently modified one wins.
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 
@@ -32,8 +33,14 @@ const backgrounds = {}
 for (const { f } of files('backgrounds')) backgrounds[f.replace(IMG, '')] = `backgrounds/${f}`
 manifest.backgrounds = backgrounds
 
+const AUDIO = /\.(mp3|ogg|wav|m4a|webm)$/i
+const voice = {}
+for (const f of existsSync(`${ROOT}/voice`) ? readdirSync(`${ROOT}/voice`) : []) if (AUDIO.test(f)) voice[f.replace(AUDIO, '')] = `voice/${f}`
+manifest.voice = voice
+
 writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n')
 console.log(`portraits: ${Object.keys(portraits).length} characters (${Object.values(portraits).reduce((n, e) => n + Object.keys(e).length, 0)} files)`)
+console.log(`voice: ${Object.keys(voice).length} files`)
 console.log(`backgrounds: ${Object.keys(backgrounds).length}/${BG_IDS.length}`)
 const missing = BG_IDS.filter((id) => !backgrounds[id])
 if (missing.length) console.log(`  missing backgrounds: ${missing.join(', ')}`)
