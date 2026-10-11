@@ -10,6 +10,11 @@ public/assets/
   voice/                 <lineId>.mp3           voice lines (see "Voice")
 ```
 
+## Fastest way to swap art: drop files, run one command
+Put images in `public/assets/portraits/` or `public/assets/backgrounds/`, then run **`npm run assets:scan`**. It rewrites `manifest.json` from the files it finds, so you never edit the manifest by hand.
+- `portraits/<id>.png` → default art for that character (`player` for your own character); `portraits/<id>_<emotion>.png` → emotion art. If two files share a name, the newest wins, so you can overwrite fetched art simply by dropping your own file in.
+- `backgrounds/<bgId>.jpg` → that scene's background. The scan prints which background ids are still missing.
+
 ## Portraits
 - Key = character id (`ego`, `bachira`, …) or `player`. Original characters use their ids (`sora`, `reiji`, …).
 - Manifest: `"portraits": { "sora": { "default": "portraits/sora.png", "furious": "portraits/sora_furious.png" } }`. An emotion-specific file (`neutral, smirk, furious, shocked, despair, flow, metavision, devoured`) wins over `default`.
