@@ -1,0 +1,7 @@
+node_modules
+dist
+*.log
+.DS_Store
+shots
+# Copyrighted wiki art: fetched locally via `npm run assets`, never committed
+public/assets/portraits/
