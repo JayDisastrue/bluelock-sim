@@ -11,6 +11,7 @@ import { useMeta } from '../engine/meta'
 import { EGO_BIAS } from '../engine/newGame'
 import { EGO_TYPES, type EgoType, type OriginId, type PortraitSpec } from '../engine/schemas'
 import { useSettings } from '../engine/settings'
+import { RarityBadge } from './RarityBadge'
 import { useGame } from '../engine/store'
 import { Screen } from './Screen'
 import { useUi } from './uiStore'
@@ -177,10 +178,10 @@ export function NewGame() {
               </div>
               <div className="panel-card" data-testid="fate-weapon">
                 <div style={{ display: 'flex', gap: 8, alignItems: 'center', justifyContent: 'space-between' }}>
-                  <div className="slash-title">Starting weapon (rolled): <span data-testid="weapon-value">{content.weapons[fate.weapon]?.name}</span></div>
+                  <div className="slash-title">Starting weapon (rolled): <span data-testid="weapon-value">{content.weapons[fate.weapon]?.name}</span> <RarityBadge rarity={content.weapons[fate.weapon]!.rarity} /></div>
                   <Dice label="Re-roll weapon" onClick={() => setFate({ ...fate, weapon: rollFate(seedable).weapon })} />
                 </div>
-                <div style={{ color: '#cfd6ee' }}>{content.weapons[fate.weapon]?.summary}</div>
+                <div style={{ color: '#cfd6ee' }}>{content.weapons[fate.weapon]?.summary} <span style={{ color: '#9fa6b8' }}>({content.weapons[fate.weapon]?.category})</span></div>
                 <div style={{ color: '#9fa6b8', fontSize: '.85rem' }}>{content.weapons[fate.weapon]?.levels.map((l) => l.name).join(' → ')} · weapons can be gained, evolved and corrupted by the story.</div>
               </div>
             </>
@@ -190,7 +191,7 @@ export function NewGame() {
               <div className="slash-title" style={{ fontSize: '1.4rem' }}>{name}</div>
               <div>{o.name} · Striker (ST) · {fate.foot === 'both' ? 'two-footed' : `${fate.foot}-footed`} · {EGO_INFO[ego].name}</div>
               <div style={{ color: '#cfd6ee', fontStyle: 'italic' }}>{o.past}</div>
-              <div>Starting weapon: <b>{content.weapons[fate.weapon]?.name}</b></div>
+              <div>Starting weapon: <b>{content.weapons[fate.weapon]?.name}</b> <RarityBadge rarity={content.weapons[fate.weapon]!.rarity} /></div>
               <div>Tags: {o.tags.map((t) => <span key={t} className="chip" style={{ marginRight: 4 }}>{t}</span>)}</div>
               <div style={{ color: '#9fa6b8' }}>Your opening scene will diverge: you’ll be approached by <b>{content.characters[o.approachedBy]?.name}</b>, and Ego will aim at your wound.</div>
             </div>

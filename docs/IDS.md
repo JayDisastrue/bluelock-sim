@@ -63,14 +63,49 @@ New ids are allowed: any `<id>.png` you add becomes an extra option. Once a slot
 | `late_starter` | The Late Starter | yes (unlock via playthrough/Sandbox) |
 
 ## Weapons
-| id | name | levels | starting weapon |
-| --- | --- | --- | --- |
-| `direct_shot` | Direct Shot | Direct Shot → Curved Direct Shot → Flow Direct Shot | can be rolled |
-| `spatial_read` | Spatial Read | Spatial Read → Predator Read → Metavision Lock | can be rolled |
-| `cage_feint` | Cage Feint | Cage Feint → Concrete Rhythm → Flow Weave | can be rolled |
-| `blindside_run` | Blindside Run | Blindside Run → Ghost Run → Vanishing Flow | can be rolled |
-| `needle_pass` | Needle Pass | Needle Pass → Monster’s Pass → Flow Feed | can be rolled |
-| `hunter_press` | Hunter Press | Hunter Press → Cornered Prey → Flow Hunt | no |
+| id | name | rarity | category | source | levels | starting weapon |
+| --- | --- | --- | --- | --- | --- | --- |
+| `direct_shot` | Direct Shot | Fundamental (common) | shooting | inspired | Direct Shot → Curved Direct Shot → Flow Direct Shot | can be rolled |
+| `soft_trap` | Soft Trap | Fundamental (common) | dribbling | original | Soft Trap → Cushioned Turn → Flow Cushion | can be rolled |
+| `safe_recycle` | Safe Recycle | Fundamental (common) | passing | original | Safe Recycle → Reset Chain → Flow Metronome | can be rolled |
+| `track_back` | Track Back | Fundamental (common) | defense | original | Track Back → Shadow Marker → Flow Recovery | can be rolled |
+| `engine_legs` | Engine Legs | Fundamental (common) | physical | original | Engine Legs → Second Wind → Flow Lungs | can be rolled |
+| `pot_shot` | Pot Shot | Fundamental (common) | shooting | original | Pot Shot → Stinging Pot Shot → Flow Pot Shot | can be rolled |
+| `first_step` | First Step | Fundamental (common) | movement | original | First Step → Burst Cut → Flow Launch | can be rolled |
+| `shoulder_check` | Shoulder Check | Fundamental (common) | vision | original | Shoulder Check → Full Scan → Flow Scan | can be rolled |
+| `steady_breath` | Steady Breath | Fundamental (common) | mental | original | Steady Breath → Reset Routine → Flow Entry | can be rolled |
+| `hold_up_anchor` | Hold-Up Anchor | Fundamental (common) | physical | original | Hold-Up Anchor → Pivot Release → Flow Wall | can be rolled |
+| `cage_feint` | Cage Feint | Refined (uncommon) | dribbling | original | Cage Feint → Concrete Rhythm → Flow Weave | can be rolled |
+| `blindside_run` | Blindside Run | Refined (uncommon) | movement | inspired | Blindside Run → Ghost Run → Vanishing Flow | can be rolled |
+| `wall_pass` | Wall Pass | Refined (uncommon) | passing | original | Wall Pass → Triangle Weave → Flow Triangle | can be rolled |
+| `low_driven` | Low Driven Strike | Refined (uncommon) | shooting | original | Low Driven Strike → Rising Skid → Flow Driver | can be rolled |
+| `lane_cutter` | Lane Cutter | Refined (uncommon) | defense | original | Lane Cutter → Two-Lane Cover → Flow Cut | can be rolled |
+| `stepover_chain` | Stepover Chain | Refined (uncommon) | dribbling | original | Stepover Chain → Triple Show → Flow Show | can be rolled |
+| `aerial_claim` | Aerial Claim | Refined (uncommon) | physical | original | Aerial Claim → Hang Time → Flow Header | can be rolled |
+| `pressure_proof` | Pressure Proof | Refined (uncommon) | mental | original | Pressure Proof → Cold Finish → Flow Ice | can be rolled |
+| `wide_lens` | Wide Lens | Refined (uncommon) | vision | inspired | Wide Lens → Weak-Side Flag → Flow Lens | can be rolled |
+| `spatial_read` | Spatial Read | Specialist (rare) | vision | inspired | Spatial Read → Predator Read → Metavision Lock | can be rolled |
+| `needle_pass` | Needle Pass | Specialist (rare) | passing | original | Needle Pass → Monster’s Pass → Flow Feed | can be rolled |
+| `far_post_curl` | Far-Post Curl | Specialist (rare) | shooting | original | Far-Post Curl → Wrap-Around → Flow Rainbow | can be rolled |
+| `pocket_dribble` | Pocket Dribble | Specialist (rare) | dribbling | original | Pocket Dribble → Tight Orbit → Flow Pocket | can be rolled |
+| `recovery_burst` | Recovery Burst | Specialist (rare) | movement | original | Recovery Burst → Chase Line → Flow Recovery | can be rolled |
+| `iron_frame` | Iron Frame | Specialist (rare) | physical | inspired | Iron Frame → Wall Stance → Flow Fortress | can be rolled |
+| `scavenger` | Scavenger | Specialist (rare) | defense | original | Scavenger → Second Hunter → Flow Scavenger | can be rolled |
+| `spite_engine` | Spite Engine | Specialist (rare) | mental | original | Spite Engine → Fuel Stockpile → Flow Furnace | can be rolled |
+| `hunter_press` | Hunter Press | Egoist (epic) | defense | original | Hunter Press → Cornered Prey → Flow Hunt | no |
+| `late_ambush` | Late Ambush | Egoist (epic) | shooting | inspired | Late Ambush → Dead Angle → Flow Ambush | can be rolled |
+| `rubber_dribble` | Rubber-Band Dribble | Egoist (epic) | dribbling | inspired | Rubber-Band Dribble → Snap Cut → Flow Elastic | can be rolled |
+| `marionette_lanes` | Marionette Lanes | Egoist (epic) | passing | inspired | Marionette Lanes → String Pull → Flow Strings | can be rolled |
+| `flow_gate` | Flow Gate | Egoist (epic) | mental | inspired | Flow Gate → Held Gate → Open Gate | can be rolled |
+| `keepers_tell` | Keeper’s Tell | Egoist (epic) | vision | inspired | Keeper’s Tell → Dropped Guard → Flow Tell | can be rolled |
+| `zenith_strike` | Zenith Strike | New Generation XI (legendary) | shooting | original | Zenith Strike → Zenith Arc → Zenith Flow | can be rolled |
+| `full_pitch_lens` | Full-Pitch Lens | New Generation XI (legendary) | vision | inspired | Full-Pitch Lens → Prediction Layer → Flow Lens | can be rolled |
+| `phantom_step` | Phantom Step | New Generation XI (legendary) | movement | original | Phantom Step → Echo Step → Flow Phantom | can be rolled |
+| `apex_frame` | Apex Frame | New Generation XI (legendary) | physical | original | Apex Frame → Apex Pace → Flow Apex | can be rolled |
+| `adaptive_core` | Adaptive Core | New Generation XI (legendary) | mental | inspired | Adaptive Core → Living Library → Flow Library | can be rolled |
+| `sovereign_strike` | Sovereign Strike | World XI (mythic) | shooting | original | Sovereign Strike → Crowned Strike → Sovereign Flow | no |
+| `worldline` | Worldline | World XI (mythic) | vision | inspired | Worldline → Branching Worldline → Worldline Flow | no |
+| `unbroken_line` | The Unbroken Line | World XI (mythic) | defense | original | The Unbroken Line → Closed Gate → Unbroken Flow | no |
 
 ## Traits
 | id | name |

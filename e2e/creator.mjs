@@ -50,8 +50,10 @@ await page.getByTestId('next').click()
 await page.getByTestId('origin-street_renegade').click()
 await page.getByTestId('next').click()
 const weapons = new Set([await page.getByTestId('weapon-value').innerText()])
-for (let i = 0; i < 40; i++) { await page.getByTestId('dice-Re-roll weapon').click(); weapons.add(await page.getByTestId('weapon-value').innerText()) }
-ok('starting weapon is random and re-rollable (never the non-seedable one)', weapons.size >= 3 && ![...weapons].includes('Hunter Press'), [...weapons].join(' / '))
+const tiers = new Set([await page.getByTestId('rarity-badge').first().getAttribute('data-rarity')])
+for (let i = 0; i < 60; i++) { await page.getByTestId('dice-Re-roll weapon').click(); weapons.add(await page.getByTestId('weapon-value').innerText()); tiers.add(await page.getByTestId('rarity-badge').first().getAttribute('data-rarity')) }
+ok('starting weapon is random and re-rollable (never the non-seedable ones)', weapons.size >= 3 && ![...weapons].some((n) => /hunter press|sovereign strike/i.test(n)), [...weapons].join(' / '))
+ok('rarity badge shown with a label, never mythic at start', tiers.has('common') && !tiers.has('mythic') && (await page.getByTestId('rarity-badge').first().innerText()).trim().length > 2, [...tiers].join(','))
 const rolledWeapon = await page.getByTestId('weapon-value').innerText()
 await page.screenshot({ path: `${OUT}/53-wizard-weapon.png` })
 await page.getByTestId('next').click()

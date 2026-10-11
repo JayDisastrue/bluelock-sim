@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { content } from '../content'
 import { Portrait } from '../cutscene/Portrait'
 import { ORIGIN_NAMES } from '../engine/text'
-import { REP_AXES, SKILLS } from '../engine/schemas'
+import { RARITY_INFO, REP_AXES, SKILLS } from '../engine/schemas'
 import { useGame } from '../engine/store'
 import { Meter } from './Screen'
 import { useUi } from './uiStore'
@@ -89,7 +89,7 @@ export function Hub() {
               </div>
             ))}
             <h3 className="slash-title" style={{ marginTop: 12 }}>Weapons &amp; traits</h3>
-            <div>{Object.entries(s.weapons).map(([id, w]) => <span key={id} className="chip" style={{ marginRight: 4, color: w.corrupted ? '#ff5a6e' : '#6ea0ff' }}>{content.weapons[id]?.levels[w.level - 1]?.name ?? id}{w.corrupted ? ' ☠' : ''}</span>)}</div>
+            <div>{Object.entries(s.weapons).map(([id, w]) => <span key={id} className="chip" style={{ marginRight: 4, color: w.corrupted ? '#ff5a6e' : '#6ea0ff' }}>{content.weapons[id] ? RARITY_INFO[content.weapons[id]!.rarity].glyph + ' ' : ''}{content.weapons[id]?.levels[w.level - 1]?.name ?? id}{w.corrupted ? ' ☠' : ''}</span>)}</div>
             <div style={{ marginTop: 6 }}>{s.traits.map((t) => <span key={t} className="chip" style={{ marginRight: 4 }} title={content.traits[t]?.desc}>{content.traits[t]?.name ?? t}</span>)}</div>
           </section>
           <section className="panel-card" aria-label="Recent memory">
