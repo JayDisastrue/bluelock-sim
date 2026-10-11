@@ -1,0 +1,68 @@
+{
+  "portraits": {
+    "ego": {
+      "default": "portraits/ego.webp",
+      "manga": "portraits/ego_manga.webp"
+    },
+    "anri": {
+      "default": "portraits/anri.webp",
+      "manga": "portraits/anri_manga.webp"
+    },
+    "bachira": {
+      "default": "portraits/bachira.webp",
+      "manga": "portraits/bachira_manga.webp"
+    },
+    "barou": {
+      "default": "portraits/barou.webp",
+      "manga": "portraits/barou_manga.webp"
+    },
+    "chigiri": {
+      "default": "portraits/chigiri.webp",
+      "manga": "portraits/chigiri_manga.webp"
+    },
+    "kunigami": {
+      "default": "portraits/kunigami.webp",
+      "manga": "portraits/kunigami_manga.webp"
+    },
+    "raichi": {
+      "default": "portraits/raichi.webp",
+      "manga": "portraits/raichi_manga.webp"
+    },
+    "rin": {
+      "default": "portraits/rin.webp",
+      "manga": "portraits/rin_manga.webp"
+    },
+    "sae": {
+      "default": "portraits/sae.webp",
+      "manga": "portraits/sae_manga.webp"
+    },
+    "nagi": {
+      "default": "portraits/nagi.webp",
+      "manga": "portraits/nagi_manga.webp"
+    },
+    "reo": {
+      "default": "portraits/reo.webp",
+      "manga": "portraits/reo_manga.webp"
+    },
+    "noel_noa": {
+      "manga": "portraits/noel_noa_manga.webp",
+      "default": "portraits/noel_noa_manga.webp"
+    },
+    "isagi": {
+      "default": "portraits/isagi.webp",
+      "manga": "portraits/isagi_manga.webp"
+    },
+    "gagamaru": {
+      "default": "portraits/gagamaru.webp",
+      "manga": "portraits/gagamaru_manga.webp"
+    },
+    "oliver_aiku": {
+      "default": "portraits/oliver_aiku.webp",
+      "manga": "portraits/oliver_aiku_manga.webp"
+    }
+  },
+  "backgrounds": {},
+  "impacts": {},
+  "weapons": {},
+  "models": {}
+}
