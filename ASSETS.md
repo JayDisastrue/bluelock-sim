@@ -10,6 +10,8 @@ public/assets/
   voice/                 <lineId>.mp3           voice lines (see "Voice")
 ```
 
+> The committed `manifest.json` is intentionally empty (the art is never pushed, and the GitHub Pages site is public). `npm run assets` / `npm run assets:scan` regenerate it **locally**; don't commit your local version.
+
 ## Fastest way to swap art: drop files, run one command
 Put images in `public/assets/portraits/` or `public/assets/backgrounds/`, then run **`npm run assets:scan`**. It rewrites `manifest.json` from the files it finds, so you never edit the manifest by hand.
 - `portraits/<id>.png` → default art for that character (`player` for your own character); `portraits/<id>_<emotion>.png` → emotion art. If two files share a name, the newest wins, so you can overwrite fetched art simply by dropping your own file in.
