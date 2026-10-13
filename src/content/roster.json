@@ -1,0 +1,6603 @@
+{
+"note": "Reserved character ids and teams. Art goes at public/assets/portraits/<id>.png. Canon names and team membership come from the public Blue Lock wiki (names only; roles are generic where unsure). Original names were generated: check them before they appear in a scene. Never rename an id that is in the game: saves reference it. A team with `filler` > 0 has that many unnamed squad slots, addressed as <teamId>_fill_01 ... (see src/content/reserved.ts).",
+"characters": [
+{
+"id": "abdi",
+"name": "Abdi",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "achanpong",
+"name": "Achanpong",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "adam_blake",
+"name": "Adam Blake",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"team_world_five"
+]
+},
+{
+"id": "agbim",
+"name": "Agbim",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "agi",
+"name": "Agi",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"manshine_city",
+"england_u20"
+]
+},
+{
+"id": "aiki_himizu",
+"name": "Aiki Himizu",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_c",
+"team_red",
+"fc_barcha"
+]
+},
+{
+"id": "akira_endoji",
+"name": "Akira Endoji",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_c",
+"team_white",
+"paris_x_gen"
+]
+},
+{
+"id": "akira_shirosawa",
+"name": "Akira Shirosawa",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "alexis_ness",
+"name": "Alexis Ness",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "ali",
+"name": "Ali",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "alice_love",
+"name": "Alice Love",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": [],
+"female": true
+},
+{
+"id": "anri",
+"name": "Anri Teieri",
+"group": "canon",
+"region": "staff",
+"role": "Ego's assistant",
+"teams": [
+"blue_lock_eleven",
+"japan_u20"
+],
+"female": true
+},
+{
+"id": "aoshi_tokimitsu",
+"name": "Aoshi Tokimitsu",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_a",
+"team_red",
+"blue_lock_eleven",
+"paris_x_gen"
+]
+},
+{
+"id": "arthur",
+"name": "Arthur",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"manshine_city",
+"england_u20"
+]
+},
+{
+"id": "asahi_naruhaya",
+"name": "Asahi Naruhaya",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_z",
+"team_red"
+]
+},
+{
+"id": "ashime_suzuki",
+"name": "Ashime Suzuki",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_y"
+]
+},
+{
+"id": "atsuto_tereasa",
+"name": "Atsuto Tereasa",
+"group": "canon",
+"region": "staff",
+"role": "staff",
+"teams": []
+},
+{
+"id": "bachman",
+"name": "Bachman",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "bats",
+"name": "Bats",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "beita_tsuru",
+"name": "Beita Tsuru",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "bello",
+"name": "Bello",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "benedict_grim",
+"name": "Benedict Grim",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "birkenstock",
+"name": "Birkenstock",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "bos",
+"name": "Bos",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "bunny_iglesias",
+"name": "Bunny Iglesias",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"fc_barcha"
+],
+"groups": [
+"new_generation_world_11"
+]
+},
+{
+"id": "burai_daido",
+"name": "Burai Daido",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_x"
+]
+},
+{
+"id": "busby",
+"name": "Busby",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"manshine_city",
+"england_u20"
+]
+},
+{
+"id": "camus",
+"name": "Camus",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "canali",
+"name": "Canali",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "chapa",
+"name": "Chapa",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"paris_x_gen",
+"france_u20"
+]
+},
+{
+"id": "charles_chevalier",
+"name": "Charles Chevalier",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"paris_x_gen",
+"france_u20"
+]
+},
+{
+"id": "chihiro_ezaki",
+"name": "Chihiro Ezaki",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_x"
+]
+},
+{
+"id": "childs",
+"name": "Childs",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "choki",
+"name": "Choki",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "chris_prince",
+"name": "Chris Prince",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"manshine_city"
+],
+"groups": [
+"master_strikers"
+]
+},
+{
+"id": "dada_silva",
+"name": "Dada Silva",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"team_world_five"
+]
+},
+{
+"id": "daiya_morinaga",
+"name": "Daiya Morinaga",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_x"
+]
+},
+{
+"id": "damon",
+"name": "Damon",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"manshine_city",
+"england_u20"
+]
+},
+{
+"id": "delon",
+"name": "Delon",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "don_lorenzo",
+"name": "Don Lorenzo",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"ubers"
+],
+"groups": [
+"new_generation_world_11"
+]
+},
+{
+"id": "drago",
+"name": "Drago",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "driver",
+"name": "Driver",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"manshine_city"
+]
+},
+{
+"id": "eita_otoya",
+"name": "Eita Otoya",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_b",
+"team_red",
+"blue_lock_eleven",
+"japan_u20",
+"fc_barcha"
+],
+"groups": [
+"top_6"
+]
+},
+{
+"id": "ekpo",
+"name": "Ekpo",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "erik_gesner",
+"name": "Erik Gesner",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "espesso",
+"name": "Espesso",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "ezekiel",
+"name": "Ezekiel",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "fox",
+"name": "Fox",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "frederick_kaiser",
+"name": "Frederick Kaiser",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "fuma_rokkaku",
+"name": "Fuma Rokkaku",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_y"
+]
+},
+{
+"id": "gabin",
+"name": "Gabin",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"paris_x_gen",
+"france_u20"
+]
+},
+{
+"id": "gabriel",
+"name": "Gabriel",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "gambari",
+"name": "Gambari",
+"group": "canon",
+"region": "staff",
+"role": "staff",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "gen_fukaku",
+"name": "Gen Fukaku",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20",
+"ubers"
+]
+},
+{
+"id": "gagamaru",
+"name": "Gin Gagamaru",
+"group": "canon",
+"region": "japan",
+"role": "goalkeeper",
+"teams": [
+"team_z",
+"team_c",
+"team_red",
+"blue_lock_eleven",
+"japan_u20",
+"bastard_munchen"
+]
+},
+{
+"id": "ginji_hiori",
+"name": "Ginji Hiori",
+"group": "canon",
+"region": "family",
+"role": "family",
+"teams": []
+},
+{
+"id": "girolan_dabadie",
+"name": "Girolan Dabadie",
+"group": "canon",
+"region": "staff",
+"role": "staff",
+"teams": []
+},
+{
+"id": "godwin_kuso",
+"name": "Godwin Kuso",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "gomez",
+"name": "Gomez",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "goodman",
+"name": "Goodman",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "gran",
+"name": "Gran",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": [],
+"female": true
+},
+{
+"id": "gurimu_igarashi",
+"name": "Gurimu Igarashi",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_z",
+"team_a",
+"team_red",
+"team_white",
+"blue_lock_eleven",
+"bastard_munchen"
+]
+},
+{
+"id": "haato_meiji",
+"name": "Haato Meiji",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_x"
+]
+},
+{
+"id": "haneru_shindo",
+"name": "Haneru Shindo",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "haru_hayate",
+"name": "Haru Hayate",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20",
+"fc_barcha"
+]
+},
+{
+"id": "haruhiko_yuzu",
+"name": "Haruhiko Yuzu",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_b",
+"team_red",
+"paris_x_gen"
+]
+},
+{
+"id": "harutaro_natsuki",
+"name": "Harutaro Natsuki",
+"group": "canon",
+"region": "staff",
+"role": "staff",
+"teams": []
+},
+{
+"id": "hazime_nishioka",
+"name": "Hazime Nishioka",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_a",
+"team_red",
+"manshine_city"
+]
+},
+{
+"id": "hermes",
+"name": "Hermes",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "hibiki_okawa",
+"name": "Hibiki Okawa",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_y"
+]
+},
+{
+"id": "hirakazu_midorikawa",
+"name": "Hirakazu Midorikawa",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_v"
+]
+},
+{
+"id": "hiromu_munakata",
+"name": "Hiromu Munakata",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_w"
+]
+},
+{
+"id": "hirotoshi_buratsuta",
+"name": "Hirotoshi Buratsuta",
+"group": "canon",
+"region": "staff",
+"role": "staff",
+"teams": [
+"japan_u20"
+],
+"groups": [
+"team_play_supporters"
+]
+},
+{
+"id": "chigiri",
+"name": "Hyoma Chigiri",
+"group": "canon",
+"region": "japan",
+"role": "winger",
+"teams": [
+"team_z",
+"team_b",
+"team_red",
+"team_white",
+"blue_lock_eleven",
+"japan_u20",
+"manshine_city"
+]
+},
+{
+"id": "hyuga_koshiba",
+"name": "Hyuga Koshiba",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_y"
+]
+},
+{
+"id": "ignacio_lara",
+"name": "Ignacio Lara",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "igor_schneider",
+"name": "Igor Schneider",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "iito_morita",
+"name": "Iito Morita",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "ikki_niko",
+"name": "Ikki Niko",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_y",
+"team_b",
+"team_red",
+"team_white",
+"blue_lock_eleven",
+"japan_u20",
+"ubers"
+]
+},
+{
+"id": "imaru_akashi",
+"name": "Imaru Akashi",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "innocent_onazi",
+"name": "Innocent Onazi",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "iori_sato",
+"name": "Iori Sato",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_y"
+]
+},
+{
+"id": "issei_isagi",
+"name": "Issei Isagi",
+"group": "canon",
+"region": "family",
+"role": "family",
+"teams": []
+},
+{
+"id": "itsuki_wakatsuki",
+"name": "Itsuki Wakatsuki",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20",
+"fc_barcha"
+]
+},
+{
+"id": "iyo_isagi",
+"name": "Iyo Isagi",
+"group": "canon",
+"region": "family",
+"role": "family",
+"teams": [],
+"female": true
+},
+{
+"id": "jin_kiyora",
+"name": "Jin Kiyora",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_a",
+"team_red",
+"team_white",
+"blue_lock_eleven",
+"japan_u20",
+"bastard_munchen"
+]
+},
+{
+"id": "raichi",
+"name": "Jingo Raichi",
+"group": "canon",
+"region": "japan",
+"role": "striker",
+"teams": [
+"team_z",
+"team_b",
+"team_red",
+"blue_lock_eleven",
+"japan_u20",
+"bastard_munchen"
+]
+},
+{
+"id": "ego",
+"name": "Jinpachi Ego",
+"group": "canon",
+"region": "staff",
+"role": "Blue Lock project head",
+"teams": [
+"blue_lock_eleven",
+"japan_u20"
+]
+},
+{
+"id": "julien_loki",
+"name": "Julien Loki",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"paris_x_gen",
+"france_u20",
+"team_world_five"
+],
+"groups": [
+"master_strikers",
+"new_generation_world_11"
+]
+},
+{
+"id": "junichi_wanima",
+"name": "Junichi Wanima",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_w",
+"team_c",
+"team_red",
+"manshine_city"
+]
+},
+{
+"id": "junko_hiori",
+"name": "Junko Hiori",
+"group": "canon",
+"region": "family",
+"role": "family",
+"teams": [],
+"female": true
+},
+{
+"id": "juraki_ito",
+"name": "Juraki Ito",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_y"
+]
+},
+{
+"id": "jyubei_aryu",
+"name": "Jyubei Aryu",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_a",
+"team_red",
+"blue_lock_eleven",
+"japan_u20",
+"ubers"
+]
+},
+{
+"id": "kai_tokita",
+"name": "Kai Tokita",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_w"
+]
+},
+{
+"id": "kairu_saramadara",
+"name": "Kairu Saramadara",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_b",
+"team_red",
+"manshine_city"
+]
+},
+{
+"id": "kaita",
+"name": "Kaita",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "kanji_torikai",
+"name": "Kanji Torikai",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_v"
+]
+},
+{
+"id": "katsuta_ikirita",
+"name": "Katsuta Ikirita",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "kazuma_nio",
+"name": "Kazuma Nio",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20",
+"manshine_city"
+]
+},
+{
+"id": "kei_shishiya",
+"name": "Kei Shishiya",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_w"
+]
+},
+{
+"id": "keisuke_wanima",
+"name": "Keisuke Wanima",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_w"
+]
+},
+{
+"id": "ken_andatte_shimura",
+"name": "Ken Andatte Shimura",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "kento_cho",
+"name": "Kento Cho",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20",
+"paris_x_gen"
+]
+},
+{
+"id": "kenyu_yukimiya",
+"name": "Kenyu Yukimiya",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_c",
+"team_red",
+"blue_lock_eleven",
+"japan_u20",
+"bastard_munchen"
+],
+"groups": [
+"top_6"
+]
+},
+{
+"id": "kevin_iehitori",
+"name": "Kevin Iehitori",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "kisaburo_hijikata",
+"name": "Kisaburo Hijikata",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_v"
+]
+},
+{
+"id": "kiyoshi_yasushi",
+"name": "Kiyoshi Yasushi",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "koki_mera",
+"name": "Koki Mera",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_w"
+]
+},
+{
+"id": "kosei_otsuka",
+"name": "Kosei Otsuka",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_x"
+]
+},
+{
+"id": "koyuki_chigiri",
+"name": "Koyuki Chigiri",
+"group": "canon",
+"region": "family",
+"role": "family",
+"teams": [],
+"female": true
+},
+{
+"id": "kyohei_shiguma",
+"name": "Kyohei Shiguma",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_b",
+"team_red",
+"ubers"
+]
+},
+{
+"id": "lavinho",
+"name": "Lavinho",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"fc_barcha"
+],
+"groups": [
+"master_strikers"
+]
+},
+{
+"id": "leonardo_luna",
+"name": "Leonardo Luna",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"team_world_five"
+]
+},
+{
+"id": "leyden",
+"name": "Leyden",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "lockhart",
+"name": "Lockhart",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "mahiru_naruhaya",
+"name": "Mahiru Naruhaya",
+"group": "canon",
+"region": "family",
+"role": "family",
+"teams": [],
+"female": true
+},
+{
+"id": "marc_snuffy",
+"name": "Marc Snuffy",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"ubers"
+],
+"groups": [
+"master_strikers"
+]
+},
+{
+"id": "mareto_takeyama",
+"name": "Mareto Takeyama",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_y"
+]
+},
+{
+"id": "masumi_atatame",
+"name": "Masumi Atatame",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_v"
+]
+},
+{
+"id": "bachira",
+"name": "Meguru Bachira",
+"group": "canon",
+"region": "japan",
+"role": "winger",
+"teams": [
+"team_z",
+"team_a",
+"team_c",
+"team_red",
+"team_white",
+"blue_lock_eleven",
+"japan_u20",
+"fc_barcha"
+]
+},
+{
+"id": "mensah",
+"name": "Mensah",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "michael_kaiser",
+"name": "Michael Kaiser",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"bastard_munchen",
+"germany_u20"
+],
+"groups": [
+"new_generation_world_11"
+]
+},
+{
+"id": "michelin",
+"name": "Michelin",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "mick_moon",
+"name": "Mick Moon",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "miroku_darai",
+"name": "Miroku Darai",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20",
+"fc_barcha"
+]
+},
+{
+"id": "momodu",
+"name": "Momodu",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "moro",
+"name": "Moro",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "nagisa_nakajima",
+"name": "Nagisa Nakajima",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "ndiaye",
+"name": "Ndiaye",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "neita_tami",
+"name": "Neita Tami",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "neneko_chigiri",
+"name": "Neneko Chigiri",
+"group": "canon",
+"region": "family",
+"role": "family",
+"teams": [],
+"female": true
+},
+{
+"id": "niang",
+"name": "Niang",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "nijiro_nanase",
+"name": "Nijiro Nanase",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_a",
+"team_white",
+"blue_lock_eleven",
+"japan_u20",
+"paris_x_gen"
+]
+},
+{
+"id": "noboru_jigen",
+"name": "Noboru Jigen",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_w"
+]
+},
+{
+"id": "noel_noa",
+"name": "Noel Noa",
+"group": "canon",
+"region": "world",
+"role": "striker, the world's best",
+"teams": [
+"bastard_munchen"
+],
+"groups": [
+"master_strikers"
+]
+},
+{
+"id": "oboabona",
+"name": "Oboabona",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "okuhito_iemon",
+"name": "Okuhito Iemon",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_z"
+]
+},
+{
+"id": "oliver_aiku",
+"name": "Oliver Aiku",
+"group": "canon",
+"region": "japan",
+"role": "midfielder",
+"teams": [
+"japan_u20",
+"ubers"
+]
+},
+{
+"id": "pablo_cavasoz",
+"name": "Pablo Cavasoz",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"team_world_five"
+]
+},
+{
+"id": "peron",
+"name": "Peron",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "picasso",
+"name": "Picasso",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "raito_fuwa",
+"name": "Raito Fuwa",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_w"
+]
+},
+{
+"id": "ranze_kurona",
+"name": "Ranze Kurona",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_a",
+"team_red",
+"team_white",
+"blue_lock_eleven",
+"japan_u20",
+"bastard_munchen"
+]
+},
+{
+"id": "ray_dark",
+"name": "Ray Dark",
+"group": "canon",
+"region": "staff",
+"role": "staff",
+"teams": []
+},
+{
+"id": "reiji_hiiragi",
+"name": "Reiji Hiiragi",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_b",
+"team_white",
+"blue_lock_eleven",
+"manshine_city"
+]
+},
+{
+"id": "renoir",
+"name": "Renoir",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"paris_x_gen",
+"france_u20"
+]
+},
+{
+"id": "kunigami",
+"name": "Rensuke Kunigami",
+"group": "canon",
+"region": "japan",
+"role": "striker",
+"teams": [
+"team_z",
+"team_red",
+"japan_u20",
+"bastard_munchen"
+]
+},
+{
+"id": "reo",
+"name": "Reo Mikage",
+"group": "canon",
+"region": "japan",
+"role": "midfielder",
+"teams": [
+"team_v",
+"team_c",
+"team_red",
+"team_white",
+"blue_lock_eleven",
+"japan_u20",
+"manshine_city"
+]
+},
+{
+"id": "retsu_nerima",
+"name": "Retsu Nerima",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_v"
+]
+},
+{
+"id": "rian_sanga",
+"name": "Rian Sanga",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_x"
+]
+},
+{
+"id": "rico",
+"name": "Rico",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "rikiya_hohai",
+"name": "Rikiya Hohai",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_v"
+]
+},
+{
+"id": "rin",
+"name": "Rin Itoshi",
+"group": "canon",
+"region": "japan",
+"role": "midfielder / striker",
+"teams": [
+"team_a",
+"team_red",
+"blue_lock_eleven",
+"japan_u20",
+"paris_x_gen"
+],
+"groups": [
+"top_6"
+]
+},
+{
+"id": "ringo_pondemizu",
+"name": "Ringo Pondemizu",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "rodin",
+"name": "Rodin",
+"group": "canon",
+"region": "staff",
+"role": "staff",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "rooke",
+"name": "Rooke",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"manshine_city",
+"england_u20"
+]
+},
+{
+"id": "ruiz",
+"name": "Ruiz",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "ruto_kora",
+"name": "Ruto Kora",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_x"
+]
+},
+{
+"id": "ryo_nameoka",
+"name": "Ryo Nameoka",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_v"
+]
+},
+{
+"id": "ryosuke_kira",
+"name": "Ryosuke Kira",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_z"
+],
+"groups": [
+"team_play_supporters"
+]
+},
+{
+"id": "ryu_kamioka",
+"name": "Ryu Kamioka",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "ryuhei_osuna",
+"name": "Ryuhei Osuna",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "ryusei_shido",
+"name": "Ryusei Shido",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_a",
+"team_red",
+"team_white",
+"japan_u20",
+"paris_x_gen"
+],
+"groups": [
+"top_6"
+]
+},
+{
+"id": "sadiq",
+"name": "Sadiq",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "sae",
+"name": "Sae Itoshi",
+"group": "canon",
+"region": "japan",
+"role": "midfielder",
+"teams": [
+"japan_u20"
+],
+"groups": [
+"new_generation_world_11"
+]
+},
+{
+"id": "seina_naruhaya",
+"name": "Seina Naruhaya",
+"group": "canon",
+"region": "family",
+"role": "family",
+"teams": [],
+"female": true
+},
+{
+"id": "nagi",
+"name": "Seishiro Nagi",
+"group": "canon",
+"region": "japan",
+"role": "striker",
+"teams": [
+"team_v",
+"team_c",
+"team_red",
+"team_white",
+"blue_lock_eleven",
+"manshine_city"
+],
+"groups": [
+"top_6"
+]
+},
+{
+"id": "shigeo_mizuki",
+"name": "Shigeo Mizuki",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "shingen_tanaka",
+"name": "Shingen Tanaka",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_c",
+"team_red",
+"ubers"
+]
+},
+{
+"id": "shinichi_konan",
+"name": "Shinichi Konan",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_y"
+]
+},
+{
+"id": "shinsuke_hekisa",
+"name": "Shinsuke Hekisa",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "shizuka_haiji",
+"name": "Shizuka Haiji",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_a",
+"team_white",
+"fc_barcha"
+]
+},
+{
+"id": "barou",
+"name": "Shoei Barou",
+"group": "canon",
+"region": "japan",
+"role": "striker",
+"teams": [
+"team_x",
+"team_b",
+"team_red",
+"team_white",
+"blue_lock_eleven",
+"japan_u20",
+"ubers"
+]
+},
+{
+"id": "shohei_inaba",
+"name": "Shohei Inaba",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "shuhei_ebina",
+"name": "Shuhei Ebina",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_v"
+]
+},
+{
+"id": "shusaku_nihei",
+"name": "Shusaku Nihei",
+"group": "canon",
+"region": "staff",
+"role": "staff",
+"teams": []
+},
+{
+"id": "shuto_sendo",
+"name": "Shuto Sendo",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20",
+"ubers"
+]
+},
+{
+"id": "skelton",
+"name": "Skelton",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "so",
+"name": "So",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "soshi_kagura",
+"name": "Soshi Kagura",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_y"
+]
+},
+{
+"id": "sota_nemoto",
+"name": "Sota Nemoto",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_v"
+]
+},
+{
+"id": "swift",
+"name": "Swift",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"manshine_city",
+"england_u20"
+]
+},
+{
+"id": "tabito_karasu",
+"name": "Tabito Karasu",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_b",
+"team_red",
+"blue_lock_eleven",
+"japan_u20",
+"paris_x_gen"
+],
+"groups": [
+"top_6"
+]
+},
+{
+"id": "taiga_tsunzaki",
+"name": "Taiga Tsunzaki",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_c",
+"team_white",
+"manshine_city"
+]
+},
+{
+"id": "taisho_hagimoto",
+"name": "Taisho Hagimoto",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "takashi_nishiyama",
+"name": "Takashi Nishiyama",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "takayuki_tokorojoji",
+"name": "Takayuki Tokorojoji",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "takeru_miike",
+"name": "Takeru Miike",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "takeshi_bito",
+"name": "Takeshi Bito",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "takuma_isezaki",
+"name": "Takuma Isezaki",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_w"
+]
+},
+{
+"id": "teddy_knight",
+"name": "Teddy Knight",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"england_u20"
+],
+"groups": [
+"new_generation_world_11"
+]
+},
+{
+"id": "tenka_naruhaya",
+"name": "Tenka Naruhaya",
+"group": "canon",
+"region": "family",
+"role": "family",
+"teams": [],
+"female": true
+},
+{
+"id": "teppei_neru",
+"name": "Teppei Neru",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20",
+"bastard_munchen"
+]
+},
+{
+"id": "teru_kitsunezato",
+"name": "Teru Kitsunezato",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"japan_u20",
+"fc_barcha"
+]
+},
+{
+"id": "tetsu_sokura",
+"name": "Tetsu Sokura",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_b",
+"team_white",
+"fc_barcha"
+]
+},
+{
+"id": "theo_sachs",
+"name": "Theo Sachs",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "tobio_madoka",
+"name": "Tobio Madoka",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_y"
+]
+},
+{
+"id": "tomonori_tada",
+"name": "Tomonori Tada",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": [],
+"groups": [
+"team_play_supporters"
+]
+},
+{
+"id": "tsukoteru_eiyu",
+"name": "Tsukoteru Eiyu",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_x"
+]
+},
+{
+"id": "umaru",
+"name": "Umaru",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "urzaiz",
+"name": "Urzaiz",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "vivien_hugo",
+"name": "Vivien Hugo",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"france_u20"
+],
+"groups": [
+"new_generation_world_11"
+]
+},
+{
+"id": "wataru_kuon",
+"name": "Wataru Kuon",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_z"
+]
+},
+{
+"id": "yasuji_ozu",
+"name": "Yasuji Ozu",
+"group": "canon",
+"region": "other",
+"role": "player",
+"teams": []
+},
+{
+"id": "yasumori_hoichi",
+"name": "Yasumori Hoichi",
+"group": "canon",
+"region": "staff",
+"role": "staff",
+"teams": [
+"japan_u20"
+],
+"groups": [
+"team_play_supporters"
+]
+},
+{
+"id": "yawara_banku",
+"name": "Yawara Banku",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_x"
+]
+},
+{
+"id": "yo_hiori",
+"name": "Yo Hiori",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_a",
+"team_red",
+"blue_lock_eleven",
+"japan_u20",
+"bastard_munchen"
+]
+},
+{
+"id": "isagi",
+"name": "Yoichi Isagi",
+"group": "canon",
+"region": "japan",
+"role": "striker, protagonist",
+"teams": [
+"team_z",
+"team_a",
+"team_red",
+"team_white",
+"blue_lock_eleven",
+"japan_u20",
+"bastard_munchen"
+]
+},
+{
+"id": "yota_naruhaya",
+"name": "Yota Naruhaya",
+"group": "canon",
+"region": "family",
+"role": "family",
+"teams": []
+},
+{
+"id": "young",
+"name": "Young",
+"group": "canon",
+"region": "world",
+"role": "player",
+"teams": [
+"manshine_city",
+"england_u20"
+]
+},
+{
+"id": "yu_bachira",
+"name": "Yu Bachira",
+"group": "canon",
+"region": "family",
+"role": "family",
+"teams": [],
+"female": true
+},
+{
+"id": "yudai_imamura",
+"name": "Yudai Imamura",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_z"
+]
+},
+{
+"id": "yujin_koshinaka",
+"name": "Yujin Koshinaka",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_w"
+]
+},
+{
+"id": "yukio_ishikari",
+"name": "Yukio Ishikari",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_a",
+"team_red",
+"blue_lock_eleven",
+"ubers"
+]
+},
+{
+"id": "yusei_amazora",
+"name": "Yusei Amazora",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_w"
+]
+},
+{
+"id": "yuya_naruhaya",
+"name": "Yuya Naruhaya",
+"group": "canon",
+"region": "family",
+"role": "family",
+"teams": []
+},
+{
+"id": "yuza_dokomo",
+"name": "Yuza Dokomo",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_x"
+]
+},
+{
+"id": "zantetsu_tsurugi",
+"name": "Zantetsu Tsurugi",
+"group": "canon",
+"region": "japan",
+"role": "player",
+"teams": [
+"team_v",
+"team_c",
+"team_white",
+"blue_lock_eleven",
+"japan_u20",
+"paris_x_gen"
+]
+},
+{
+"id": "sora",
+"name": "Sora Kaizuka",
+"group": "original",
+"region": "japan",
+"role": "left winger",
+"teams": []
+},
+{
+"id": "reiji",
+"name": "Reiji Hasegawa",
+"group": "original",
+"region": "japan",
+"role": "academy captain",
+"teams": []
+},
+{
+"id": "mio",
+"name": "Mio Tachibana",
+"group": "original",
+"region": "media",
+"role": "journalist",
+"teams": []
+},
+{
+"id": "haruka",
+"name": "Haruka Shirane",
+"group": "original",
+"region": "family",
+"role": "the player's sister",
+"teams": []
+},
+{
+"id": "dante",
+"name": "Dante Cavalli",
+"group": "original",
+"region": "world",
+"role": "centre-back",
+"teams": []
+},
+{
+"id": "lukas",
+"name": "Lukas Brandt",
+"group": "original",
+"region": "world",
+"role": "forward",
+"teams": []
+},
+{
+"id": "tomas",
+"name": "Tomás Ferreira",
+"group": "original",
+"region": "world",
+"role": "midfielder",
+"teams": []
+},
+{
+"id": "kisaragi",
+"name": "Ayame Kisaragi",
+"group": "original",
+"region": "staff",
+"role": "sponsor executive",
+"teams": []
+},
+{
+"id": "jannik_fuchs",
+"name": "Jannik Fuchs",
+"group": "original",
+"region": "world",
+"role": "utility player",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "raffaele_fabbri",
+"name": "Raffaele Fabbri",
+"group": "original",
+"region": "world",
+"role": "left winger",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "riccardo_testa",
+"name": "Riccardo Testa",
+"group": "original",
+"region": "world",
+"role": "winger",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "alessio_galli",
+"name": "Alessio Galli",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "flavio_fabbri",
+"name": "Flavio Fabbri",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "claudio_pellegrini",
+"name": "Claudio Pellegrini",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "gianluca_giordano",
+"name": "Gianluca Giordano",
+"group": "original",
+"region": "world",
+"role": "second striker",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "stefano_neri",
+"name": "Stefano Neri",
+"group": "original",
+"region": "world",
+"role": "utility player",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "ryan_lindsey",
+"name": "Ryan Lindsey",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"manshine_city"
+]
+},
+{
+"id": "ryan_calloway",
+"name": "Ryan Calloway",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"manshine_city"
+]
+},
+{
+"id": "toby_whitlock",
+"name": "Toby Whitlock",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"manshine_city"
+]
+},
+{
+"id": "miles_pemberton",
+"name": "Miles Pemberton",
+"group": "original",
+"region": "world",
+"role": "second striker",
+"teams": [
+"manshine_city"
+]
+},
+{
+"id": "kieran_dunmore",
+"name": "Kieran Dunmore",
+"group": "original",
+"region": "world",
+"role": "utility player",
+"teams": [
+"manshine_city"
+]
+},
+{
+"id": "alvaro_zamora",
+"name": "Alvaro Zamora",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "ulises_quiroga",
+"name": "Ulises Quiroga",
+"group": "original",
+"region": "world",
+"role": "second striker",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "alvaro_ledesma",
+"name": "Alvaro Ledesma",
+"group": "original",
+"region": "world",
+"role": "utility player",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "enzo_dupuy",
+"name": "Enzo Dupuy",
+"group": "original",
+"region": "world",
+"role": "right winger",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "baptiste_rousseau",
+"name": "Baptiste Rousseau",
+"group": "original",
+"region": "world",
+"role": "left winger",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "quentin_lacombe",
+"name": "Quentin Lacombe",
+"group": "original",
+"region": "world",
+"role": "winger",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "gaspard_girard",
+"name": "Gaspard Girard",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "lenny_rousseau",
+"name": "Lenny Rousseau",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "gaspard_marchand",
+"name": "Gaspard Marchand",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "theo_esteve",
+"name": "Theo Esteve",
+"group": "original",
+"region": "world",
+"role": "second striker",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "lenny_noailles",
+"name": "Lenny Noailles",
+"group": "original",
+"region": "world",
+"role": "utility player",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "jordan_pemberton",
+"name": "Jordan Pemberton",
+"group": "original",
+"region": "world",
+"role": "attacking midfielder",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "dexter_ashworth",
+"name": "Dexter Ashworth",
+"group": "original",
+"region": "world",
+"role": "right winger",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "miles_whitlock",
+"name": "Miles Whitlock",
+"group": "original",
+"region": "world",
+"role": "left winger",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "finn_holloway",
+"name": "Finn Holloway",
+"group": "original",
+"region": "world",
+"role": "winger",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "jasper_calloway",
+"name": "Jasper Calloway",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "toby_radcliffe",
+"name": "Toby Radcliffe",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "archie_dunmore",
+"name": "Archie Dunmore",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "archie_stanhope",
+"name": "Archie Stanhope",
+"group": "original",
+"region": "world",
+"role": "second striker",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "marcus_lindsey",
+"name": "Marcus Lindsey",
+"group": "original",
+"region": "world",
+"role": "utility player",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "maxime_perrin",
+"name": "Maxime Perrin",
+"group": "original",
+"region": "world",
+"role": "central midfielder",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "lucien_esteve",
+"name": "Lucien Esteve",
+"group": "original",
+"region": "world",
+"role": "central midfielder",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "bastien_chastain",
+"name": "Bastien Chastain",
+"group": "original",
+"region": "world",
+"role": "attacking midfielder",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "noe_sauvage",
+"name": "Noe Sauvage",
+"group": "original",
+"region": "world",
+"role": "attacking midfielder",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "valentin_rousseau",
+"name": "Valentin Rousseau",
+"group": "original",
+"region": "world",
+"role": "right winger",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "rayan_fontaine",
+"name": "Rayan Fontaine",
+"group": "original",
+"region": "world",
+"role": "left winger",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "theo_chastain",
+"name": "Theo Chastain",
+"group": "original",
+"region": "world",
+"role": "winger",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "quentin_marchand",
+"name": "Quentin Marchand",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "florian_lacombe",
+"name": "Florian Lacombe",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "noe_villard",
+"name": "Noe Villard",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "enzo_fontaine",
+"name": "Enzo Fontaine",
+"group": "original",
+"region": "world",
+"role": "second striker",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "gaspard_esteve",
+"name": "Gaspard Esteve",
+"group": "original",
+"region": "world",
+"role": "utility player",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "yemi_abiola",
+"name": "Yemi Abiola",
+"group": "original",
+"region": "world",
+"role": "central midfielder",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "dayo_mbah",
+"name": "Dayo Mbah",
+"group": "original",
+"region": "world",
+"role": "central midfielder",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "rotimi_lawal",
+"name": "Rotimi Lawal",
+"group": "original",
+"region": "world",
+"role": "attacking midfielder",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "nnamdi_chukwu",
+"name": "Nnamdi Chukwu",
+"group": "original",
+"region": "world",
+"role": "attacking midfielder",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "tunde_udoka",
+"name": "Tunde Udoka",
+"group": "original",
+"region": "world",
+"role": "right winger",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "rotimi_chukwu",
+"name": "Rotimi Chukwu",
+"group": "original",
+"region": "world",
+"role": "left winger",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "emeka_yakubu",
+"name": "Emeka Yakubu",
+"group": "original",
+"region": "world",
+"role": "winger",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "wale_hassan",
+"name": "Wale Hassan",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "uche_fashola",
+"name": "Uche Fashola",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "dayo_adewale",
+"name": "Dayo Adewale",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "nnamdi_eboh",
+"name": "Nnamdi Eboh",
+"group": "original",
+"region": "world",
+"role": "second striker",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "obinna_mbah",
+"name": "Obinna Mbah",
+"group": "original",
+"region": "world",
+"role": "utility player",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "matthias_rasch",
+"name": "Matthias Rasch",
+"group": "original",
+"region": "world",
+"role": "goalkeeper",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "felix_haller",
+"name": "Felix Haller",
+"group": "original",
+"region": "world",
+"role": "centre-back",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "fabian_fuchs",
+"name": "Fabian Fuchs",
+"group": "original",
+"region": "world",
+"role": "centre-back",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "maximilian_neumann",
+"name": "Maximilian Neumann",
+"group": "original",
+"region": "world",
+"role": "centre-back",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "henrik_rasch",
+"name": "Henrik Rasch",
+"group": "original",
+"region": "world",
+"role": "right-back",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "niklas_gruber",
+"name": "Niklas Gruber",
+"group": "original",
+"region": "world",
+"role": "left-back",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "rasmus_neumann",
+"name": "Rasmus Neumann",
+"group": "original",
+"region": "world",
+"role": "full-back",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "viktor_jaeger",
+"name": "Viktor Jaeger",
+"group": "original",
+"region": "world",
+"role": "defensive midfielder",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "tobias_ostermann",
+"name": "Tobias Ostermann",
+"group": "original",
+"region": "world",
+"role": "defensive midfielder",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "lennart_mertens",
+"name": "Lennart Mertens",
+"group": "original",
+"region": "world",
+"role": "central midfielder",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "henrik_imhoff",
+"name": "Henrik Imhoff",
+"group": "original",
+"region": "world",
+"role": "central midfielder",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "tobias_dietrich",
+"name": "Tobias Dietrich",
+"group": "original",
+"region": "world",
+"role": "central midfielder",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "dominik_fuchs",
+"name": "Dominik Fuchs",
+"group": "original",
+"region": "world",
+"role": "attacking midfielder",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "maximilian_imhoff",
+"name": "Maximilian Imhoff",
+"group": "original",
+"region": "world",
+"role": "attacking midfielder",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "jonas_rasch",
+"name": "Jonas Rasch",
+"group": "original",
+"region": "world",
+"role": "right winger",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "wolfram_gruber",
+"name": "Wolfram Gruber",
+"group": "original",
+"region": "world",
+"role": "left winger",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "sebastian_kellner",
+"name": "Sebastian Kellner",
+"group": "original",
+"region": "world",
+"role": "winger",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "jonas_fuchs",
+"name": "Jonas Fuchs",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "lennart_thalmann",
+"name": "Lennart Thalmann",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "moritz_vogt",
+"name": "Moritz Vogt",
+"group": "original",
+"region": "world",
+"role": "striker",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "wolfram_lindner",
+"name": "Wolfram Lindner",
+"group": "original",
+"region": "world",
+"role": "second striker",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "tobias_seidel",
+"name": "Tobias Seidel",
+"group": "original",
+"region": "world",
+"role": "utility player",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "kota_morishita",
+"name": "Kota Morishita",
+"group": "original",
+"region": "japan",
+"role": "goalkeeper",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "tatsuya_itagaki",
+"name": "Tatsuya Itagaki",
+"group": "original",
+"region": "japan",
+"role": "goalkeeper",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "seiya_tamura",
+"name": "Seiya Tamura",
+"group": "original",
+"region": "japan",
+"role": "centre-back",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "takumi_hayashi",
+"name": "Takumi Hayashi",
+"group": "original",
+"region": "japan",
+"role": "centre-back",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "seiya_morishita",
+"name": "Seiya Morishita",
+"group": "original",
+"region": "japan",
+"role": "centre-back",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "akihiro_ogawa",
+"name": "Akihiro Ogawa",
+"group": "original",
+"region": "japan",
+"role": "right-back",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "masato_kawai",
+"name": "Masato Kawai",
+"group": "original",
+"region": "japan",
+"role": "left-back",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "kenji_hirose",
+"name": "Kenji Hirose",
+"group": "original",
+"region": "japan",
+"role": "full-back",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "kazuki_tojo",
+"name": "Kazuki Tojo",
+"group": "original",
+"region": "japan",
+"role": "defensive midfielder",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "ren_maeda",
+"name": "Ren Maeda",
+"group": "original",
+"region": "japan",
+"role": "defensive midfielder",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "haruki_nogami",
+"name": "Haruki Nogami",
+"group": "original",
+"region": "japan",
+"role": "central midfielder",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "hayato_haga",
+"name": "Hayato Haga",
+"group": "original",
+"region": "japan",
+"role": "central midfielder",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "takumi_oishi",
+"name": "Takumi Oishi",
+"group": "original",
+"region": "japan",
+"role": "central midfielder",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "kota_hanazono",
+"name": "Kota Hanazono",
+"group": "original",
+"region": "japan",
+"role": "attacking midfielder",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "yuto_okabe",
+"name": "Yuto Okabe",
+"group": "original",
+"region": "japan",
+"role": "attacking midfielder",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "kota_saeki",
+"name": "Kota Saeki",
+"group": "original",
+"region": "japan",
+"role": "right winger",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "hayato_uehara",
+"name": "Hayato Uehara",
+"group": "original",
+"region": "japan",
+"role": "left winger",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "mamoru_tojo",
+"name": "Mamoru Tojo",
+"group": "original",
+"region": "japan",
+"role": "winger",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "osamu_hayashi",
+"name": "Osamu Hayashi",
+"group": "original",
+"region": "japan",
+"role": "striker",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "shota_hirose",
+"name": "Shota Hirose",
+"group": "original",
+"region": "japan",
+"role": "striker",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "reiji_mizuno",
+"name": "Reiji Mizuno",
+"group": "original",
+"region": "japan",
+"role": "striker",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "shun_hayashi",
+"name": "Shun Hayashi",
+"group": "original",
+"region": "japan",
+"role": "second striker",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "minato_sugiyama",
+"name": "Minato Sugiyama",
+"group": "original",
+"region": "japan",
+"role": "utility player",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "hayato_maeda",
+"name": "Hayato Maeda",
+"group": "original",
+"region": "japan",
+"role": "goalkeeper",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "kazuki_uehara",
+"name": "Kazuki Uehara",
+"group": "original",
+"region": "japan",
+"role": "goalkeeper",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "shun_kuroki",
+"name": "Shun Kuroki",
+"group": "original",
+"region": "japan",
+"role": "centre-back",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "genta_hanazono",
+"name": "Genta Hanazono",
+"group": "original",
+"region": "japan",
+"role": "centre-back",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "masato_tsuji",
+"name": "Masato Tsuji",
+"group": "original",
+"region": "japan",
+"role": "centre-back",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "osamu_yamazaki",
+"name": "Osamu Yamazaki",
+"group": "original",
+"region": "japan",
+"role": "right-back",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "ibuki_hanazono",
+"name": "Ibuki Hanazono",
+"group": "original",
+"region": "japan",
+"role": "left-back",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "genta_ishihara",
+"name": "Genta Ishihara",
+"group": "original",
+"region": "japan",
+"role": "full-back",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "daisuke_uehara",
+"name": "Daisuke Uehara",
+"group": "original",
+"region": "japan",
+"role": "defensive midfielder",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "genta_oishi",
+"name": "Genta Oishi",
+"group": "original",
+"region": "japan",
+"role": "defensive midfielder",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "kenji_nomura",
+"name": "Kenji Nomura",
+"group": "original",
+"region": "japan",
+"role": "central midfielder",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "hiroki_haga",
+"name": "Hiroki Haga",
+"group": "original",
+"region": "japan",
+"role": "central midfielder",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "ibuki_kobayashi",
+"name": "Ibuki Kobayashi",
+"group": "original",
+"region": "japan",
+"role": "central midfielder",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "kazuki_sakamoto",
+"name": "Kazuki Sakamoto",
+"group": "original",
+"region": "japan",
+"role": "attacking midfielder",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "kota_fujiwara",
+"name": "Kota Fujiwara",
+"group": "original",
+"region": "japan",
+"role": "attacking midfielder",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "yamato_tamura",
+"name": "Yamato Tamura",
+"group": "original",
+"region": "japan",
+"role": "right winger",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "hiroki_fujiwara",
+"name": "Hiroki Fujiwara",
+"group": "original",
+"region": "japan",
+"role": "left winger",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "genta_sasaki",
+"name": "Genta Sasaki",
+"group": "original",
+"region": "japan",
+"role": "winger",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "mamoru_hanazono",
+"name": "Mamoru Hanazono",
+"group": "original",
+"region": "japan",
+"role": "striker",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "souta_wada",
+"name": "Souta Wada",
+"group": "original",
+"region": "japan",
+"role": "striker",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "shun_uehara",
+"name": "Shun Uehara",
+"group": "original",
+"region": "japan",
+"role": "striker",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "akihiro_tojo",
+"name": "Akihiro Tojo",
+"group": "original",
+"region": "japan",
+"role": "second striker",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "mamoru_kawai",
+"name": "Mamoru Kawai",
+"group": "original",
+"region": "japan",
+"role": "utility player",
+"teams": [
+"street_crew"
+]
+},
+{
+"id": "mamoru_oishi",
+"name": "Mamoru Oishi",
+"group": "original",
+"region": "japan",
+"role": "goalkeeper",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "daisuke_sakamoto",
+"name": "Daisuke Sakamoto",
+"group": "original",
+"region": "japan",
+"role": "goalkeeper",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "takumi_sakamoto",
+"name": "Takumi Sakamoto",
+"group": "original",
+"region": "japan",
+"role": "centre-back",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "shun_fujiwara",
+"name": "Shun Fujiwara",
+"group": "original",
+"region": "japan",
+"role": "centre-back",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "kazuki_okabe",
+"name": "Kazuki Okabe",
+"group": "original",
+"region": "japan",
+"role": "centre-back",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "shun_mochizuki",
+"name": "Shun Mochizuki",
+"group": "original",
+"region": "japan",
+"role": "right-back",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "kota_aizawa",
+"name": "Kota Aizawa",
+"group": "original",
+"region": "japan",
+"role": "left-back",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "shun_nomura",
+"name": "Shun Nomura",
+"group": "original",
+"region": "japan",
+"role": "full-back",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "daisuke_hirose",
+"name": "Daisuke Hirose",
+"group": "original",
+"region": "japan",
+"role": "defensive midfielder",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "rikuto_fujiwara",
+"name": "Rikuto Fujiwara",
+"group": "original",
+"region": "japan",
+"role": "defensive midfielder",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "shun_shimizu",
+"name": "Shun Shimizu",
+"group": "original",
+"region": "japan",
+"role": "central midfielder",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "tomoki_matsuda",
+"name": "Tomoki Matsuda",
+"group": "original",
+"region": "japan",
+"role": "central midfielder",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "daisuke_tamura",
+"name": "Daisuke Tamura",
+"group": "original",
+"region": "japan",
+"role": "central midfielder",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "tatsuya_tamura",
+"name": "Tatsuya Tamura",
+"group": "original",
+"region": "japan",
+"role": "attacking midfielder",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "daisuke_kuroki",
+"name": "Daisuke Kuroki",
+"group": "original",
+"region": "japan",
+"role": "attacking midfielder",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "kenji_nakagawa",
+"name": "Kenji Nakagawa",
+"group": "original",
+"region": "japan",
+"role": "right winger",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "souta_yamazaki",
+"name": "Souta Yamazaki",
+"group": "original",
+"region": "japan",
+"role": "left winger",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "hisashi_mizuno",
+"name": "Hisashi Mizuno",
+"group": "original",
+"region": "japan",
+"role": "winger",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "hayato_mochizuki",
+"name": "Hayato Mochizuki",
+"group": "original",
+"region": "japan",
+"role": "striker",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "joji_hayashi",
+"name": "Joji Hayashi",
+"group": "original",
+"region": "japan",
+"role": "striker",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "mamoru_yamazaki",
+"name": "Mamoru Yamazaki",
+"group": "original",
+"region": "japan",
+"role": "striker",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "ayumu_itagaki",
+"name": "Ayumu Itagaki",
+"group": "original",
+"region": "japan",
+"role": "second striker",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "ryota_hanazono",
+"name": "Ryota Hanazono",
+"group": "original",
+"region": "japan",
+"role": "utility player",
+"teams": [
+"hometown_club"
+]
+},
+{
+"id": "haruki_maeda",
+"name": "Haruki Maeda",
+"group": "original",
+"region": "japan",
+"role": "goalkeeper",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "genta_nakagawa",
+"name": "Genta Nakagawa",
+"group": "original",
+"region": "japan",
+"role": "goalkeeper",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "tomoki_fujiwara",
+"name": "Tomoki Fujiwara",
+"group": "original",
+"region": "japan",
+"role": "centre-back",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "masato_hanazono",
+"name": "Masato Hanazono",
+"group": "original",
+"region": "japan",
+"role": "centre-back",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "eiji_okabe",
+"name": "Eiji Okabe",
+"group": "original",
+"region": "japan",
+"role": "centre-back",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "satoru_kobayashi",
+"name": "Satoru Kobayashi",
+"group": "original",
+"region": "japan",
+"role": "right-back",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "yamato_sakurada",
+"name": "Yamato Sakurada",
+"group": "original",
+"region": "japan",
+"role": "left-back",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "jun_uehara",
+"name": "Jun Uehara",
+"group": "original",
+"region": "japan",
+"role": "full-back",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "ibuki_ueda",
+"name": "Ibuki Ueda",
+"group": "original",
+"region": "japan",
+"role": "defensive midfielder",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "ryota_morishita",
+"name": "Ryota Morishita",
+"group": "original",
+"region": "japan",
+"role": "defensive midfielder",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "mamoru_mizuno",
+"name": "Mamoru Mizuno",
+"group": "original",
+"region": "japan",
+"role": "central midfielder",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "hisashi_tsuji",
+"name": "Hisashi Tsuji",
+"group": "original",
+"region": "japan",
+"role": "central midfielder",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "taichi_kobayashi",
+"name": "Taichi Kobayashi",
+"group": "original",
+"region": "japan",
+"role": "central midfielder",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "ryota_haga",
+"name": "Ryota Haga",
+"group": "original",
+"region": "japan",
+"role": "attacking midfielder",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "hayato_tsuji",
+"name": "Hayato Tsuji",
+"group": "original",
+"region": "japan",
+"role": "attacking midfielder",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "kosuke_hanazono",
+"name": "Kosuke Hanazono",
+"group": "original",
+"region": "japan",
+"role": "right winger",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "yusuke_shimizu",
+"name": "Yusuke Shimizu",
+"group": "original",
+"region": "japan",
+"role": "left winger",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "joji_aizawa",
+"name": "Joji Aizawa",
+"group": "original",
+"region": "japan",
+"role": "winger",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "hayato_shimizu",
+"name": "Hayato Shimizu",
+"group": "original",
+"region": "japan",
+"role": "striker",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "hayato_hayashi",
+"name": "Hayato Hayashi",
+"group": "original",
+"region": "japan",
+"role": "striker",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "kota_hirose",
+"name": "Kota Hirose",
+"group": "original",
+"region": "japan",
+"role": "striker",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "ayumu_morishita",
+"name": "Ayumu Morishita",
+"group": "original",
+"region": "japan",
+"role": "second striker",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "jun_tsuji",
+"name": "Jun Tsuji",
+"group": "original",
+"region": "japan",
+"role": "utility player",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "genta_itagaki",
+"name": "Genta Itagaki",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"team_z"
+]
+},
+{
+"id": "shun_maeda",
+"name": "Shun Maeda",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"team_z"
+]
+},
+{
+"id": "yamato_fujiwara",
+"name": "Yamato Fujiwara",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"team_v"
+]
+},
+{
+"id": "koji_kitagawa",
+"name": "Koji Kitagawa",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"team_v"
+]
+},
+{
+"id": "takumi_kobayashi",
+"name": "Takumi Kobayashi",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"team_w"
+]
+},
+{
+"id": "yusuke_itagaki",
+"name": "Yusuke Itagaki",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"team_w"
+]
+},
+{
+"id": "souta_ogawa",
+"name": "Souta Ogawa",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"team_x"
+]
+},
+{
+"id": "yusuke_kondo",
+"name": "Yusuke Kondo",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"team_x"
+]
+},
+{
+"id": "kota_kobayashi",
+"name": "Kota Kobayashi",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"team_y"
+]
+},
+{
+"id": "joji_kobayashi",
+"name": "Joji Kobayashi",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"team_y"
+]
+},
+{
+"id": "leon_jaeger",
+"name": "Leon Jaeger",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "rasmus_seidel",
+"name": "Rasmus Seidel",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "viktor_rasch",
+"name": "Viktor Rasch",
+"group": "original",
+"region": "staff",
+"role": "goalkeeping coach",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "ulrich_imhoff",
+"name": "Ulrich Imhoff",
+"group": "original",
+"region": "staff",
+"role": "fitness coach",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "ulrich_jaeger",
+"name": "Ulrich Jaeger",
+"group": "original",
+"region": "staff",
+"role": "physio",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "viktor_haller",
+"name": "Viktor Haller",
+"group": "original",
+"region": "staff",
+"role": "match analyst",
+"teams": [
+"bastard_munchen"
+]
+},
+{
+"id": "umberto_marchetti",
+"name": "Umberto Marchetti",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "stefano_lombardi",
+"name": "Stefano Lombardi",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "raffaele_pace",
+"name": "Raffaele Pace",
+"group": "original",
+"region": "staff",
+"role": "goalkeeping coach",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "nicola_giordano",
+"name": "Nicola Giordano",
+"group": "original",
+"region": "staff",
+"role": "fitness coach",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "fabrizio_neri",
+"name": "Fabrizio Neri",
+"group": "original",
+"region": "staff",
+"role": "physio",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "riccardo_pellegrini",
+"name": "Riccardo Pellegrini",
+"group": "original",
+"region": "staff",
+"role": "match analyst",
+"teams": [
+"ubers"
+]
+},
+{
+"id": "marcus_pemberton",
+"name": "Marcus Pemberton",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"manshine_city"
+]
+},
+{
+"id": "connor_stanhope",
+"name": "Connor Stanhope",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"manshine_city"
+]
+},
+{
+"id": "connor_marlowe",
+"name": "Connor Marlowe",
+"group": "original",
+"region": "staff",
+"role": "goalkeeping coach",
+"teams": [
+"manshine_city"
+]
+},
+{
+"id": "connor_yardley",
+"name": "Connor Yardley",
+"group": "original",
+"region": "staff",
+"role": "fitness coach",
+"teams": [
+"manshine_city"
+]
+},
+{
+"id": "kieran_pemberton",
+"name": "Kieran Pemberton",
+"group": "original",
+"region": "staff",
+"role": "physio",
+"teams": [
+"manshine_city"
+]
+},
+{
+"id": "liam_ainsley",
+"name": "Liam Ainsley",
+"group": "original",
+"region": "staff",
+"role": "match analyst",
+"teams": [
+"manshine_city"
+]
+},
+{
+"id": "esteban_ledesma",
+"name": "Esteban Ledesma",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "esteban_roldan",
+"name": "Esteban Roldan",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "santiago_quiroga",
+"name": "Santiago Quiroga",
+"group": "original",
+"region": "staff",
+"role": "goalkeeping coach",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "octavio_roldan",
+"name": "Octavio Roldan",
+"group": "original",
+"region": "staff",
+"role": "fitness coach",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "rafael_paredes",
+"name": "Rafael Paredes",
+"group": "original",
+"region": "staff",
+"role": "physio",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "octavio_cordero",
+"name": "Octavio Cordero",
+"group": "original",
+"region": "staff",
+"role": "match analyst",
+"teams": [
+"fc_barcha"
+]
+},
+{
+"id": "alban_beaumont",
+"name": "Alban Beaumont",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "florian_dupuy",
+"name": "Florian Dupuy",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "valentin_ambroise",
+"name": "Valentin Ambroise",
+"group": "original",
+"region": "staff",
+"role": "goalkeeping coach",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "mathis_vasseur",
+"name": "Mathis Vasseur",
+"group": "original",
+"region": "staff",
+"role": "fitness coach",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "florian_chastain",
+"name": "Florian Chastain",
+"group": "original",
+"region": "staff",
+"role": "physio",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "rayan_rousseau",
+"name": "Rayan Rousseau",
+"group": "original",
+"region": "staff",
+"role": "match analyst",
+"teams": [
+"paris_x_gen"
+]
+},
+{
+"id": "kosuke_ogawa",
+"name": "Kosuke Ogawa",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "shota_sakamoto",
+"name": "Shota Sakamoto",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "takumi_sugiyama",
+"name": "Takumi Sugiyama",
+"group": "original",
+"region": "staff",
+"role": "goalkeeping coach",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "eiji_wada",
+"name": "Eiji Wada",
+"group": "original",
+"region": "staff",
+"role": "fitness coach",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "kaito_shimizu",
+"name": "Kaito Shimizu",
+"group": "original",
+"region": "staff",
+"role": "physio",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "koji_nakagawa",
+"name": "Koji Nakagawa",
+"group": "original",
+"region": "staff",
+"role": "match analyst",
+"teams": [
+"japan_u20"
+]
+},
+{
+"id": "toby_marlowe",
+"name": "Toby Marlowe",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "liam_cartwright",
+"name": "Liam Cartwright",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "dexter_brigham",
+"name": "Dexter Brigham",
+"group": "original",
+"region": "staff",
+"role": "goalkeeping coach",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "miles_ainsley",
+"name": "Miles Ainsley",
+"group": "original",
+"region": "staff",
+"role": "fitness coach",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "elliot_ashworth",
+"name": "Elliot Ashworth",
+"group": "original",
+"region": "staff",
+"role": "physio",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "declan_whitlock",
+"name": "Declan Whitlock",
+"group": "original",
+"region": "staff",
+"role": "match analyst",
+"teams": [
+"england_u20"
+]
+},
+{
+"id": "maxime_villard",
+"name": "Maxime Villard",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "lucien_quesnel",
+"name": "Lucien Quesnel",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "mathis_fontaine",
+"name": "Mathis Fontaine",
+"group": "original",
+"region": "staff",
+"role": "goalkeeping coach",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "yanis_fontaine",
+"name": "Yanis Fontaine",
+"group": "original",
+"region": "staff",
+"role": "fitness coach",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "rayan_perrin",
+"name": "Rayan Perrin",
+"group": "original",
+"region": "staff",
+"role": "physio",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "theo_ambroise",
+"name": "Theo Ambroise",
+"group": "original",
+"region": "staff",
+"role": "match analyst",
+"teams": [
+"france_u20"
+]
+},
+{
+"id": "chinedu_abiola",
+"name": "Chinedu Abiola",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "tobenna_gbadamosi",
+"name": "Tobenna Gbadamosi",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "femi_mbah",
+"name": "Femi Mbah",
+"group": "original",
+"region": "staff",
+"role": "goalkeeping coach",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "ifeanyi_balogun",
+"name": "Ifeanyi Balogun",
+"group": "original",
+"region": "staff",
+"role": "fitness coach",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "sunday_onyeka",
+"name": "Sunday Onyeka",
+"group": "original",
+"region": "staff",
+"role": "physio",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "kelechi_nwosu",
+"name": "Kelechi Nwosu",
+"group": "original",
+"region": "staff",
+"role": "match analyst",
+"teams": [
+"nigeria_u20"
+]
+},
+{
+"id": "sebastian_brandl",
+"name": "Sebastian Brandl",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "dominik_haller",
+"name": "Dominik Haller",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "fabian_kellner",
+"name": "Fabian Kellner",
+"group": "original",
+"region": "staff",
+"role": "goalkeeping coach",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "ulrich_haller",
+"name": "Ulrich Haller",
+"group": "original",
+"region": "staff",
+"role": "fitness coach",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "fabian_pfeiffer",
+"name": "Fabian Pfeiffer",
+"group": "original",
+"region": "staff",
+"role": "physio",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "ulrich_gruber",
+"name": "Ulrich Gruber",
+"group": "original",
+"region": "staff",
+"role": "match analyst",
+"teams": [
+"germany_u20"
+]
+},
+{
+"id": "koji_nomura",
+"name": "Koji Nomura",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "souta_uehara",
+"name": "Souta Uehara",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "kaito_aizawa",
+"name": "Kaito Aizawa",
+"group": "original",
+"region": "staff",
+"role": "goalkeeping coach",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "souta_kobayashi",
+"name": "Souta Kobayashi",
+"group": "original",
+"region": "staff",
+"role": "fitness coach",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "ayumu_fujiwara",
+"name": "Ayumu Fujiwara",
+"group": "original",
+"region": "staff",
+"role": "physio",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "kosuke_hayashi",
+"name": "Kosuke Hayashi",
+"group": "original",
+"region": "staff",
+"role": "match analyst",
+"teams": [
+"academy_team"
+]
+},
+{
+"id": "yamato_kawai",
+"name": "Yamato Kawai",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "takumi_yagi",
+"name": "Takumi Yagi",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "reiji_haga",
+"name": "Reiji Haga",
+"group": "original",
+"region": "staff",
+"role": "goalkeeping coach",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "seiya_kobayashi",
+"name": "Seiya Kobayashi",
+"group": "original",
+"region": "staff",
+"role": "fitness coach",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "minato_okabe",
+"name": "Minato Okabe",
+"group": "original",
+"region": "staff",
+"role": "physio",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "hiroki_matsuda",
+"name": "Hiroki Matsuda",
+"group": "original",
+"region": "staff",
+"role": "match analyst",
+"teams": [
+"rival_academy"
+]
+},
+{
+"id": "akihiro_nakagawa",
+"name": "Akihiro Nakagawa",
+"group": "original",
+"region": "staff",
+"role": "head coach",
+"teams": [
+"blue_lock_eleven"
+]
+},
+{
+"id": "seiya_nomura",
+"name": "Seiya Nomura",
+"group": "original",
+"region": "staff",
+"role": "assistant coach",
+"teams": [
+"blue_lock_eleven"
+]
+},
+{
+"id": "ren_nakagawa",
+"name": "Ren Nakagawa",
+"group": "original",
+"region": "staff",
+"role": "Blue Lock canteen chef",
+"teams": []
+},
+{
+"id": "haruki_ogawa",
+"name": "Haruki Ogawa",
+"group": "original",
+"region": "staff",
+"role": "Blue Lock canteen assistant",
+"teams": []
+},
+{
+"id": "eiji_yagi",
+"name": "Eiji Yagi",
+"group": "original",
+"region": "staff",
+"role": "facility security chief",
+"teams": []
+},
+{
+"id": "kenji_morishita",
+"name": "Kenji Morishita",
+"group": "original",
+"region": "staff",
+"role": "night guard",
+"teams": []
+},
+{
+"id": "daisuke_saeki",
+"name": "Daisuke Saeki",
+"group": "original",
+"region": "staff",
+"role": "dorm supervisor",
+"teams": []
+},
+{
+"id": "kosuke_yoshida",
+"name": "Kosuke Yoshida",
+"group": "original",
+"region": "staff",
+"role": "facility nurse",
+"teams": []
+},
+{
+"id": "joji_takagi",
+"name": "Joji Takagi",
+"group": "original",
+"region": "staff",
+"role": "equipment manager",
+"teams": []
+},
+{
+"id": "satoru_kitagawa",
+"name": "Satoru Kitagawa",
+"group": "original",
+"region": "staff",
+"role": "groundskeeper",
+"teams": []
+},
+{
+"id": "tatsuya_shimizu",
+"name": "Tatsuya Shimizu",
+"group": "original",
+"region": "staff",
+"role": "video technician",
+"teams": []
+},
+{
+"id": "kenji_wada",
+"name": "Kenji Wada",
+"group": "original",
+"region": "staff",
+"role": "selection scorekeeper",
+"teams": []
+},
+{
+"id": "yusuke_aizawa",
+"name": "Yusuke Aizawa",
+"group": "original",
+"region": "staff",
+"role": "cleaning staff lead",
+"teams": []
+},
+{
+"id": "eiji_oishi",
+"name": "Eiji Oishi",
+"group": "original",
+"region": "staff",
+"role": "Ego's secretary",
+"teams": []
+},
+{
+"id": "kazuki_itagaki",
+"name": "Kazuki Itagaki",
+"group": "original",
+"region": "officials",
+"role": "referee (selection matches)",
+"teams": []
+},
+{
+"id": "elliot_lindsey",
+"name": "Elliot Lindsey",
+"group": "original",
+"region": "officials",
+"role": "referee (international)",
+"teams": []
+},
+{
+"id": "felix_kellner",
+"name": "Felix Kellner",
+"group": "original",
+"region": "officials",
+"role": "referee (international)",
+"teams": []
+},
+{
+"id": "esteban_aranda",
+"name": "Esteban Aranda",
+"group": "original",
+"region": "officials",
+"role": "referee (international)",
+"teams": []
+},
+{
+"id": "nicola_moretti",
+"name": "Nicola Moretti",
+"group": "original",
+"region": "officials",
+"role": "linesman",
+"teams": []
+},
+{
+"id": "lucien_boucher",
+"name": "Lucien Boucher",
+"group": "original",
+"region": "officials",
+"role": "VAR official",
+"teams": []
+},
+{
+"id": "koji_kobayashi",
+"name": "Koji Kobayashi",
+"group": "original",
+"region": "media",
+"role": "TV commentator",
+"teams": []
+},
+{
+"id": "reece_lindsey",
+"name": "Reece Lindsey",
+"group": "original",
+"region": "media",
+"role": "English commentator",
+"teams": []
+},
+{
+"id": "santiago_aranda",
+"name": "Santiago Aranda",
+"group": "original",
+"region": "media",
+"role": "Spanish commentator",
+"teams": []
+},
+{
+"id": "daisuke_yamazaki",
+"name": "Daisuke Yamazaki",
+"group": "original",
+"region": "media",
+"role": "sideline reporter",
+"teams": []
+},
+{
+"id": "seiya_sakurada",
+"name": "Seiya Sakurada",
+"group": "original",
+"region": "media",
+"role": "newspaper editor",
+"teams": []
+},
+{
+"id": "kaito_tamura",
+"name": "Kaito Tamura",
+"group": "original",
+"region": "media",
+"role": "magazine photographer",
+"teams": []
+},
+{
+"id": "callum_northcott",
+"name": "Callum Northcott",
+"group": "original",
+"region": "media",
+"role": "football pundit",
+"teams": []
+},
+{
+"id": "fabian_imhoff",
+"name": "Fabian Imhoff",
+"group": "original",
+"region": "media",
+"role": "German reporter",
+"teams": []
+},
+{
+"id": "daisuke_sakurada",
+"name": "Daisuke Sakurada",
+"group": "original",
+"region": "sponsor",
+"role": "sponsor executive",
+"teams": []
+},
+{
+"id": "genta_yamazaki",
+"name": "Genta Yamazaki",
+"group": "original",
+"region": "sponsor",
+"role": "kit supplier representative",
+"teams": []
+},
+{
+"id": "finn_thorne",
+"name": "Finn Thorne",
+"group": "original",
+"region": "sponsor",
+"role": "club owner",
+"teams": []
+},
+{
+"id": "octavio_tapia",
+"name": "Octavio Tapia",
+"group": "original",
+"region": "sponsor",
+"role": "club president",
+"teams": []
+},
+{
+"id": "hayato_yoshida",
+"name": "Hayato Yoshida",
+"group": "original",
+"region": "family",
+"role": "player's father",
+"teams": []
+},
+{
+"id": "kota_yamazaki",
+"name": "Kota Yamazaki",
+"group": "original",
+"region": "family",
+"role": "player's mother",
+"teams": []
+},
+{
+"id": "kaito_kobayashi",
+"name": "Kaito Kobayashi",
+"group": "original",
+"region": "family",
+"role": "player's grandparent",
+"teams": []
+},
+{
+"id": "tomoki_kobayashi",
+"name": "Tomoki Kobayashi",
+"group": "original",
+"region": "family",
+"role": "childhood best friend",
+"teams": []
+},
+{
+"id": "ryota_tsuji",
+"name": "Ryota Tsuji",
+"group": "original",
+"region": "family",
+"role": "school teacher",
+"teams": []
+},
+{
+"id": "kosuke_nogami",
+"name": "Kosuke Nogami",
+"group": "original",
+"region": "family",
+"role": "school football club coach",
+"teams": []
+},
+{
+"id": "souta_sakurada",
+"name": "Souta Sakurada",
+"group": "original",
+"region": "family",
+"role": "neighbourhood shopkeeper",
+"teams": []
+},
+{
+"id": "hiroki_sugiyama",
+"name": "Hiroki Sugiyama",
+"group": "original",
+"region": "staff",
+"role": "JFU official",
+"teams": []
+},
+{
+"id": "souta_kitagawa",
+"name": "Souta Kitagawa",
+"group": "original",
+"region": "staff",
+"role": "JFU chairman aide",
+"teams": []
+},
+{
+"id": "ryota_oishi",
+"name": "Ryota Oishi",
+"group": "original",
+"region": "staff",
+"role": "talent scout",
+"teams": []
+},
+{
+"id": "takumi_saeki",
+"name": "Takumi Saeki",
+"group": "original",
+"region": "staff",
+"role": "sports doctor",
+"teams": []
+},
+{
+"id": "ren_hanazono",
+"name": "Ren Hanazono",
+"group": "original",
+"region": "staff",
+"role": "PR manager",
+"teams": []
+}
+],
+"teams": [
+{
+"id": "aaa",
+"name": "AAA",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "ac_milanoia",
+"name": "AC Milanoia",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "ajajax",
+"name": "Ajajax",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "akudo_academy",
+"name": "Akudo Academy",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "aomori_dadada_high_school",
+"name": "Aomori Dadada High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "arsenaly",
+"name": "Arsenaly",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "bachi_united_chiba",
+"name": "Bachi United Chiba",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "bambi_osaka",
+"name": "Bambi Osaka",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "bastard_munchen",
+"name": "Bastard München",
+"kind": "club",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 6
+},
+{
+"id": "berserk_dortmund",
+"name": "Berserk Dortmund",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "blue_lock_eleven",
+"name": "Blue Lock Eleven",
+"kind": "selection",
+"named": 23,
+"squad": 11,
+"filler": 0,
+"staff": 4
+},
+{
+"id": "bolos",
+"name": "Bolos",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "brightneon",
+"name": "Brightneon",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "celticoss",
+"name": "Celticoss",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "chelblue",
+"name": "Chelblue",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "chicorid",
+"name": "Chicorid",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "daruma_higashi_high_school",
+"name": "Daruma Higashi High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "dosankoro_sapporo",
+"name": "Dosankoro Sapporo",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "fc_barcha",
+"name": "FC Barcha",
+"kind": "club",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 6
+},
+{
+"id": "fc_portimion",
+"name": "FC Portimion",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "gohonzon_kamakura",
+"name": "Gohonzon Kamakura",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "hakuho_high_school",
+"name": "Hakuho High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "ichinan_high_school",
+"name": "Ichinan High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "ikarigaoka_high_school",
+"name": "Ikarigaoka High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "interias_milanoia",
+"name": "Interias Milanoia",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "jubilee_iwata",
+"name": "Jubilee Iwata",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "kanau_academy",
+"name": "Kanau Academy",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "kashiko_academy",
+"name": "Kashiko Academy",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "kawasaki_breakerz",
+"name": "Kawasaki Breakerz",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "kirikizan_high_school",
+"name": "Kirikizan High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "kitsunezaka_high_school",
+"name": "Kitsunezaka High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "kroningen",
+"name": "Kroningen",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "livers",
+"name": "Livers",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "manshine_city",
+"name": "Manshine City",
+"kind": "club",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 6
+},
+{
+"id": "manshine_united",
+"name": "Manshine United",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "marseille",
+"name": "Marseille",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "matsukaze_high_school",
+"name": "Matsukaze High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "miracleicester",
+"name": "Miracleicester",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "monao",
+"name": "Monao",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "murasame_high_school",
+"name": "Murasame High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "namikaze_high_school",
+"name": "Namikaze High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "nandatot",
+"name": "Nandatot",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "napolin",
+"name": "Napolin",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "nobiiru_high_school",
+"name": "Nobiiru High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "omiya_arcadia",
+"name": "Omiya Arcadia",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "palmaro",
+"name": "Palmaro",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "paris_x_gen",
+"name": "Paris X Gen",
+"kind": "club",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 6
+},
+{
+"id": "rakosute_business_high_school",
+"name": "Rakosute Business High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "re_al",
+"name": "Re Al",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "roar_kumamoto",
+"name": "Roar Kumamoto",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "rpb",
+"name": "RPB",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "seido_academy",
+"name": "Seido Academy",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "sint_troy",
+"name": "Sint-Troy",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "soranin_high_school",
+"name": "Soranin High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "start_reims",
+"name": "Start Reims",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "sunflame_hiroshima",
+"name": "Sunflame Hiroshima",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "team_a",
+"name": "Team A",
+"kind": "selection",
+"named": 14,
+"squad": 11,
+"filler": 0,
+"staff": 0
+},
+{
+"id": "team_b",
+"name": "Team B",
+"kind": "selection",
+"named": 11,
+"squad": 11,
+"filler": 0,
+"staff": 0
+},
+{
+"id": "team_blue_lock",
+"name": "Team Blue Lock",
+"kind": "selection",
+"named": 0,
+"squad": 11,
+"filler": 11,
+"staff": 0
+},
+{
+"id": "team_c",
+"name": "Team C",
+"kind": "selection",
+"named": 11,
+"squad": 11,
+"filler": 0,
+"staff": 0
+},
+{
+"id": "team_red",
+"name": "Team Red",
+"kind": "selection",
+"named": 30,
+"squad": 11,
+"filler": 0,
+"staff": 0
+},
+{
+"id": "team_v",
+"name": "Team V",
+"kind": "selection",
+"named": 12,
+"squad": 11,
+"filler": 0,
+"staff": 2
+},
+{
+"id": "team_w",
+"name": "Team W",
+"kind": "selection",
+"named": 11,
+"squad": 11,
+"filler": 0,
+"staff": 2
+},
+{
+"id": "team_white",
+"name": "Team White",
+"kind": "selection",
+"named": 18,
+"squad": 11,
+"filler": 0,
+"staff": 0
+},
+{
+"id": "team_world_five",
+"name": "Team World Five",
+"kind": "group",
+"named": 5,
+"squad": 5,
+"filler": 0,
+"staff": 0
+},
+{
+"id": "team_x",
+"name": "Team X",
+"kind": "selection",
+"named": 11,
+"squad": 11,
+"filler": 0,
+"staff": 2
+},
+{
+"id": "team_y",
+"name": "Team Y",
+"kind": "selection",
+"named": 11,
+"squad": 11,
+"filler": 0,
+"staff": 2
+},
+{
+"id": "team_z",
+"name": "Team Z",
+"kind": "selection",
+"named": 12,
+"squad": 11,
+"filler": 0,
+"staff": 2
+},
+{
+"id": "ubers",
+"name": "Ubers",
+"kind": "club",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 6
+},
+{
+"id": "urawa_rubies",
+"name": "Urawa Rubies",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "v_fighting_nagasaki",
+"name": "V-Fighting Nagasaki",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "vesper_bremen",
+"name": "Vesper Bremen",
+"kind": "club",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "wasurenagusa_gakuen_high_school",
+"name": "Wasurenagusa Gakuen High School",
+"kind": "school",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "algeria_u20",
+"name": "Algeria U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "argentina_u20",
+"name": "Argentina U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "australia_u20",
+"name": "Australia U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "austria_u20",
+"name": "Austria U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "bahrain_u20",
+"name": "Bahrain U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "belgium_u20",
+"name": "Belgium U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "bolivia_u20",
+"name": "Bolivia U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "brazil_u20",
+"name": "Brazil U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "cameroon_u20",
+"name": "Cameroon U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "canada_u20",
+"name": "Canada U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "cape_verde_u20",
+"name": "Cape Verde U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "chile_u20",
+"name": "Chile U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "china_u20",
+"name": "China U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "colombia_u20",
+"name": "Colombia U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "costa_rica_u20",
+"name": "Costa Rica U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "croatia_u20",
+"name": "Croatia U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "czech_republic_u20",
+"name": "Czech Republic U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "cote_divoire_u20",
+"name": "Côte d'Ivoire U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "denmark_u20",
+"name": "Denmark U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "ecuador_u20",
+"name": "Ecuador U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "egypt_u20",
+"name": "Egypt U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "england_u20",
+"name": "England U-20",
+"kind": "national",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 6
+},
+{
+"id": "france_u20",
+"name": "France U-20",
+"kind": "national",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 7
+},
+{
+"id": "germany_u20",
+"name": "Germany U-20",
+"kind": "national",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 6
+},
+{
+"id": "ghana_u20",
+"name": "Ghana U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "honduras_u20",
+"name": "Honduras U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "hungary_u20",
+"name": "Hungary U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "iran_u20",
+"name": "Iran U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "iraq_u20",
+"name": "Iraq U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "israel_u20",
+"name": "Israel U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "italy_u20",
+"name": "Italy U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "japan_u20",
+"name": "Japan U-20",
+"kind": "national",
+"named": 42,
+"squad": 23,
+"filler": 0,
+"staff": 10
+},
+{
+"id": "jordan_u20",
+"name": "Jordan U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "mali_u20",
+"name": "Mali U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "mexico_u20",
+"name": "Mexico U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "morocco_u20",
+"name": "Morocco U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "netherlands_u20",
+"name": "Netherlands U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "new_zealand_u20",
+"name": "New Zealand U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "nigeria_u20",
+"name": "Nigeria U-20",
+"kind": "national",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 7
+},
+{
+"id": "norway_u20",
+"name": "Norway U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "panama_u20",
+"name": "Panama U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "paraguay_u20",
+"name": "Paraguay U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "peru_u20",
+"name": "Peru U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "poland_u20",
+"name": "Poland U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "portugal_u20",
+"name": "Portugal U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "qatar_u20",
+"name": "Qatar U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "saudi_arabia_u20",
+"name": "Saudi Arabia U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "scotland_u20",
+"name": "Scotland U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "senegal_u20",
+"name": "Senegal U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "serbia_u20",
+"name": "Serbia U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "south_africa_u20",
+"name": "South Africa U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "south_korea_u20",
+"name": "South Korea U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "spain_u20",
+"name": "Spain U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "sweden_u20",
+"name": "Sweden U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "switzerland_u20",
+"name": "Switzerland U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "tunisia_u20",
+"name": "Tunisia U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "turkey_u20",
+"name": "Turkey U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "ukraine_u20",
+"name": "Ukraine U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "united_arab_emirates_u20",
+"name": "United Arab Emirates U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "united_states_u20",
+"name": "United States U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "uruguay_u20",
+"name": "Uruguay U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "uzbekistan_u20",
+"name": "Uzbekistan U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "venezuela_u20",
+"name": "Venezuela U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "wales_u20",
+"name": "Wales U-20",
+"kind": "national",
+"named": 0,
+"squad": 23,
+"filler": 23,
+"staff": 0
+},
+{
+"id": "rival_academy",
+"name": "Rival Academy",
+"kind": "original",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 6
+},
+{
+"id": "academy_team",
+"name": "Academy Team",
+"kind": "original",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 6
+},
+{
+"id": "street_crew",
+"name": "Street Crew",
+"kind": "original",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 0
+},
+{
+"id": "hometown_club",
+"name": "Hometown Club",
+"kind": "original",
+"named": 23,
+"squad": 23,
+"filler": 0,
+"staff": 0
+}
+],
+"groups": [
+{
+"id": "master_strikers",
+"name": "Master Strikers"
+},
+{
+"id": "top_6",
+"name": "Top 6"
+},
+{
+"id": "team_play_supporters",
+"name": "Team Play Supporters"
+},
+{
+"id": "new_generation_world_11",
+"name": "New Generation World 11"
+},
+{
+"id": "iron_wall_quartet",
+"name": "Iron Wall Quartet"
+},
+{
+"id": "buratsuta_3",
+"name": "Buratsuta 3"
+},
+{
+"id": "pifa",
+"name": "PIFA"
+}
+]
+}

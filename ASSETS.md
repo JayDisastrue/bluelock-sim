@@ -27,7 +27,7 @@ public/assets/
 | Name | `<characterId>.png`; `player.png` for your character |
 | Expressions (optional) | `<id>_neutral/smirk/furious/shocked/despair/flow/metavision/devoured.png`; missing ones use `<id>.png` |
 
-**Character ids:** `ego anri bachira barou chigiri kunigami raichi rin sae nagi reo noel_noa isagi gagamaru oliver_aiku` (canon) · `sora reiji mio haruka dante lukas tomas kisaragi` (original) · `player`.
+**Character ids:** 523 are reserved (218 from the series, 305 original: players, staff, officials, media, family) in [`src/content/roster.json`](src/content/roster.json) and tabled in [`docs/ROSTER.md`](docs/ROSTER.md), along with 141 teams. 23 are written so far: `ego anri bachira barou chigiri kunigami raichi rin sae nagi reo noel_noa isagi gagamaru oliver_aiku` (canon) and `sora reiji mio haruka dante lukas tomas kisaragi` (original), plus `player`. Unnamed squad slots are `<teamId>_fill_01` and up (a team short of a full squad has that many). A portrait file with an id that is neither in the roster nor a valid filler slot makes `npm run assets:scan` print a warning: add the id to `roster.json` first.
 Characters with no image show a plain silhouette (canon) or a generated SVG portrait (player and originals).
 
 ## Player creator parts (mix and match)
@@ -43,7 +43,7 @@ The creator is **image-first**. Until you import art it falls back to a plain dr
 
 ## Backgrounds
 JPG/WebP/PNG, **1920 × 1080**, under 1.5 MB, no baked-in text, calm bottom third.
-**Ids:** `black letter room_z cafeteria locker_room training_pitch tunnel stadium monitor_wall ego_office old_pitch academy_gate street_cage bench_dusk` → `backgrounds/<id>.jpg`. Missing ones show a gradient.
+**Ids:** 131, grouped in `docs/IDS.md` (current scenes, facility, pitches, home life, world stage, match day, venues from the series, transitions and cards, cutscene moods, abstract) → `backgrounds/<id>.jpg`. Missing ones show a gradient.
 
 ## Voice and sounds
 **Random character clips** (grunts, laughs, short phrases):
@@ -60,7 +60,7 @@ voice/<characterId>/<emotion>/*.mp3    only for lines with that emotion
 Inner-monologue lines are never voiced.
 
 ## Sound effects and music
-Not auto-scanned. Add to `manifest.json` by hand: `"sfx": { "don": "audio/sfx/don.mp3" }`, `"music": { "selection-tension": "audio/music/tension.mp3" }`. Track ids used by scenes: `memory-hush envelope selection-tension dorm-calm`.
+Not auto-scanned. Add to `manifest.json` by hand: `"sfx": { "don": "audio/sfx/don.mp3" }`, `"music": { "selection-tension": "audio/music/tension.mp3" }`. Track ids used by scenes today: `memory-hush envelope selection-tension dorm-calm`. Reserved music (69), sfx (87), ambience loops (20), series arcs, items and team ids for future features are listed in `docs/IDS.md` and `docs/ROSTER.md` (source: `src/content/reserved.ts`, `roster.json`).
 
 ## Check what's wired
 `npm run assets:scan` prints counts and the background ids still missing.

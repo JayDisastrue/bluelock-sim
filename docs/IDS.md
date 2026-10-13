@@ -29,6 +29,9 @@
 | `tomas` | Tomás Ferreira | original (placeholder) |
 | `kisaragi` | Ayame Kisaragi | original (placeholder) |
 
+### Reserved cast
+523 character ids are reserved (218 from the series, 305 original), plus unnamed squad slots `<teamId>_fill_NN`. Every one can already take art at `public/assets/portraits/<id>.png`. The full tables (every character, every team, who is in the game) are in [`docs/ROSTER.md`](ROSTER.md). Never rename an id that is in the game: saves refer to it.
+
 Extra: `player` is your own character (`portraits/player.png` overrides the whole creator mix).
 Expression art: `<id>_<emotion>.png` with emotion one of `neutral` `smirk` `furious` `shocked` `despair` `flow` `metavision` `devoured`.
 
@@ -45,8 +48,68 @@ Expression art: `<id>_<emotion>.png` with emotion one of `neutral` `smirk` `furi
 
 New ids are allowed: any `<id>.png` you add becomes an extra option. Once a slot has any image, only images are offered for that slot.
 
-## Backgrounds: `public/assets/backgrounds/<id>.jpg`
-`black` `letter` `room_z` `cafeteria` `locker_room` `training_pitch` `tunnel` `stadium` `monitor_wall` `ego_office` `old_pitch` `academy_gate` `street_cage` `bench_dusk`
+### Imported part art (from `public/assets/manifest.json`, refreshed by `npm run assets:scan`)
+| slot | imported ids |
+| --- | --- |
+| face | `heart__brown` `heart__deep` `heart__ebony` `heart__fair` `heart__light` `heart__medium` `heart__pale` `heart__tan` `long__brown` `long__deep` `long__ebony` `long__fair` `long__light` `long__medium` `long__pale` `long__tan` `oval__brown` `oval__deep` `oval__ebony` `oval__fair` `oval__light` `oval__medium` `oval__pale` `oval__tan` `round__brown` `round__deep` `round__ebony` `round__fair` `round__light` `round__medium` `round__pale` `round__tan` `sharp__brown` `sharp__deep` `sharp__ebony` `sharp__fair` `sharp__light` `sharp__medium` `sharp__pale` `sharp__tan` `square__brown` `square__deep` `square__ebony` `square__fair` `square__light` `square__medium` `square__pale` `square__tan` |
+| hair | `afro` `asym_long` `asym_sweep` `bedhead` `bob` `bowl` `braid` `buzz` `crop_fringe` `curly` `dreads` `fringe` `half_bun` `long` `long_bangs` `long_sweep` `messy_bun` `messy_part` `mohawk` `pixie` `ponytail` `shag_wolf` `shaggy` `shaved_sweep` `short_cut` `side_part` `slick_back` `slick_side` `spike_shaved` `spiky` `sweep_fringe` `swept` `topknot` `twin_tails` `undercut` `wavy` `wolf` |
+| eyes | `almond` `droopy` `heavy_lid` `narrow` `round` `sharp` `upturned` `wide` |
+| brow | `angled` `arched` `broken` `raised` `soft` `straight` `thick` `thin` |
+| nose | none yet |
+| mark | `none` `scar_bridge` `scar_centre` `scar_cheek` `scar_cross` `scar_diagonal` `scar_double` `scar_faint` `scar_jaw` `scar_scatter` `scar_x` `scuff` |
+| accessory | none yet |
+
+Face files are `<shape>__<tone>.png`; shapes `oval round square long heart sharp`, tones `pale fair light medium tan brown deep ebony`.
+
+### Planned part ids (sheets still to be generated)
+| slot | ids |
+| --- | --- |
+| nose | `small` `straight` `pointed` `broad` `upturned` `hooked` `flat_wide` `long_thin` `button` |
+| mark | `bandage` `mole` `freckles` `eyebags` `bruise` `nose_plaster` `split_lip` `black_eye` |
+| accessory | `headband` `glasses` `earring` `hair_clip` `headphones` |
+
+## Backgrounds: `public/assets/backgrounds/<id>.jpg` (1920 × 1080)
+All 131 ids already work in scene scripts (a plain colour fallback shows until art is imported).
+| group | ids |
+| --- | --- |
+| Used by the current scenes | `black` `letter` `room_z` `cafeteria` `locker_room` `training_pitch` `tunnel` `stadium` `monitor_wall` `ego_office` `old_pitch` `academy_gate` `street_cage` `bench_dusk` |
+| Blue Lock facility | `dorm_hallway` `dorm_room` `shower_room` `gym` `medical_room` `lounge` `rooftop` `monitor_room_night` `selection_hall` `ego_lab` `briefing_room` `corridor` `stairwell` `vending_corner` `press_room` `interview_stage` `sponsor_lounge` |
+| Pitches and courts | `tag_test_arena` `first_selection_field` `second_selection_field` `training_pitch_night` `training_pitch_rain` `pitch_sunrise` `pitch_snow` `indoor_court` `futsal_court` `riverside_pitch` `penalty_spot` `goal_mouth_close` |
+| Home and everyday life | `hometown_street` `school_gym` `school_classroom` `school_rooftop` `convenience_store` `train_station` `airport_gate` `bus_window` `bedroom_night` `family_kitchen` `hospital_room` `shrine_steps` `festival_night` `beach_dusk` `cafe` |
+| The world stage | `u20_stadium_day` `u20_stadium_night` `stadium_tunnel_roar` `press_conference` `hotel_room` `city_night` `locker_room_europe` `training_ground_europe` |
+| Match day | `stadium_stands_wide` `stadium_crowd_close` `pitch_centre_circle` `pitch_corner_flag` `pitch_penalty_area` `pitch_touchline` `dugout` `bench_row` `substitution_board` `halftime_locker` `pre_match_tunnel` `pitch_floodlights_night` `pitch_rain_heavy` `stadium_empty` `scoreboard_goal` `trophy_room` `award_stage` `mixed_zone` |
+| Venues and places from the series | `stadium_munchen` `stadium_manshine` `stadium_barcha` `stadium_paris` `stadium_ubers` `stadium_japan_national` `stadium_u20_final` `champ_nou` `bm_clubhouse` `jfu_hq` `mikage_corp` `lagos_orphanage` `relaxation_theater` `wild_card_room` `blue_lock_exterior` |
+| Transitions and cards | `wipe_black` `wipe_white` `flash_white` `speedlines` `title_card` `chapter_card` `week_card` `loading_pitch` `split_diagonal` `ink_splash` `halftone_red` `halftone_blue` `countdown_board` |
+| Cutscene moods | `flashback_sepia` `dream_field` `childhood_pitch` `rain_window` `empty_dorm` `silhouette_stage` `spotlight_floor` `tv_static` `phone_screen` `social_feed` `news_broadcast` `video_review_room` |
+| Abstract and effect backdrops | `white_void` `red_void` `memory_haze` `flow_field` `metavision_grid` `scoreboard_closeup` `newspaper_wall` |
+
+## Sound ids (reserved, wired by hand in `manifest.json`, see `ASSETS.md`)
+**Music** (60):
+| group | ids |
+| --- | --- |
+| Used by scenes today | `memory-hush` `envelope` `selection-tension` `dorm-calm` |
+| Menus and hub | `main-menu` `creation` `hub-day` `hub-night` `hub-tense` `hub-warm` `save-load` `gallery` `credits` |
+| Story moods | `ego-lecture` `rival-theme` `bond-warm` `betrayal` `awakening` `loss` `resolve` `reunion` `confession` `flashback` `dread` `comic-relief` `quiet-night` `press-pressure` `sponsor-intrigue` |
+| Arcs and selections | `arc-intro` `tag-test` `first-selection` `second-selection` `third-selection` `neo-egoist-league` `u20-japan` `u20-world-cup` `worlds-best` `selection-announce` `elimination` `rank-up` |
+| Training | `training-montage` `training-hard` `training-calm` `minigame` |
+| Matches | `match-kickoff` `match-tension` `match-flow` `match-metavision` `match-desperate` `match-comeback` `match-lead` `goal-celebrate` `goal-conceded` `half-time` `full-time-win` `full-time-loss` `full-time-draw` `penalty-shootout` `post-match-quiet` `u20-anthem` |
+
+**SFX** (87):
+| group | ids |
+| --- | --- |
+| Used today | `don` |
+| Interface | `menu-click` `menu-back` `choice-hover` `choice-confirm` `choice-timer-tick` `choice-timeout` `save-ok` `load-ok` `error` `notification` `text-blip` `page-flip` `tab-switch` `dice-roll` `unlock` `level-up` `rank-up-sting` |
+| Manga and cutscene | `impact-hit` `impact-big` `panel-slam` `panel-slide` `speedlines-whoosh` `ripple-chime` `ripple-bad` `flow-on` `flow-off` `metavision-on` `metavision-off` `devoured-sting` `ego-sting` `heartbeat` `heartbeat-fast` `breath` `gasp` `transition-whoosh` `transition-slam` `camera-shutter` `glass-break` `thunder` |
+| Football | `shot-strike` `shot-curve` `pass-short` `pass-long` `ball-kick-soft` `ball-kick-hard` `ball-bounce` `ball-net` `post-hit` `bar-hit` `save-dive` `keeper-catch` `tackle` `slide-tackle` `sprint` `dribble-touch` `header` `whistle-short` `whistle-long` `card-show` `var-beep` `scoreboard-tick` `goal-horn` |
+| Crowd | `crowd-roar` `crowd-gasp` `crowd-groan` `crowd-chant` `crowd-boo` `crowd-cheer-small` `crowd-clap` `commentator-excited` |
+| World | `door-slide` `door-open` `locker-slam` `footsteps-grass` `footsteps-concrete` `footsteps-corridor` `keyboard` `phone-buzz` `paper-rustle` `elevator-ding` `monitor-hum` `vending-machine` `shower` `rain` `wind` `train-pass` |
+
+**Ambience loops** (20): `dorm-night` `canteen-chatter` `corridor-hum` `monitor-room` `training-pitch-day` `training-pitch-night` `rain-pitch` `stadium-empty` `stadium-crowd-low` `stadium-crowd-full` `locker-room` `tunnel-echo` `press-room` `city-night` `hometown-day` `school-gym` `train-station` `hospital` `beach` `festival`
+
+## Other reserved ids
+- Series arcs (for the long campaign): `introduction` `first_selection` `second_selection` `third_selection` `neo_egoist_league` `u20_japan` `u20_world_cup` `worlds_best`
+- Items (shop and rewards): `boots_speed` `boots_control` `boots_power` `boots_grip` `shin_guards` `gloves_keeper` `captain_armband` `training_weights` `resistance_band` `recovery_boots` `energy_drink` `protein_meal` `sleep_mask` `ice_pack` `tactical_notebook` `match_footage` `rival_dossier` `lucky_charm` `hometown_photo` `sponsor_contract` `jersey_team_z` `jersey_team_v` `jersey_blue_lock_eleven` `jersey_u20_japan` `headband` `wristband`
+- Teams: 141 ids, see [`docs/ROSTER.md`](ROSTER.md)
 
 ## Voice
 - Random clips: `public/assets/voice/<characterId>/*.mp3` (optional `<emotion>/` subfolders). Character ids: see Characters above, plus `player`.
