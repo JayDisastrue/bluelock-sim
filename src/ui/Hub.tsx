@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { content } from '../content'
 import { Portrait } from '../cutscene/Portrait'
@@ -7,12 +7,23 @@ import { RARITY_INFO, REP_AXES, SKILLS } from '../engine/schemas'
 import { useGame } from '../engine/store'
 import { Meter } from './Screen'
 import { useUi } from './uiStore'
+import './hub.css'
 
 const REP_LABEL = { egoAura: 'Ego Aura', teamPlayer: 'Team Player', mediaDarling: 'Media Darling', coachFavor: 'Coach Favor', mystery: 'Mystery' }
 
+/** Overall rating = mean of the nine skills, and the tier name the number falls in. */
+export function overallOf(skills: Record<string, number>): { value: number; tier: string } {
+  const vals = SKILLS.map((k) => skills[k] ?? 0)
+  const value = Math.round(vals.reduce((a, b) => a + b, 0) / vals.length)
+  const tier = value >= 85 ? 'World class' : value >= 70 ? 'Elite' : value >= 55 ? 'Rising' : value >= 40 ? 'Promising' : 'Raw'
+  return { value, tier }
+}
+
+interface LogLine { key: string; turn: number; text: string; sub?: string; tone: string }
+
 /**
- * PLACEHOLDER hub. The weekly AP planner, training and events inbox are milestone M3.
- * What is real here: the calendar turn (delayed events fire when due), status, relationships, ripples, saves.
+ * Life Hub shell. Real: status, skills, reputation, weapons, career log (ripples + memories), the calendar turn.
+ * PLACEHOLDER: Train, Squad, Stats, League and the ranking are milestone M3 to M5 and are shown disabled.
  */
 export function Hub() {
   const s = useGame((g) => g.state)!
@@ -32,72 +43,114 @@ export function Hub() {
 
   const opened = !!s.flags.OPENING_COMPLETE
   const pending = s.scheduled.length
-  return (
-    <div className="tone" style={{ minHeight: '100%', padding: '1.2rem 1.5rem 3rem' }} data-testid="hub">
-      <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gap: '1rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-          <h1 className="slash-title" style={{ fontSize: '2rem', margin: 0, textShadow: '3px 3px 0 #e5233b' }}>Dorm · Week {s.life.week}</h1>
-          {s.meta.sandboxUsed && <span className="chip" style={{ color: '#ffd98a' }} title="Sandbox was used in this run">SANDBOX USED</span>}
-          <span style={{ flex: 1 }} />
-          <Link className="btn small" to="/relationships">Relationships</Link>
-          <Link className="btn small" to="/ripples">Ripple Log</Link>
-          <Link className="btn small" to="/gallery">Gallery</Link>
-          <Link className="btn small" to="/saves">Save / Load</Link>
-          <Link className="btn small" to="/settings">Settings</Link>
-          <Link className="btn small" to="/">Menu</Link>
-        </div>
+  const { value: overall, tier } = overallOf(s.skills)
+  const log = useMemo<LogLine[]>(() => {
+    const lines: LogLine[] = [
+      ...s.ripples.map((r) => ({ key: `r${r.id}`, turn: r.turn, text: r.headline, sub: r.choiceLabel ? `You: ${r.choiceLabel}` : undefined, tone: '#e5233b' })),
+      ...s.memory.map((m) => ({ key: `m${m.id}`, turn: m.turn, text: m.text, tone: '#6ea0ff' })),
+    ]
+    return lines.sort((a, b) => b.turn - a.turn || b.key.localeCompare(a.key)).slice(0, 40)
+  }, [s.ripples, s.memory])
+  const arcName = content.arcs[s.arc.id]?.name ?? s.arc.id
+  const foot = s.player.handedness === 'both' ? 'two-footed' : `${s.player.handedness}-footed`
+  const energyPct = Math.round((s.life.stamina / Math.max(1, s.life.staminaMax)) * 100)
 
-        <div className="panel-card hub-head" style={{ borderColor: '#e5233b' }}>
-          <div style={{ height: 140 }}><Portrait who="player" /></div>
-          <div>
-            <div className="slash-title" style={{ fontSize: '1.5rem' }}>{s.player.name}</div>
-            <div style={{ color: '#cfd6ee' }}>{ORIGIN_NAMES[s.player.origin]} · {s.player.position} · {s.player.handedness === 'both' ? 'two-footed' : `${s.player.handedness}-footed`} · age {s.life.age} · arc: {content.arcs[s.arc.id]?.name}</div>
-            <div style={{ color: '#9fa6b8', fontSize: '.85rem', marginTop: 4 }}>
-              ⚑ <b>PLACEHOLDER HUB</b>: the AP planner, training and event inbox arrive in M3. This week-advance is real: scheduled consequences fire when due.
+  return (
+    <div className="tone hub" data-testid="hub">
+      <div className="hub-wrap">
+        <header className="hud">
+          <div className="hud-logo"><b>EGOIST LIFE</b><span>{s.player.position} · CAREER</span></div>
+          <div className="hud-nav">
+            <Link className="nav-tile" style={{ ['--tone' as string]: '#a97bff' }} to="/relationships">Relationships</Link>
+            <Link className="nav-tile" style={{ ['--tone' as string]: '#56d3ff' }} to="/ripples">Ripple Log</Link>
+            <Link className="nav-tile" style={{ ['--tone' as string]: '#ffd24a' }} to="/gallery">Gallery</Link>
+            <Link className="nav-tile" style={{ ['--tone' as string]: '#ff8a3b' }} to="/saves">Save / Load</Link>
+            <Link className="nav-tile" style={{ ['--tone' as string]: '#6ea0ff' }} to="/settings">Settings</Link>
+            <Link className="nav-tile" style={{ ['--tone' as string]: '#9fa6b8' }} to="/">Menu</Link>
+          </div>
+          <div className="hud-stats">
+            <div className="stat-chip" style={{ ['--tone' as string]: '#ffd24a' }} title="Ranking arrives with the Tag Test (M5): PLACEHOLDER">
+              <small>Ranking</small><strong>#— <span style={{ color: '#7e869c', fontSize: '.85rem' }}>/ 300</span></strong>
+            </div>
+            <div className="stat-chip" style={{ ['--tone' as string]: '#4fd18b' }}>
+              <small>Funds</small><strong>¥{s.life.money.toLocaleString()}</strong>
+            </div>
+            <div className="stat-chip" style={{ ['--tone' as string]: '#e5233b' }}>
+              <small>Timeline</small><strong>Week {s.life.week}</strong>
+            </div>
+            {s.meta.sandboxUsed && <span className="chip" style={{ color: '#ffd98a', alignSelf: 'center' }} title="Sandbox was used in this run">SANDBOX USED</span>}
+          </div>
+        </header>
+
+        <div className="hub-main">
+          <aside className="player-card" aria-label="Player">
+            <div className="portrait-box"><Portrait who="player" /></div>
+            <h2>{s.player.name}</h2>
+            <div className="sub">{s.player.position} · {tier}</div>
+            <div className="meta">AGE {s.life.age} · {ORIGIN_NAMES[s.player.origin]} · {arcName}</div>
+            <hr className="rule" />
+            <div className="overall"><small>Overall</small><div className="big" data-testid="overall">{overall}</div><div className="tier">{tier}</div></div>
+            <hr className="rule" />
+            <div className="kv"><small>Strong foot</small><strong>{foot}</strong></div>
+            <hr className="rule" />
+            <div className="bar-row">
+              <div className="top"><span>Energy</span><b>{s.life.stamina} / {s.life.staminaMax}</b></div>
+              <div className="bar" role="progressbar" aria-label="Energy" aria-valuenow={s.life.stamina} aria-valuemax={s.life.staminaMax}><i style={{ width: `${energyPct}%` }} /></div>
+              <div className="top"><span>Action points</span><b style={{ color: '#ffd98a' }}>{s.life.ap} / {s.life.apMax}</b></div>
+              <div className="ap-pips" aria-hidden>{Array.from({ length: s.life.apMax }, (_, i) => <i key={i} className={i < s.life.ap ? 'on' : ''} />)}</div>
+            </div>
+            <div className="bar-row">
+              <div className="top"><span>Composure</span><b style={{ color: '#6ea0ff' }}>{s.life.composure}</b></div>
+              <div className="bar blue"><i style={{ width: `${Math.min(100, s.life.composure)}%` }} /></div>
+              <div className="top"><span>Health</span><b style={{ color: '#ff9aa6' }}>{s.life.health}</b></div>
+              <div className="bar red"><i style={{ width: `${Math.min(100, s.life.health)}%` }} /></div>
+            </div>
+            {s.life.injuries.length > 0 && <div style={{ color: '#ff9aa6', fontSize: '.8rem' }}>Injuries: {s.life.injuries.map((i) => `${i.part} (${i.severity}, ${i.weeksLeft}w)`).join(', ')}</div>}
+            <div className="chips" aria-label="Weapons">
+              {Object.entries(s.weapons).map(([id, w]) => <span key={id} className="chip" style={{ color: w.corrupted ? '#ff5a6e' : '#6ea0ff' }} title={content.weapons[id] ? RARITY_INFO[content.weapons[id]!.rarity].label : ''}>{content.weapons[id] ? RARITY_INFO[content.weapons[id]!.rarity].glyph + ' ' : ''}{content.weapons[id]?.levels[w.level - 1]?.name ?? id}{w.corrupted ? ' ☠' : ''}</span>)}
+            </div>
+            <div className="chips" aria-label="Traits">{s.traits.map((t) => <span key={t} className="chip" title={content.traits[t]?.desc}>{content.traits[t]?.name ?? t}</span>)}</div>
+            <div className="card-note">{pending} consequence{pending === 1 ? '' : 's'} pending · Mood {s.life.mood} · Intel {s.resources.tacticalIntel}</div>
+          </aside>
+
+          <div className="center-col">
+            <section className="hub-panel" aria-label="Career log">
+              <h3>Career log</h3>
+              <div className="log">
+                {!opened && <div className="log-row" style={{ ['--tone' as string]: '#ffd98a' }}><i /><small>NOW</small><div className="t">Finish the opening first: the hub unlocks once the first scene ends.</div></div>}
+                {log.length === 0 && opened && <div className="log-row"><i /><small>W{s.life.week}</small><div className="t">Welcome back. Current arc: {arcName}.</div></div>}
+                {log.map((l) => (
+                  <div key={l.key} className="log-row" style={{ ['--tone' as string]: l.tone }}>
+                    <i /><small>W{l.turn + 1}</small>
+                    <div className="t">{l.text}{l.sub && <em>{l.sub}</em>}</div>
+                  </div>
+                ))}
+              </div>
+            </section>
+            <div className="two-col">
+              <section className="hub-panel" aria-label="Skills">
+                <h3>Skills</h3>
+                {SKILLS.map((k) => (
+                  <div key={k} className="stat-line"><span>{k}</span><Meter value={s.skills[k]} /><span>{s.skills[k]}</span></div>
+                ))}
+              </section>
+              <section className="hub-panel" aria-label="Reputation">
+                <h3>Reputation</h3>
+                {REP_AXES.map((k) => (
+                  <div key={k} className="stat-line"><span>{REP_LABEL[k]}</span><Meter value={s.reputation[k]} /><span>{s.reputation[k]}</span></div>
+                ))}
+              </section>
             </div>
           </div>
-          <div style={{ display: 'grid', gap: 6, justifyItems: 'end' }}>
-            <button className="btn primary" onClick={advance} data-testid="advance" disabled={!opened}>Advance week →</button>
-            <div style={{ fontSize: '.8rem', color: '#9fa6b8' }}>{pending} consequence{pending === 1 ? '' : 's'} pending</div>
-            {!opened && <div style={{ fontSize: '.8rem', color: '#ffd98a' }}>Finish the opening first</div>}
-          </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
-          <section className="panel-card" aria-label="Status">
-            <h2 className="slash-title">Status</h2>
-            <table style={{ width: '100%' }}><tbody>
-              {([['AP', `${s.life.ap}/${s.life.apMax}`], ['Stamina', s.life.stamina], ['Composure', s.life.composure], ['Health', s.life.health], ['Mood', s.life.mood], ['Money', `¥${s.life.money.toLocaleString()}`], ['Tactical Intel', s.resources.tacticalIntel]] as const).map(([k, v]) => (
-                <tr key={k}><td style={{ color: '#9fa6b8' }}>{k}</td><td>{v}</td></tr>
-              ))}
-            </tbody></table>
-            {s.life.injuries.length > 0 && <div style={{ color: '#ff9aa6' }}>Injuries: {s.life.injuries.map((i) => `${i.part} (${i.severity}, ${i.weeksLeft}w)`).join(', ')}</div>}
-          </section>
-          <section className="panel-card" aria-label="Skills">
-            <h2 className="slash-title">Skills</h2>
-            {SKILLS.map((k) => (
-              <div key={k} style={{ display: 'grid', gridTemplateColumns: '90px 1fr 30px', gap: 8, alignItems: 'center', margin: '4px 0' }}>
-                <span style={{ color: '#9fa6b8', textTransform: 'capitalize' }}>{k}</span><Meter value={s.skills[k]} /><span>{s.skills[k]}</span>
-              </div>
-            ))}
-          </section>
-          <section className="panel-card" aria-label="Reputation">
-            <h2 className="slash-title">Reputation</h2>
-            {REP_AXES.map((k) => (
-              <div key={k} style={{ display: 'grid', gridTemplateColumns: '110px 1fr 30px', gap: 8, alignItems: 'center', margin: '4px 0' }}>
-                <span style={{ color: '#9fa6b8' }}>{REP_LABEL[k]}</span><Meter value={s.reputation[k]} /><span>{s.reputation[k]}</span>
-              </div>
-            ))}
-            <h3 className="slash-title" style={{ marginTop: 12 }}>Weapons &amp; traits</h3>
-            <div>{Object.entries(s.weapons).map(([id, w]) => <span key={id} className="chip" style={{ marginRight: 4, color: w.corrupted ? '#ff5a6e' : '#6ea0ff' }}>{content.weapons[id] ? RARITY_INFO[content.weapons[id]!.rarity].glyph + ' ' : ''}{content.weapons[id]?.levels[w.level - 1]?.name ?? id}{w.corrupted ? ' ☠' : ''}</span>)}</div>
-            <div style={{ marginTop: 6 }}>{s.traits.map((t) => <span key={t} className="chip" style={{ marginRight: 4 }} title={content.traits[t]?.desc}>{content.traits[t]?.name ?? t}</span>)}</div>
-          </section>
-          <section className="panel-card" aria-label="Recent memory">
-            <h2 className="slash-title">What they remember</h2>
-            {s.memory.length === 0 && <div style={{ color: '#5a6280' }}>Nothing yet.</div>}
-            <ul style={{ margin: 0, paddingLeft: '1.1rem' }}>{[...s.memory].reverse().slice(0, 6).map((m) => <li key={m.id}>{m.text}</li>)}</ul>
-          </section>
-        </div>
+        <nav className="action-row" aria-label="Actions">
+          <button className="action-tile" style={{ ['--tone' as string]: '#56d3ff' }} disabled title="Weekly training planner: milestone M3 (PLACEHOLDER)"><span className="soon">M3</span>Train<small>spend action points</small></button>
+          <button className="action-tile" style={{ ['--tone' as string]: '#a97bff' }} disabled title="Squad and roster: milestone M4 (PLACEHOLDER)"><span className="soon">M4</span>Squad<small>roster · formation</small></button>
+          <button className="action-tile go" onClick={advance} data-testid="advance" disabled={!opened}>Next week →<small>{opened ? `${pending} pending` : 'finish the opening first'}</small></button>
+          <Link className="action-tile" style={{ ['--tone' as string]: '#9fa6b8' }} to="/relationships">Stats<small>bonds · memory</small></Link>
+          <button className="action-tile" style={{ ['--tone' as string]: '#4fd18b' }} disabled title="League and ranking: milestone M5 (PLACEHOLDER)"><span className="soon">M5</span>League<small>ranking · fixtures</small></button>
+        </nav>
       </div>
     </div>
   )

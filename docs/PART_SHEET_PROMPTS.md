@@ -59,3 +59,13 @@ SHEET: ACCESSORIES ONLY. Draw ONLY the accessory on the magenta head, nothing el
 - **Heads drift in size or position between cells:** append `Every magenta head must be pixel-identical in size and position to cell 1. Redo the sheet keeping the head exactly the same in all cells.`
 - **Too anime-generic:** append `Sharper and more angular, harder shadows, heavier ink, more intense: gritty sports-drama, not soft or cute.`
 - Do 8 cells instead of 16 for any sheet where the detail is poor.
+
+## Processing a sheet (`scripts/slice_sheet.py`)
+Originals are kept in `docs/part-sheets/`. The slicer finds the cell grid, keys out the magenta, drops the head outline (using the empty cell 1 as the reference), scales every cell to the template (head top y=290, ear to ear 540 px) and writes aligned 1000x1300 layers. Needs `pip install pillow numpy scipy`.
+```
+python3 scripts/slice_sheet.py docs/part-sheets/hair_a.webp --cols 5 --rows 4 --slot hair --ids empty,spiky,swept,shaggy,fringe,buzz,undercut,curly,long,side_part,mohawk,bob,ponytail,slick_side,messy_part,topknot,wavy,pixie,afro,-
+python3 scripts/slice_sheet.py docs/part-sheets/hair_b.webp --cols 5 --rows 4 --slot hair --ids empty,braid,sweep_fringe,twin_tails,crop_fringe,slick_back,bedhead,bowl,dreads,shaved_sweep,long_bangs,wolf,half_bun,asym_long,asym_sweep,short_cut,shag_wolf,messy_bun,spike_shaved,long_sweep
+python3 scripts/slice_sheet.py docs/part-sheets/eyes.webp --cols 3 --rows 3 --slot eyes --keep-box 150,500,850,860 --ids empty,sharp,round,narrow,droopy,upturned,wide,almond,heavy_lid
+npm run assets:scan
+```
+Gemini does not always follow the cell count (it made 20 cells instead of 16), so read the sheet and list one id per cell in reading order; `-` skips a cell. Because every sheet's head geometry comes from the same prompt, hair, eyes, brows and so on line up with each other. The eye line lands near y=685 on the canvas, not at the 580 drawn on `_template.png`; the drawn SVG placeholders and the template guide use the older proportions, so mix drawn and imported parts only until the face sheet is imported.

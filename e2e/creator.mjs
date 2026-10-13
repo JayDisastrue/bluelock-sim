@@ -72,6 +72,6 @@ ok('saved game: rolled weapon is the starting weapon', d.player.weaponSeed && Ob
 ok('confirm screen showed the rolled foot', new RegExp(d.player.handedness === 'both' ? 'two-footed' : `${d.player.handedness}-footed`).test(confirmText), `foot=${d.player.handedness}`)
 ok('saved game: chosen look persisted (ponytail, sharp face)', d.player.portrait.hair === 'ponytail' && d.player.portrait.face === 'sharp')
 await page.screenshot({ path: `${OUT}/54-hub-after.png` })
-ok('hub shows position and foot', /ST · (left|right|two)-?/.test(await page.getByTestId('hub').innerText()) || /footed/.test(await page.getByTestId('hub').innerText()))
+ok('hub shows position and foot', /ST · (left|right|two)-?/i.test(await page.getByTestId('hub').innerText()) || /footed/i.test(await page.getByTestId('hub').innerText()))
 console.log('\nBROWSER ERRORS:', errors.length ? '\n' + errors.join('\n') : 'none')
 await browser.close()
