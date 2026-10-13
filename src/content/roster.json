@@ -1,0 +1,558 @@
+{
+ "note": "Reserved character ids. Art goes at public/assets/portraits/<id>.png. `verify: true` marks a name whose spelling or details should be checked (see docs/CANON_NOTES.md). A character is \"in game\" when it exists in src/content/characters; the rest are reserved art slots. Do not rename ids that are in the game: saves reference them.",
+ "characters": [
+  {
+   "id": "isagi",
+   "name": "Yoichi Isagi",
+   "group": "canon",
+   "region": "japan",
+   "role": "striker / protagonist"
+  },
+  {
+   "id": "bachira",
+   "name": "Meguru Bachira",
+   "group": "canon",
+   "region": "japan",
+   "role": "winger"
+  },
+  {
+   "id": "barou",
+   "name": "Shoei Barou",
+   "group": "canon",
+   "region": "japan",
+   "role": "striker"
+  },
+  {
+   "id": "chigiri",
+   "name": "Hyoma Chigiri",
+   "group": "canon",
+   "region": "japan",
+   "role": "winger"
+  },
+  {
+   "id": "kunigami",
+   "name": "Rensuke Kunigami",
+   "group": "canon",
+   "region": "japan",
+   "role": "striker"
+  },
+  {
+   "id": "raichi",
+   "name": "Jingo Raichi",
+   "group": "canon",
+   "region": "japan",
+   "role": "striker",
+   "verify": true
+  },
+  {
+   "id": "gagamaru",
+   "name": "Gin Gagamaru",
+   "group": "canon",
+   "region": "japan",
+   "role": "goalkeeper"
+  },
+  {
+   "id": "nagi",
+   "name": "Seishiro Nagi",
+   "group": "canon",
+   "region": "japan",
+   "role": "striker"
+  },
+  {
+   "id": "reo",
+   "name": "Reo Mikage",
+   "group": "canon",
+   "region": "japan",
+   "role": "midfielder"
+  },
+  {
+   "id": "rin",
+   "name": "Rin Itoshi",
+   "group": "canon",
+   "region": "japan",
+   "role": "midfielder / striker"
+  },
+  {
+   "id": "sae",
+   "name": "Sae Itoshi",
+   "group": "canon",
+   "region": "world",
+   "role": "midfielder"
+  },
+  {
+   "id": "noel_noa",
+   "name": "Noel Noa",
+   "group": "canon",
+   "region": "world",
+   "role": "striker, the world's best"
+  },
+  {
+   "id": "oliver_aiku",
+   "name": "Oliver Aiku",
+   "group": "canon",
+   "region": "japan",
+   "role": "midfielder"
+  },
+  {
+   "id": "ego",
+   "name": "Jinpachi Ego",
+   "group": "canon",
+   "region": "staff",
+   "role": "Blue Lock project head"
+  },
+  {
+   "id": "anri",
+   "name": "Anri Teieri",
+   "group": "canon",
+   "region": "staff",
+   "role": "Ego's assistant"
+  },
+  {
+   "id": "niko",
+   "name": "Ikki Niko",
+   "group": "canon",
+   "region": "japan",
+   "role": "midfielder"
+  },
+  {
+   "id": "hiori",
+   "name": "Yo Hiori",
+   "group": "canon",
+   "region": "japan",
+   "role": "striker"
+  },
+  {
+   "id": "karasu",
+   "name": "Tabito Karasu",
+   "group": "canon",
+   "region": "japan",
+   "role": "midfielder"
+  },
+  {
+   "id": "kiyora",
+   "name": "Jin Kiyora",
+   "group": "canon",
+   "region": "japan",
+   "role": "midfielder",
+   "verify": true
+  },
+  {
+   "id": "shido",
+   "name": "Ryusei Shido",
+   "group": "canon",
+   "region": "japan",
+   "role": "striker"
+  },
+  {
+   "id": "yukimiya",
+   "name": "Kenyu Yukimiya",
+   "group": "canon",
+   "region": "japan",
+   "role": "striker"
+  },
+  {
+   "id": "tsurugi",
+   "name": "Zantetsu Tsurugi",
+   "group": "canon",
+   "region": "japan",
+   "role": "defender"
+  },
+  {
+   "id": "himizu",
+   "name": "Aiki Himizu",
+   "group": "canon",
+   "region": "japan",
+   "role": "midfielder"
+  },
+  {
+   "id": "aryu",
+   "name": "Jyubei Aryu",
+   "group": "canon",
+   "region": "japan",
+   "role": "striker",
+   "verify": true
+  },
+  {
+   "id": "kurona",
+   "name": "Ranze Kurona",
+   "group": "canon",
+   "region": "japan",
+   "role": "midfielder",
+   "verify": true
+  },
+  {
+   "id": "tokimitsu",
+   "name": "Aoshi Tokimitsu",
+   "group": "canon",
+   "region": "japan",
+   "role": "midfielder",
+   "verify": true
+  },
+  {
+   "id": "igarashi",
+   "name": "Gurimu Igarashi",
+   "group": "canon",
+   "region": "japan",
+   "role": "winger",
+   "verify": true
+  },
+  {
+   "id": "otoya",
+   "name": "Eita Otoya",
+   "group": "canon",
+   "region": "japan",
+   "role": "forward",
+   "verify": true
+  },
+  {
+   "id": "junichi_wanima",
+   "name": "Junichi Wanima",
+   "group": "canon",
+   "region": "japan",
+   "role": "forward"
+  },
+  {
+   "id": "keisuke_wanima",
+   "name": "Keisuke Wanima",
+   "group": "canon",
+   "region": "japan",
+   "role": "forward"
+  },
+  {
+   "id": "kaiser",
+   "name": "Michael Kaiser",
+   "group": "canon",
+   "region": "world",
+   "role": "striker"
+  },
+  {
+   "id": "ness",
+   "name": "Alexis Ness",
+   "group": "canon",
+   "region": "world",
+   "role": "midfielder"
+  },
+  {
+   "id": "chevalier",
+   "name": "Charles Chevalier",
+   "group": "canon",
+   "region": "world",
+   "role": "winger"
+  },
+  {
+   "id": "prince",
+   "name": "Chris Prince",
+   "group": "canon",
+   "region": "world",
+   "role": "striker"
+  },
+  {
+   "id": "snuffy",
+   "name": "Marc Snuffy",
+   "group": "canon",
+   "region": "world",
+   "role": "midfielder"
+  },
+  {
+   "id": "loki",
+   "name": "Julian Loki",
+   "group": "canon",
+   "region": "world",
+   "role": "striker",
+   "verify": true
+  },
+  {
+   "id": "lavinho",
+   "name": "Lavinho",
+   "group": "canon",
+   "region": "world",
+   "role": "striker"
+  },
+  {
+   "id": "luna",
+   "name": "Leonardo Luna",
+   "group": "canon",
+   "region": "world",
+   "role": "midfielder"
+  },
+  {
+   "id": "onazi",
+   "name": "Innocent Onazi",
+   "group": "canon",
+   "region": "world",
+   "role": "forward"
+  },
+  {
+   "id": "cavasoz",
+   "name": "Pablo Cavasoz",
+   "group": "canon",
+   "region": "world",
+   "role": "player",
+   "verify": true
+  },
+  {
+   "id": "hugo",
+   "name": "Vivian Hugo",
+   "group": "canon",
+   "region": "world",
+   "role": "player",
+   "verify": true
+  },
+  {
+   "id": "knight",
+   "name": "Teddy Knight",
+   "group": "canon",
+   "region": "world",
+   "role": "player",
+   "verify": true
+  },
+  {
+   "id": "achanpong",
+   "name": "Achanpong",
+   "group": "canon",
+   "region": "world",
+   "role": "player",
+   "verify": true
+  },
+  {
+   "id": "lockhart",
+   "name": "Lockhart",
+   "group": "canon",
+   "region": "world",
+   "role": "player",
+   "verify": true
+  },
+  {
+   "id": "lorenzo",
+   "name": "Lorenzo",
+   "group": "canon",
+   "region": "world",
+   "role": "player",
+   "verify": true
+  },
+  {
+   "id": "sora",
+   "name": "Sora Kaizuka",
+   "group": "original",
+   "region": "japan",
+   "role": "left winger"
+  },
+  {
+   "id": "reiji",
+   "name": "Reiji Hasegawa",
+   "group": "original",
+   "region": "japan",
+   "role": "academy captain"
+  },
+  {
+   "id": "mio",
+   "name": "Mio Tachibana",
+   "group": "original",
+   "region": "media",
+   "role": "journalist"
+  },
+  {
+   "id": "haruka",
+   "name": "Haruka Shirane",
+   "group": "original",
+   "region": "family",
+   "role": "the player's sister"
+  },
+  {
+   "id": "dante",
+   "name": "Dante Cavalli",
+   "group": "original",
+   "region": "world",
+   "role": "centre-back"
+  },
+  {
+   "id": "lukas",
+   "name": "Lukas Brandt",
+   "group": "original",
+   "region": "world",
+   "role": "forward"
+  },
+  {
+   "id": "tomas",
+   "name": "Tomás Ferreira",
+   "group": "original",
+   "region": "world",
+   "role": "midfielder"
+  },
+  {
+   "id": "kisaragi",
+   "name": "Ayame Kisaragi",
+   "group": "original",
+   "region": "staff",
+   "role": "sponsor executive"
+  },
+  {
+   "id": "taiga_mochizuki",
+   "name": "Taiga Mochizuki",
+   "group": "original",
+   "region": "japan",
+   "role": "defender, Team rival"
+  },
+  {
+   "id": "kaede_minase",
+   "name": "Kaede Minase",
+   "group": "original",
+   "region": "japan",
+   "role": "winger"
+  },
+  {
+   "id": "jun_arakawa",
+   "name": "Jun Arakawa",
+   "group": "original",
+   "region": "japan",
+   "role": "box-to-box midfielder"
+  },
+  {
+   "id": "shin_tadano",
+   "name": "Shin Tadano",
+   "group": "original",
+   "region": "japan",
+   "role": "fan-favourite benchwarmer"
+  },
+  {
+   "id": "daichi_morita",
+   "name": "Daichi Morita",
+   "group": "original",
+   "region": "japan",
+   "role": "goalkeeper"
+  },
+  {
+   "id": "nao_fujimura",
+   "name": "Nao Fujimura",
+   "group": "original",
+   "region": "japan",
+   "role": "sweeper"
+  },
+  {
+   "id": "takeru_sano",
+   "name": "Takeru Sano",
+   "group": "original",
+   "region": "japan",
+   "role": "hometown rival"
+  },
+  {
+   "id": "mika_ishida",
+   "name": "Mika Ishida",
+   "group": "original",
+   "region": "family",
+   "role": "hometown friend"
+  },
+  {
+   "id": "coach_hara",
+   "name": "Coach Hara",
+   "group": "original",
+   "region": "family",
+   "role": "hometown youth coach"
+  },
+  {
+   "id": "goro_kurobane",
+   "name": "Goro Kurobane",
+   "group": "original",
+   "region": "staff",
+   "role": "veteran assistant coach"
+  },
+  {
+   "id": "yuna_sakurai",
+   "name": "Yuna Sakurai",
+   "group": "original",
+   "region": "staff",
+   "role": "team physio"
+  },
+  {
+   "id": "rika_ogasawara",
+   "name": "Rika Ogasawara",
+   "group": "original",
+   "region": "staff",
+   "role": "match data analyst"
+  },
+  {
+   "id": "dr_kuwabara",
+   "name": "Dr. Kuwabara",
+   "group": "original",
+   "region": "staff",
+   "role": "sports psychologist"
+  },
+  {
+   "id": "ayase_kuroda",
+   "name": "Ayase Kuroda",
+   "group": "original",
+   "region": "staff",
+   "role": "player agent"
+  },
+  {
+   "id": "emi_hoshino",
+   "name": "Emi Hoshino",
+   "group": "original",
+   "region": "media",
+   "role": "streamer and commentator"
+  },
+  {
+   "id": "yuri_tanaka",
+   "name": "Yuri Tanaka",
+   "group": "original",
+   "region": "media",
+   "role": "rival reporter"
+  },
+  {
+   "id": "elias_wright",
+   "name": "Elias Wright",
+   "group": "original",
+   "region": "world",
+   "role": "English winger"
+  },
+  {
+   "id": "mateo_ruiz",
+   "name": "Mateo Ruiz",
+   "group": "original",
+   "region": "world",
+   "role": "Spanish pivot"
+  },
+  {
+   "id": "ilya_volkov",
+   "name": "Ilya Volkov",
+   "group": "original",
+   "region": "world",
+   "role": "Russian goalkeeper"
+  },
+  {
+   "id": "amara_diallo",
+   "name": "Amara Diallo",
+   "group": "original",
+   "region": "world",
+   "role": "French full-back"
+  },
+  {
+   "id": "kofi_mensah",
+   "name": "Kofi Mensah",
+   "group": "original",
+   "region": "world",
+   "role": "Ghanaian sprinter"
+  },
+  {
+   "id": "luca_bianchi",
+   "name": "Luca Bianchi",
+   "group": "original",
+   "region": "world",
+   "role": "Italian playmaker"
+  },
+  {
+   "id": "hana_yoo",
+   "name": "Hana Yoo",
+   "group": "original",
+   "region": "world",
+   "role": "Korean prodigy"
+  },
+  {
+   "id": "chen_wei",
+   "name": "Chen Wei",
+   "group": "original",
+   "region": "world",
+   "role": "Chinese playmaker"
+  }
+ ]
+}

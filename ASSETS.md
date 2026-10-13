@@ -27,7 +27,7 @@ public/assets/
 | Name | `<characterId>.png`; `player.png` for your character |
 | Expressions (optional) | `<id>_neutral/smirk/furious/shocked/despair/flow/metavision/devoured.png`; missing ones use `<id>.png` |
 
-**Character ids:** `ego anri bachira barou chigiri kunigami raichi rin sae nagi reo noel_noa isagi gagamaru oliver_aiku` (canon) · `sora reiji mio haruka dante lukas tomas kisaragi` (original) · `player`.
+**Character ids:** 77 are reserved (45 canon, 32 original) in [`src/content/roster.json`](src/content/roster.json) and tabled in [`docs/IDS.md`](docs/IDS.md); the 23 already written are `ego anri bachira barou chigiri kunigami raichi rin sae nagi reo noel_noa isagi gagamaru oliver_aiku` (canon) and `sora reiji mio haruka dante lukas tomas kisaragi` (original), plus `player`. A portrait file with an id not in the roster makes `npm run assets:scan` print a warning: add the id to `roster.json` first.
 Characters with no image show a plain silhouette (canon) or a generated SVG portrait (player and originals).
 
 ## Player creator parts (mix and match)
@@ -43,7 +43,7 @@ The creator is **image-first**. Until you import art it falls back to a plain dr
 
 ## Backgrounds
 JPG/WebP/PNG, **1920 × 1080**, under 1.5 MB, no baked-in text, calm bottom third.
-**Ids:** `black letter room_z cafeteria locker_room training_pitch tunnel stadium monitor_wall ego_office old_pitch academy_gate street_cage bench_dusk` → `backgrounds/<id>.jpg`. Missing ones show a gradient.
+**Ids:** 73, grouped in `docs/IDS.md` → `backgrounds/<id>.jpg`. Missing ones show a gradient.
 
 ## Voice and sounds
 **Random character clips** (grunts, laughs, short phrases):
@@ -60,7 +60,7 @@ voice/<characterId>/<emotion>/*.mp3    only for lines with that emotion
 Inner-monologue lines are never voiced.
 
 ## Sound effects and music
-Not auto-scanned. Add to `manifest.json` by hand: `"sfx": { "don": "audio/sfx/don.mp3" }`, `"music": { "selection-tension": "audio/music/tension.mp3" }`. Track ids used by scenes: `memory-hush envelope selection-tension dorm-calm`.
+Not auto-scanned. Add to `manifest.json` by hand: `"sfx": { "don": "audio/sfx/don.mp3" }`, `"music": { "selection-tension": "audio/music/tension.mp3" }`. Track ids used by scenes today: `memory-hush envelope selection-tension dorm-calm`. Reserved music, sfx and team ids for future features are listed in `docs/IDS.md` (source: `src/content/reserved.ts`).
 
 ## Check what's wired
 `npm run assets:scan` prints counts and the background ids still missing.

@@ -1,8 +1,9 @@
 // Writes docs/IDS.md: every id in the project.
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { content } from '../src/content'
 import { buildIdList } from '../src/engine/idlist'
 
 mkdirSync('docs', { recursive: true })
-writeFileSync('docs/IDS.md', buildIdList(content))
+const manifest = existsSync('public/assets/manifest.json') ? JSON.parse(readFileSync('public/assets/manifest.json', 'utf8')) : {}
+writeFileSync('docs/IDS.md', buildIdList(content, manifest.playerParts ?? {}))
 console.log('wrote docs/IDS.md')

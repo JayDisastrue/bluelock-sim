@@ -12,7 +12,7 @@
     "preview": "vite preview",
     "voice:export": "tsx scripts/export-voice-script.ts",
     "e2e": "node e2e/opening.mjs && node e2e/features.mjs && node e2e/savecode.mjs && node e2e/creator.mjs",
-    "assets:scan": "node scripts/scan-assets.mjs",
+    "assets:scan": "node scripts/scan-assets.mjs && tsx scripts/export-ids.ts",
     "ids": "tsx scripts/export-ids.ts"
   },
   "dependencies": {

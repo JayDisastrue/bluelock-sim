@@ -13,7 +13,7 @@ import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from '
 const ROOT = 'public/assets'
 const IMG = /\.(png|jpe?g|webp|gif|avif)$/i
 const EMOTIONS = ['neutral', 'smirk', 'furious', 'shocked', 'despair', 'flow', 'metavision', 'devoured', 'manga']
-const BG_IDS = ['black', 'letter', 'room_z', 'cafeteria', 'locker_room', 'training_pitch', 'tunnel', 'stadium', 'monitor_wall', 'ego_office', 'old_pitch', 'academy_gate', 'street_cage', 'bench_dusk']
+const BG_IDS = ['black', 'letter', 'room_z', 'cafeteria', 'locker_room', 'training_pitch', 'tunnel', 'stadium', 'monitor_wall', 'ego_office', 'old_pitch', 'academy_gate', 'street_cage', 'bench_dusk', 'dorm_hallway', 'dorm_room', 'shower_room', 'gym', 'medical_room', 'lounge', 'rooftop', 'monitor_room_night', 'selection_hall', 'tag_test_arena', 'first_selection_field', 'second_selection_field', 'training_pitch_night', 'training_pitch_rain', 'pitch_sunrise', 'pitch_snow', 'indoor_court', 'futsal_court', 'press_room', 'interview_stage', 'sponsor_lounge', 'ego_lab', 'briefing_room', 'corridor', 'stairwell', 'vending_corner', 'hometown_street', 'school_gym', 'school_classroom', 'school_rooftop', 'riverside_pitch', 'convenience_store', 'train_station', 'airport_gate', 'bus_window', 'bedroom_night', 'family_kitchen', 'hospital_room', 'shrine_steps', 'festival_night', 'beach_dusk', 'cafe', 'u20_stadium_day', 'u20_stadium_night', 'stadium_tunnel_roar', 'press_conference', 'hotel_room', 'city_night', 'locker_room_europe', 'training_ground_europe', 'penalty_spot', 'goal_mouth_close', 'white_void', 'red_void', 'memory_haze', 'flow_field', 'metavision_grid', 'scoreboard_closeup', 'newspaper_wall']
 
 const manifestPath = `${ROOT}/manifest.json`
 const manifest = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {}
@@ -32,6 +32,9 @@ for (const { f } of files('portraits')) {
   ;(portraits[id] ??= {})[key] = `portraits/${f}`
 }
 manifest.portraits = portraits
+const rosterIds = new Set(JSON.parse(readFileSync('src/content/roster.json', 'utf8')).characters.map((c) => c.id).concat('player'))
+const unknownPortraits = Object.keys(portraits).filter((id) => !rosterIds.has(id))
+if (unknownPortraits.length) console.log(`WARNING portrait ids not in src/content/roster.json (add them there first): ${unknownPortraits.join(', ')}`)
 
 const backgrounds = {}
 for (const { f } of files('backgrounds')) backgrounds[f.replace(IMG, '')] = `backgrounds/${f}`
@@ -76,6 +79,6 @@ console.log(`player parts: ${Object.values(playerParts).reduce((n, o) => n + Obj
 console.log(`voice: ${Object.keys(voice).length} exact lines, ${Object.keys(voiceBanks).length} character banks (${Object.values(voiceBanks).reduce((n, b) => n + Object.values(b).flat().length, 0)} clips)`)
 console.log(`backgrounds: ${Object.keys(backgrounds).length}/${BG_IDS.length}`)
 const missing = BG_IDS.filter((id) => !backgrounds[id])
-if (missing.length) console.log(`  missing backgrounds: ${missing.join(', ')}`)
+if (missing.length) console.log(`  ${missing.length} background ids have no art yet (see docs/IDS.md); first few: ${missing.slice(0, 8).join(', ')}`)
 const unknown = Object.keys(backgrounds).filter((id) => !BG_IDS.includes(id))
 if (unknown.length) console.log(`  WARNING unknown background ids (ignored by the game): ${unknown.join(', ')}`)
