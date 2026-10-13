@@ -2,10 +2,10 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
 /** Common frame for non-cutscene screens. */
-export function Screen({ title, children, back = '/' }: { title: string; children: ReactNode; back?: string }) {
+export function Screen({ title, children, back = '/', wide = false }: { title: string; children: ReactNode; back?: string; wide?: boolean }) {
   return (
     <div className="tone" style={{ minHeight: '100%', padding: '1.2rem 1.5rem 3rem' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+      <div style={{ maxWidth: wide ? 1400 : 1100, width: '100%', margin: '0 auto' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem', marginBottom: '1rem' }}>
           <Link to={back} className="btn small">← Back</Link>
           <h1 className="slash-title" style={{ fontSize: '2.2rem', margin: 0, color: '#fff', textShadow: '3px 3px 0 #e5233b' }}>{title}</h1>

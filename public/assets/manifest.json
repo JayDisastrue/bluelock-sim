@@ -32,96 +32,155 @@
   "voice": {},
   "voiceBanks": {},
   "playerParts": {
+    "face": {
+      "heart__brown": {
+        "default": "player/face/heart__brown.png"
+      },
+      "heart__deep": {
+        "default": "player/face/heart__deep.png"
+      },
+      "heart__ebony": {
+        "default": "player/face/heart__ebony.png"
+      },
+      "heart__fair": {
+        "default": "player/face/heart__fair.png"
+      },
+      "heart__light": {
+        "default": "player/face/heart__light.png"
+      },
+      "heart__medium": {
+        "default": "player/face/heart__medium.png"
+      },
+      "heart__pale": {
+        "default": "player/face/heart__pale.png"
+      },
+      "heart__tan": {
+        "default": "player/face/heart__tan.png"
+      },
+      "long__brown": {
+        "default": "player/face/long__brown.png"
+      },
+      "long__deep": {
+        "default": "player/face/long__deep.png"
+      },
+      "long__ebony": {
+        "default": "player/face/long__ebony.png"
+      },
+      "long__fair": {
+        "default": "player/face/long__fair.png"
+      },
+      "long__light": {
+        "default": "player/face/long__light.png"
+      },
+      "long__medium": {
+        "default": "player/face/long__medium.png"
+      },
+      "long__pale": {
+        "default": "player/face/long__pale.png"
+      },
+      "long__tan": {
+        "default": "player/face/long__tan.png"
+      },
+      "oval__brown": {
+        "default": "player/face/oval__brown.png"
+      },
+      "oval__deep": {
+        "default": "player/face/oval__deep.png"
+      },
+      "oval__ebony": {
+        "default": "player/face/oval__ebony.png"
+      },
+      "oval__fair": {
+        "default": "player/face/oval__fair.png"
+      },
+      "oval__light": {
+        "default": "player/face/oval__light.png"
+      },
+      "oval__medium": {
+        "default": "player/face/oval__medium.png"
+      },
+      "oval__pale": {
+        "default": "player/face/oval__pale.png"
+      },
+      "oval__tan": {
+        "default": "player/face/oval__tan.png"
+      },
+      "round__brown": {
+        "default": "player/face/round__brown.png"
+      },
+      "round__deep": {
+        "default": "player/face/round__deep.png"
+      },
+      "round__ebony": {
+        "default": "player/face/round__ebony.png"
+      },
+      "round__fair": {
+        "default": "player/face/round__fair.png"
+      },
+      "round__light": {
+        "default": "player/face/round__light.png"
+      },
+      "round__medium": {
+        "default": "player/face/round__medium.png"
+      },
+      "round__pale": {
+        "default": "player/face/round__pale.png"
+      },
+      "round__tan": {
+        "default": "player/face/round__tan.png"
+      },
+      "sharp__brown": {
+        "default": "player/face/sharp__brown.png"
+      },
+      "sharp__deep": {
+        "default": "player/face/sharp__deep.png"
+      },
+      "sharp__ebony": {
+        "default": "player/face/sharp__ebony.png"
+      },
+      "sharp__fair": {
+        "default": "player/face/sharp__fair.png"
+      },
+      "sharp__light": {
+        "default": "player/face/sharp__light.png"
+      },
+      "sharp__medium": {
+        "default": "player/face/sharp__medium.png"
+      },
+      "sharp__pale": {
+        "default": "player/face/sharp__pale.png"
+      },
+      "sharp__tan": {
+        "default": "player/face/sharp__tan.png"
+      },
+      "square__brown": {
+        "default": "player/face/square__brown.png"
+      },
+      "square__deep": {
+        "default": "player/face/square__deep.png"
+      },
+      "square__ebony": {
+        "default": "player/face/square__ebony.png"
+      },
+      "square__fair": {
+        "default": "player/face/square__fair.png"
+      },
+      "square__light": {
+        "default": "player/face/square__light.png"
+      },
+      "square__medium": {
+        "default": "player/face/square__medium.png"
+      },
+      "square__pale": {
+        "default": "player/face/square__pale.png"
+      },
+      "square__tan": {
+        "default": "player/face/square__tan.png"
+      }
+    },
     "hair": {
-      "spiky": {
-        "default": "player/hair/spiky.png"
-      },
-      "swept": {
-        "default": "player/hair/swept.png"
-      },
-      "shaggy": {
-        "default": "player/hair/shaggy.png"
-      },
-      "fringe": {
-        "default": "player/hair/fringe.png"
-      },
-      "buzz": {
-        "default": "player/hair/buzz.png"
-      },
-      "undercut": {
-        "default": "player/hair/undercut.png"
-      },
-      "curly": {
-        "default": "player/hair/curly.png"
-      },
-      "long": {
-        "default": "player/hair/long.png"
-      },
-      "side_part": {
-        "default": "player/hair/side_part.png"
-      },
-      "mohawk": {
-        "default": "player/hair/mohawk.png"
-      },
-      "bob": {
-        "default": "player/hair/bob.png"
-      },
-      "ponytail": {
-        "default": "player/hair/ponytail.png"
-      },
-      "slick_side": {
-        "default": "player/hair/slick_side.png"
-      },
-      "messy_part": {
-        "default": "player/hair/messy_part.png"
-      },
-      "topknot": {
-        "default": "player/hair/topknot.png"
-      },
-      "wavy": {
-        "default": "player/hair/wavy.png"
-      },
-      "pixie": {
-        "default": "player/hair/pixie.png"
-      },
       "afro": {
         "default": "player/hair/afro.png"
-      },
-      "braid": {
-        "default": "player/hair/braid.png"
-      },
-      "sweep_fringe": {
-        "default": "player/hair/sweep_fringe.png"
-      },
-      "twin_tails": {
-        "default": "player/hair/twin_tails.png"
-      },
-      "crop_fringe": {
-        "default": "player/hair/crop_fringe.png"
-      },
-      "slick_back": {
-        "default": "player/hair/slick_back.png"
-      },
-      "bedhead": {
-        "default": "player/hair/bedhead.png"
-      },
-      "bowl": {
-        "default": "player/hair/bowl.png"
-      },
-      "dreads": {
-        "default": "player/hair/dreads.png"
-      },
-      "shaved_sweep": {
-        "default": "player/hair/shaved_sweep.png"
-      },
-      "long_bangs": {
-        "default": "player/hair/long_bangs.png"
-      },
-      "wolf": {
-        "default": "player/hair/wolf.png"
-      },
-      "half_bun": {
-        "default": "player/hair/half_bun.png"
       },
       "asym_long": {
         "default": "player/hair/asym_long.png"
@@ -129,46 +188,197 @@
       "asym_sweep": {
         "default": "player/hair/asym_sweep.png"
       },
-      "short_cut": {
-        "default": "player/hair/short_cut.png"
+      "bedhead": {
+        "default": "player/hair/bedhead.png"
       },
-      "shag_wolf": {
-        "default": "player/hair/shag_wolf.png"
+      "bob": {
+        "default": "player/hair/bob.png"
+      },
+      "bowl": {
+        "default": "player/hair/bowl.png"
+      },
+      "braid": {
+        "default": "player/hair/braid.png"
+      },
+      "buzz": {
+        "default": "player/hair/buzz.png"
+      },
+      "crop_fringe": {
+        "default": "player/hair/crop_fringe.png"
+      },
+      "curly": {
+        "default": "player/hair/curly.png"
+      },
+      "dreads": {
+        "default": "player/hair/dreads.png"
+      },
+      "fringe": {
+        "default": "player/hair/fringe.png"
+      },
+      "half_bun": {
+        "default": "player/hair/half_bun.png"
+      },
+      "long": {
+        "default": "player/hair/long.png"
+      },
+      "long_bangs": {
+        "default": "player/hair/long_bangs.png"
+      },
+      "long_sweep": {
+        "default": "player/hair/long_sweep.png"
       },
       "messy_bun": {
         "default": "player/hair/messy_bun.png"
       },
+      "messy_part": {
+        "default": "player/hair/messy_part.png"
+      },
+      "mohawk": {
+        "default": "player/hair/mohawk.png"
+      },
+      "pixie": {
+        "default": "player/hair/pixie.png"
+      },
+      "ponytail": {
+        "default": "player/hair/ponytail.png"
+      },
+      "shag_wolf": {
+        "default": "player/hair/shag_wolf.png"
+      },
+      "shaggy": {
+        "default": "player/hair/shaggy.png"
+      },
+      "shaved_sweep": {
+        "default": "player/hair/shaved_sweep.png"
+      },
+      "short_cut": {
+        "default": "player/hair/short_cut.png"
+      },
+      "side_part": {
+        "default": "player/hair/side_part.png"
+      },
+      "slick_back": {
+        "default": "player/hair/slick_back.png"
+      },
+      "slick_side": {
+        "default": "player/hair/slick_side.png"
+      },
       "spike_shaved": {
         "default": "player/hair/spike_shaved.png"
       },
-      "long_sweep": {
-        "default": "player/hair/long_sweep.png"
+      "spiky": {
+        "default": "player/hair/spiky.png"
+      },
+      "sweep_fringe": {
+        "default": "player/hair/sweep_fringe.png"
+      },
+      "swept": {
+        "default": "player/hair/swept.png"
+      },
+      "topknot": {
+        "default": "player/hair/topknot.png"
+      },
+      "twin_tails": {
+        "default": "player/hair/twin_tails.png"
+      },
+      "undercut": {
+        "default": "player/hair/undercut.png"
+      },
+      "wavy": {
+        "default": "player/hair/wavy.png"
+      },
+      "wolf": {
+        "default": "player/hair/wolf.png"
       }
     },
     "eyes": {
-      "sharp": {
-        "default": "player/eyes/sharp.png"
+      "almond": {
+        "default": "player/eyes/almond.png"
       },
-      "round": {
-        "default": "player/eyes/round.png"
+      "droopy": {
+        "default": "player/eyes/droopy.png"
+      },
+      "heavy_lid": {
+        "default": "player/eyes/heavy_lid.png"
       },
       "narrow": {
         "default": "player/eyes/narrow.png"
       },
-      "droopy": {
-        "default": "player/eyes/droopy.png"
+      "round": {
+        "default": "player/eyes/round.png"
+      },
+      "sharp": {
+        "default": "player/eyes/sharp.png"
       },
       "upturned": {
         "default": "player/eyes/upturned.png"
       },
       "wide": {
         "default": "player/eyes/wide.png"
+      }
+    },
+    "brow": {
+      "angled": {
+        "default": "player/brow/angled.png"
       },
-      "almond": {
-        "default": "player/eyes/almond.png"
+      "arched": {
+        "default": "player/brow/arched.png"
       },
-      "heavy_lid": {
-        "default": "player/eyes/heavy_lid.png"
+      "broken": {
+        "default": "player/brow/broken.png"
+      },
+      "raised": {
+        "default": "player/brow/raised.png"
+      },
+      "soft": {
+        "default": "player/brow/soft.png"
+      },
+      "straight": {
+        "default": "player/brow/straight.png"
+      },
+      "thick": {
+        "default": "player/brow/thick.png"
+      },
+      "thin": {
+        "default": "player/brow/thin.png"
+      }
+    },
+    "mark": {
+      "none": {
+        "default": "player/mark/none.png"
+      },
+      "scar_bridge": {
+        "default": "player/mark/scar_bridge.png"
+      },
+      "scar_centre": {
+        "default": "player/mark/scar_centre.png"
+      },
+      "scar_cheek": {
+        "default": "player/mark/scar_cheek.png"
+      },
+      "scar_cross": {
+        "default": "player/mark/scar_cross.png"
+      },
+      "scar_diagonal": {
+        "default": "player/mark/scar_diagonal.png"
+      },
+      "scar_double": {
+        "default": "player/mark/scar_double.png"
+      },
+      "scar_faint": {
+        "default": "player/mark/scar_faint.png"
+      },
+      "scar_jaw": {
+        "default": "player/mark/scar_jaw.png"
+      },
+      "scar_scatter": {
+        "default": "player/mark/scar_scatter.png"
+      },
+      "scar_x": {
+        "default": "player/mark/scar_x.png"
+      },
+      "scuff": {
+        "default": "player/mark/scuff.png"
       }
     }
   }

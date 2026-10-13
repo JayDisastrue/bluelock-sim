@@ -79,9 +79,12 @@ def outside_white(rgb: np.ndarray) -> np.ndarray:
     return np.asarray(cur) > 0
 
 
+KEY = 'magenta'  # 'magenta' (parts on a magenta head) or 'white' (skin-coloured heads on white, no key colour)
+
+
 def key_alpha(cell: Image.Image) -> tuple[np.ndarray, np.ndarray]:
     rgb = np.asarray(cell.convert('RGB'))
-    m = magentaness(rgb)
+    m = magentaness(rgb) if KEY == 'magenta' else np.zeros(rgb.shape[:2], np.float32)
     return rgb, np.clip((1 - m) * (~outside_white(rgb)), 0, 1)
 
 
@@ -94,7 +97,7 @@ def ring_zone(cell1: Image.Image, grow: int = 7) -> np.ndarray:
 
 def key_layer(cell: Image.Image, zone: np.ndarray | None = None, open_k: int = 3) -> Image.Image:
     rgb, alpha = key_alpha(cell)
-    m = magentaness(rgb)
+    m = magentaness(rgb) if KEY == "magenta" else np.zeros(rgb.shape[:2], np.float32)
     out = rgb.astype(np.float32)
     # de-spill: pull partially-magenta edge pixels toward neutral so no pink fringe survives
     spill = (m > 0.02) & (m < 0.98)
@@ -129,30 +132,96 @@ def key_layer(cell: Image.Image, zone: np.ndarray | None = None, open_k: int = 3
     return Image.fromarray(np.dstack([out.clip(0, 255).astype(np.uint8), (alpha * 255).astype(np.uint8)]), 'RGBA')
 
 
-def head_metrics(cell: Image.Image) -> tuple[float, float, float]:
-    """(head top y, ear-to-ear width, centre x) of the empty magenta silhouette, in cell pixels."""
-    m = magentaness(np.asarray(cell.convert('RGB'))) > 0.5
+CANON_EAR_RATIO = 0.67  # (ear row - head top) / ear-to-ear width, taken from the eyes sheet that the rest were checked against
+
+
+def head_metrics(cell: Image.Image) -> tuple[float, float, float, float]:
+    """(head top y, ear row y, ear-to-ear width, centre x) of the empty head in cell 1, in cell pixels."""
+    rgb, alpha = key_alpha(cell)
+    if KEY == 'magenta':
+        m = magentaness(rgb) > 0.5
+    else:
+        m = alpha > 0.5
     ys = np.where(m.any(axis=1))[0]
     if len(ys) == 0:
-        raise SystemExit('cell 1 has no magenta head; it must be the empty silhouette')
+        raise SystemExit('cell 1 has no head; it must be the empty silhouette')
     top, bot = ys[0], ys[-1]
-    rows = range(top, top + int((bot - top) * 0.45))
-    widths = []
-    for y in rows:
+    best = (0, 0, 0.0)
+    for y in range(top, top + int((bot - top) * 0.6)):
         xs = np.where(m[y])[0]
-        widths.append((xs[-1] - xs[0] + 1, (xs[0] + xs[-1]) / 2) if len(xs) else (0, 0))
-    w, c = max(widths)
-    return float(top), float(w), float(c)
+        if len(xs) and xs[-1] - xs[0] + 1 > best[0]:
+            best = (xs[-1] - xs[0] + 1, y, (xs[0] + xs[-1]) / 2)
+    w, ear_y, c = best
+    return float(top), float(ear_y), float(w), float(c)
 
 
-def place(layer: Image.Image, top: float, width: float, cx: float, dy: int = 0, scale: float = 1.0) -> Image.Image:
-    s = EAR_W / width * scale
-    lay = layer.resize((round(layer.width * s), round(layer.height * s)), Image.LANCZOS)
+def place(layer: Image.Image, geom: tuple[float, float, float, float], dy: int = 0, scale: float = 1.0, uniform: bool = False) -> Image.Image:
+    """Map the sheet's head onto the canvas: head top -> y=290, ear row -> canonical ear row, ear to ear -> 540 wide, centred."""
+    top, ear_y, width, cx = geom
+    sx = EAR_W / width * scale
+    sy = sx if uniform else CANON_EAR_RATIO * EAR_W / max(1.0, ear_y - top) * scale
+    lay = layer.resize((round(layer.width * sx), round(layer.height * sy)), Image.LANCZOS)
     canvas = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-    ox, oy = round(CX - cx * s), round(HEAD_TOP - top * s + dy)
-    # paste with clipping
-    canvas.paste(lay, (ox, oy), lay)
+    canvas.paste(lay, (round(CX - cx * sx), round(HEAD_TOP - top * sy + dy)), lay)
     return canvas
+
+
+def ring_by_diff(cell1: Image.Image, cell: Image.Image, dark: int | None = None) -> np.ndarray:
+    """Pixels of this cell that are the empty head's own ink: cell 1's ink, shifted to best overlap this cell, grown 2px."""
+    _, a1 = key_alpha(cell1)
+    _, a = key_alpha(cell)
+    r1 = a1 > 0.3
+    v = a > 0.3
+    h = min(r1.shape[0], v.shape[0]); w = min(r1.shape[1], v.shape[1])
+    r1, v = r1[:h, :w], v[:h, :w]
+    best, bs = -1, (0, 0)
+    for dy in range(-8, 9):
+        for dx in range(-8, 9):
+            sh = np.roll(np.roll(r1, dy, 0), dx, 1)
+            ov = int((sh & v).sum())
+            if ov > best:
+                best, bs = ov, (dy, dx)
+    sh = np.roll(np.roll(r1, bs[0], 0), bs[1], 1)
+    grown = np.asarray(Image.fromarray(sh.astype(np.uint8) * 255).filter(ImageFilter.MaxFilter(5))) > 0
+    out = np.zeros(a.shape, bool)
+    out[:h, :w] = grown
+    if dark is not None:  # only dark ink counts as outline, so pale marks and accessories crossing it survive
+        rgb = np.asarray(cell.convert('RGB')).astype(int)
+        out &= rgb.max(axis=2) < dark
+    return out
+
+
+def finish_face(layer: Image.Image, geom: tuple[float, float, float, float]) -> Image.Image:
+    """Face layers: cut the bare shoulders (the drawn body supplies them) and wipe the tiny nose the sheet drew on every head."""
+    arr = np.asarray(layer).copy()
+    a = arr[..., 3] > 40
+    rows = np.where(a.any(axis=1))[0]
+    widths = np.array([a[y].sum() if a[y].any() else 0 for y in range(a.shape[0])])
+    top = rows[0]
+    # neck: past the jaw the width settles at a minimum; the shoulder flare is where it grows again
+    lower = np.arange(top + int(0.5 * (rows[-1] - top)), rows[-1])
+    lower = lower[widths[lower] > 0]
+    minw = widths[lower].min()
+    y_min = lower[np.argmax(widths[lower] <= 1.05 * minw)]
+    cut = rows[-1]
+    for y in range(y_min, rows[-1]):
+        if widths[y] > 1.2 * minw:
+            cut = y
+            break
+    arr[cut:, :, 3] = 0
+    fade = 8
+    arr[cut - fade:cut, :, 3] = (arr[cut - fade:cut, :, 3] * np.linspace(1, 0, fade)[:, None]).astype(np.uint8)
+    # nose: replace small dark features in the centre of the face with the local skin colour
+    ys, xs = np.where(a)
+    ear_y = HEAD_TOP + int(CANON_EAR_RATIO * EAR_W)
+    box = (slice(ear_y + 120, ear_y + 215), slice(CX - 45, CX + 45))
+    patch = arr[box]
+    skin = np.median(patch[patch[..., 3] > 200][:, :3], axis=0)
+    diff = np.abs(patch[..., :3].astype(int) - skin.astype(int)).sum(axis=2)
+    mask = (diff > 40) & (patch[..., 3] > 200)
+    patch[mask, :3] = skin.astype(np.uint8)
+    arr[box] = patch
+    return Image.fromarray(arr, 'RGBA')
 
 
 def main():
@@ -161,27 +230,42 @@ def main():
     ap.add_argument('--slot', required=True); ap.add_argument('--ids', required=True, help='comma list, one per cell, "-" to skip, first must be the empty reference')
     ap.add_argument('--out', default='public/assets/player'); ap.add_argument('--preview'); ap.add_argument('--dy', type=int, default=0, help='nudge layers down (px on the 1000x1300 canvas)')
     ap.add_argument('--scale', type=float, default=1.0)
+    ap.add_argument('--key', choices=['magenta', 'white'], default='magenta', help='white: skin-coloured heads on a white page (head-shape sheets)')
+    ap.add_argument('--ring', choices=['thick', 'diff', 'none'], default='thick', help='how to drop the empty head\'s own outline: thick strokes only (hair), subtract cell 1 (marks, brows, accessories), or leave it')
+    ap.add_argument('--ring-dark', type=int, help='with --ring diff: only remove outline pixels darker than this (max channel)')
+    ap.add_argument('--uniform', action='store_true', help='scale x and y equally (skip the ear-row vertical fit)')
+    ap.add_argument('--face', action='store_true', help='face layers: cut the shoulders and wipe the drawn nose')
     ap.add_argument('--open-k', type=int, default=0, help='stroke width (px in the sheet) below which lines in the empty head\'s outline zone are dropped')
     ap.add_argument('--anchor-y', type=int, help='after placing, shift all layers so the median vertical centre of their ink lands on this canvas y (eyes 580, brows 535, nose 690)')
     ap.add_argument('--keep-box', help='x0,y0,x1,y1 on the 1000x1300 canvas: clear everything outside (eyes, brows, nose, marks)')
     a = ap.parse_args()
+    global KEY
+    KEY = a.key
     sheet = Image.open(a.sheet).convert('RGB')
     rgb = np.asarray(sheet)
     xs, ys = cell_spans(rgb, a.cols, 1), cell_spans(rgb, a.rows, 0)
     ids = a.ids.split(',')
     assert len(ids) == a.cols * a.rows, f'expected {a.cols * a.rows} ids, got {len(ids)}'
     cells = [sheet.crop((x0 + 2, y0 + 2, x1 - 2, y1 - 2)) for (y0, y1) in ys for (x0, x1) in xs]
-    top, width, cx = head_metrics(cells[0])
-    zone = ring_zone(cells[0], 2 * round(cells[0].width / 20) + 1)
+    geom = head_metrics(cells[0])
+    zone = ring_zone(cells[0], 2 * round(cells[0].width / 20) + 1) if a.ring == 'thick' else None
     open_k = a.open_k or 5
-    print(f'cells {a.cols}x{a.rows}, cell1 head top {top:.0f}, ear width {width:.0f}, centre {cx:.0f}')
+    print(f'cells {a.cols}x{a.rows}, cell1 head top {geom[0]:.0f}, ear row +{geom[1] - geom[0]:.0f}, ear width {geom[2]:.0f}, centre {geom[3]:.0f}')
     out = Path(a.out) / a.slot
     out.mkdir(parents=True, exist_ok=True)
     layers = {}
     for cell, cid in zip(cells, ids):
         if cid in ('-', 'empty'):
             continue
-        layers[cid] = place(key_layer(cell, zone, open_k), top, width, cx, a.dy, a.scale)
+        lay = key_layer(cell, zone, open_k)
+        if a.ring == 'diff':
+            arr = np.asarray(lay).copy()
+            rm = ring_by_diff(cells[0], cell, a.ring_dark)
+            hh, ww = min(rm.shape[0], arr.shape[0]), min(rm.shape[1], arr.shape[1])
+            arr[:hh, :ww, 3] = np.where(rm[:hh, :ww], 0, arr[:hh, :ww, 3])
+            lay = Image.fromarray(arr, 'RGBA')
+        placed = place(lay, geom, a.dy, a.scale, a.uniform)
+        layers[cid] = finish_face(placed, geom) if a.face else placed
     if a.anchor_y is not None and layers:
         mids = []
         for l in layers.values():

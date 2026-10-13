@@ -3,17 +3,17 @@ import { useNavigate } from 'react-router-dom'
 import { OPENING_SCRIPT, content } from '../content'
 import { useManifest } from '../assets'
 import { Portrait } from '../cutscene/Portrait'
-import { PALETTES, PART_SLOTS, SLOT_LABEL, normalizePortrait, optionLabel, optionsFor, randomPortrait, randomSlot, type PartSlot } from '../cutscene/parts'
-import { DEFAULT_PORTRAIT, usePreviewPlayer } from '../cutscene/previewPlayer'
-import { SvgPortrait } from '../cutscene/SvgPortrait'
+import { normalizePortrait } from '../cutscene/parts'
+import { usePreviewPlayer } from '../cutscene/previewPlayer'
 import { rollFate, type Fate } from '../engine/fate'
 import { useMeta } from '../engine/meta'
 import { EGO_BIAS } from '../engine/newGame'
-import { EGO_TYPES, type EgoType, type OriginId, type PortraitSpec } from '../engine/schemas'
+import { EGO_TYPES, type EgoType, type OriginId } from '../engine/schemas'
 import { useSettings } from '../engine/settings'
 import { RarityBadge } from './RarityBadge'
 import { useGame } from '../engine/store'
 import { Screen } from './Screen'
+import { Appearance } from './Appearance'
 import { useUi } from './uiStore'
 
 const STEPS = ['Identity', 'Appearance', 'Origin', 'Ego & Weapon', 'Confirm'] as const
@@ -24,22 +24,6 @@ const EGO_INFO: Record<EgoType, { name: string; desc: string }> = {
   wildcard: { name: 'Wildcard', desc: '“Joy is unpredictable.” Dribbling and speed lead.' },
   survivor: { name: 'Survivor', desc: '“I never get cut.” Stamina and defence lead.' },
   monarch: { name: 'Monarch', desc: '“Everyone orbits me.” Ego and Flow lead.' },
-}
-
-/** Which part of the portrait each slot's thumbnail zooms into. */
-const CROP: Record<PartSlot, string> = {
-  face: '40 40 120 150', hair: '30 14 140 150', eyes: '52 92 96 50', brow: '52 88 96 44', nose: '68 104 64 52', mark: '48 90 104 76', accessory: '30 20 140 170',
-}
-
-function Swatches({ colors, value, onPick, label }: { colors: readonly string[]; value: string; onPick: (c: string) => void; label: string }) {
-  return (
-    <div role="radiogroup" aria-label={label} style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-      {colors.map((c) => (
-        <button key={c} role="radio" aria-checked={value === c} aria-label={`${label} ${c}`} onClick={() => onPick(c)}
-          style={{ width: 28, height: 28, background: c, border: value === c ? '3px solid #fff' : '2px solid #3a4468', cursor: 'pointer', outline: value === c ? '2px solid #e5233b' : 'none' }} />
-      ))}
-    </div>
-  )
 }
 
 function Dice({ onClick, label }: { onClick: () => void; label: string }) {
@@ -63,7 +47,6 @@ export function NewGame() {
   const unlocked = useMeta((s) => s.unlockedOrigins)
   const newGame = useGame((s) => s.newGame)
   const playLive = useUi((u) => u.playLive)
-  const set = <K extends keyof PortraitSpec>(k: K, v: PortraitSpec[K]) => setPortrait({ ...portrait, [k]: v })
   // once images are imported for a slot, the drawn defaults are no longer offered: snap the current look onto offered parts
   useEffect(() => {
     const n = normalizePortrait(portrait, parts)
@@ -79,14 +62,24 @@ export function NewGame() {
     playLive([OPENING_SCRIPT])
   }
 
+  const navButtons = (
+    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '.5rem', gap: 8, width: '100%' }}>
+      <button className="btn" disabled={step === 0} onClick={() => setStep(step - 1)}>Back</button>
+      {step < STEPS.length - 1
+        ? <button className="btn blue" disabled={!canNext} onClick={() => setStep(step + 1)} data-testid="next">Next</button>
+        : <button className="btn primary" onClick={start} data-testid="start">Enter Blue Lock</button>}
+    </div>
+  )
+
   return (
-    <Screen title="New Game">
+    <Screen title="New Game" wide={step === 1}>
       <ol style={{ display: 'flex', gap: 8, listStyle: 'none', padding: 0, margin: '0 0 1rem', flexWrap: 'wrap' }} aria-label="Steps">
         {STEPS.map((s, i) => (
           <li key={s} className="chip" style={{ color: i === step ? '#fff' : i < step ? '#6ea0ff' : '#5a6280', background: i === step ? '#e5233b' : 'transparent' }} aria-current={i === step ? 'step' : undefined}>{i + 1}. {s}</li>
         ))}
       </ol>
-      <div className="wizard-grid">
+      {step === 1 && <Appearance footer={navButtons} />}
+      {step !== 1 && <div className="wizard-grid">
         <div className="panel-card" style={{ display: 'grid', gap: '1rem', alignContent: 'start' }}>
           {step === 0 && (
             <>
@@ -107,44 +100,6 @@ export function NewGame() {
               <label style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                 <input type="checkbox" checked={romance} onChange={(e) => setSettings({ romance: e.target.checked })} /> Enable romance &amp; friendships subplots
               </label>
-            </>
-          )}
-          {step === 1 && (
-            <>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
-                <button className="btn primary" onClick={() => setPortrait(randomPortrait(Math.random, parts))} data-testid="randomize-all">🎲 Randomize everything</button>
-                <button className="btn small" onClick={() => setPortrait(DEFAULT_PORTRAIT)}>Reset</button>
-                <span style={{ color: '#9fa6b8', fontSize: '.85rem' }}>Mix and match every part. Your imported part images (public/assets/player/) replace the drawn options for their slot automatically.</span>
-              </div>
-              {PART_SLOTS.map((slot) => (
-                <section key={slot} aria-label={SLOT_LABEL[slot]}>
-                  <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 6 }}>
-                    <b className="slash-title">{SLOT_LABEL[slot]}</b>
-                    <Dice label={`Random ${SLOT_LABEL[slot]}`} onClick={() => setPortrait(randomSlot(portrait, slot, Math.random, parts))} />
-                  </div>
-                  <div role="radiogroup" aria-label={SLOT_LABEL[slot]} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(78px, 1fr))', gap: 6 }}>
-                    {optionsFor(slot, parts).map((opt) => {
-                      const on = portrait[slot] === opt.id
-                      return (
-                        <button key={opt.id} role="radio" aria-checked={on} onClick={() => set(slot, opt.id)} data-testid={`part-${slot}-${opt.id}`}
-                          title={optionLabel(opt.id) + (opt.image ? ' (imported image)' : '')}
-                          style={{ padding: 2, background: '#0a0c14', border: on ? '3px solid #e5233b' : '2px solid #3a4468', cursor: 'pointer', color: '#cfd6ee', fontSize: '.7rem', display: 'grid', gap: 2 }}>
-                          <div className="thumb"><SvgPortrait spec={{ ...portrait, [slot]: opt.id }} crop={CROP[slot]} parts={parts} label={`${SLOT_LABEL[slot]} ${optionLabel(opt.id)}`} /></div>
-                          <span style={{ textTransform: 'capitalize' }}>{optionLabel(opt.id)}{opt.image ? ' ◆' : ''}</span>
-                        </button>
-                      )
-                    })}
-                  </div>
-                </section>
-              ))}
-              <div>Skin<Swatches colors={PALETTES.skin} value={portrait.skin} onPick={(c) => set('skin', c)} label="Skin" /></div>
-              <div>Hair colour<Swatches colors={PALETTES.hairColor} value={portrait.hairColor} onPick={(c) => set('hairColor', c)} label="Hair colour" /></div>
-              <div>Eye colour<Swatches colors={PALETTES.eyeColor} value={portrait.eyeColor} onPick={(c) => set('eyeColor', c)} label="Eye colour" /></div>
-              <div>Kit<Swatches colors={PALETTES.kit} value={portrait.kit} onPick={(c) => set('kit', c)} label="Kit" /></div>
-              <div>Accent<Swatches colors={PALETTES.accent} value={portrait.accent} onPick={(c) => set('accent', c)} label="Accent" /></div>
-              <div role="radiogroup" aria-label="Build" style={{ display: 'flex', gap: 6, alignItems: 'center' }}>Build
-                {(['lean', 'mid', 'broad'] as const).map((b) => <button key={b} role="radio" aria-checked={portrait.build === b} className={`btn small ${portrait.build === b ? 'blue' : ''}`} onClick={() => set('build', b)}>{b}</button>)}
-              </div>
             </>
           )}
           {step === 2 && (
@@ -196,17 +151,12 @@ export function NewGame() {
               <div style={{ color: '#9fa6b8' }}>Your opening scene will diverge: you’ll be approached by <b>{content.characters[o.approachedBy]?.name}</b>, and Ego will aim at your wound.</div>
             </div>
           )}
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '.5rem' }}>
-            <button className="btn" disabled={step === 0} onClick={() => setStep(step - 1)}>Back</button>
-            {step < STEPS.length - 1
-              ? <button className="btn blue" disabled={!canNext} onClick={() => setStep(step + 1)} data-testid="next">Next</button>
-              : <button className="btn primary" onClick={start} data-testid="start">Enter Blue Lock</button>}
-          </div>
+          {navButtons}
         </div>
         <div className="panel-card preview" style={{ height: 360, padding: 0, background: 'linear-gradient(180deg,#181c2c,#05060a)', position: 'sticky', top: 12 }} aria-label="Portrait preview">
           <div style={{ height: '100%', padding: '1rem 2rem 0' }}><Portrait who="player" emotion={step === 4 ? 'smirk' : 'neutral'} /></div>
         </div>
-      </div>
+      </div>}
     </Screen>
   )
 }

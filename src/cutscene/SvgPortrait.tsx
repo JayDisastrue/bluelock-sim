@@ -18,7 +18,29 @@ function imageFor(parts: Parts, slot: string, id: string, emotion?: string): str
   const file = (emotion && e?.[emotion]) || e?.default
   return file ? assetUrl(file) : undefined
 }
-const PartImage = ({ href }: { href: string }) => <image href={href} x="0" y="0" width="200" height="260" preserveAspectRatio="none" />
+const PartImage = ({ href, filter }: { href: string; filter?: string }) => <image href={href} x="0" y="0" width="200" height="260" preserveAspectRatio="none" filter={filter ? `url(#${filter})` : undefined} />
+
+/**
+ * Imported hair art is black-blue. To honour the hair-colour swatches without a file per colour, the art goes through a
+ * gradient map: luminance is stretched and mapped onto a ramp (ink, shadow, base, light, shine) built from the chosen colour.
+ * Near-black choices keep the art as drawn.
+ */
+const hexToRgb = (h: string): [number, number, number] => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255) as [number, number, number]
+export const isDarkHair = (hex: string) => hex.length !== 7 || hexToRgb(hex).every((v) => v < 0.2)
+function HairTint({ hex }: { hex: string }) {
+  const t = hexToRgb(hex)
+  const mix = (a: number, b: number, k: number) => a + (b - a) * k
+  const ramp = (c: number) => [c * 0.08, c * 0.4, c * 0.85, mix(c, 1, 0.35), mix(c, 1, 0.75)].map((v) => v.toFixed(3)).join(' ')
+  const g = 2.6
+  return (
+    <filter id={`hair-${hex.slice(1)}`} colorInterpolationFilters="sRGB" x="0" y="0" width="100%" height="100%">
+      <feColorMatrix type="matrix" values={`${0.2126 * g} ${0.7152 * g} ${0.0722 * g} 0 0  ${0.2126 * g} ${0.7152 * g} ${0.0722 * g} 0 0  ${0.2126 * g} ${0.7152 * g} ${0.0722 * g} 0 0  0 0 0 1 0`} />
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues={ramp(t[0])} /><feFuncG type="table" tableValues={ramp(t[1])} /><feFuncB type="table" tableValues={ramp(t[2])} />
+      </feComponentTransfer>
+    </filter>
+  )
+}
 
 // ───────────── face shapes ─────────────
 const HEAD: Record<string, string> = {
@@ -33,7 +55,11 @@ const HEAD: Record<string, string> = {
 // ───────────── hair ─────────────
 function Hair({ spec, back, parts }: { spec: PortraitSpec; back: boolean; parts: Parts }) {
   const img = imageFor(parts, 'hair', spec.hair)
-  if (img) return back ? null : <PartImage href={img} />
+  if (img) {
+    if (back) return null
+    const tint = !isDarkHair(spec.hairColor)
+    return <>{tint && <defs><HairTint hex={spec.hairColor} /></defs>}<PartImage href={img} filter={tint ? `hair-${spec.hairColor.slice(1)}` : undefined} /></>
+  }
   const c = spec.hairColor
   const dark = 'rgba(0,0,0,0.25)'
   switch (spec.hair) {

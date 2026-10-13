@@ -63,9 +63,29 @@ SHEET: ACCESSORIES ONLY. Draw ONLY the accessory on the magenta head, nothing el
 ## Processing a sheet (`scripts/slice_sheet.py`)
 Originals are kept in `docs/part-sheets/`. The slicer finds the cell grid, keys out the magenta, drops the head outline (using the empty cell 1 as the reference), scales every cell to the template (head top y=290, ear to ear 540 px) and writes aligned 1000x1300 layers. Needs `pip install pillow numpy scipy`.
 ```
-python3 scripts/slice_sheet.py docs/part-sheets/hair_a.webp --cols 5 --rows 4 --slot hair --ids empty,spiky,swept,shaggy,fringe,buzz,undercut,curly,long,side_part,mohawk,bob,ponytail,slick_side,messy_part,topknot,wavy,pixie,afro,-
-python3 scripts/slice_sheet.py docs/part-sheets/hair_b.webp --cols 5 --rows 4 --slot hair --ids empty,braid,sweep_fringe,twin_tails,crop_fringe,slick_back,bedhead,bowl,dreads,shaved_sweep,long_bangs,wolf,half_bun,asym_long,asym_sweep,short_cut,shag_wolf,messy_bun,spike_shaved,long_sweep
-python3 scripts/slice_sheet.py docs/part-sheets/eyes.webp --cols 3 --rows 3 --slot eyes --keep-box 150,500,850,860 --ids empty,sharp,round,narrow,droopy,upturned,wide,almond,heavy_lid
+S="python3 scripts/slice_sheet.py"
+$S docs/part-sheets/hair_a.webp --cols 5 --rows 4 --slot hair --ids empty,spiky,swept,shaggy,fringe,buzz,undercut,curly,long,side_part,mohawk,bob,ponytail,slick_side,messy_part,topknot,wavy,pixie,afro,-
+$S docs/part-sheets/hair_b.webp --cols 5 --rows 4 --slot hair --ids empty,braid,sweep_fringe,twin_tails,crop_fringe,slick_back,bedhead,bowl,dreads,shaved_sweep,long_bangs,wolf,half_bun,asym_long,asym_sweep,short_cut,shag_wolf,messy_bun,spike_shaved,long_sweep
+$S docs/part-sheets/eyes.webp --cols 3 --rows 3 --slot eyes --keep-box 150,500,850,860 --ids empty,sharp,round,narrow,droopy,upturned,wide,almond,heavy_lid
+$S docs/part-sheets/brows.webp --cols 3 --rows 3 --slot brow --ring diff --ring-dark 110 --keep-box 150,430,850,720 --ids empty,straight,thick,thin,arched,angled,soft,raised,broken
+$S docs/part-sheets/marks.webp --cols 4 --rows 3 --slot mark --ring diff --ring-dark 110 --keep-box 150,280,850,1000 --ids empty,scar_centre,scar_bridge,scar_diagonal,scar_faint,scar_jaw,scuff,scar_x,scar_double,scar_cheek,scar_cross,scar_scatter
+$S docs/part-sheets/heads.webp --cols 3 --rows 2 --slot face --key white --ring none --face --ids oval,round,square,long,heart,sharp
+python3 scripts/face_tones.py        # each head in the eight skin tones: face/<shape>__<tone>.png
 npm run assets:scan
 ```
+`--ring thick` (hair) drops thin outline strokes near the empty head; `--ring diff` (brows, marks, accessories) subtracts cell 1's outline instead. Layers are fitted to the template by head top, ear row and ear width, so every sheet lines up with every other. `mark/none.png` is a blank layer so "no mark" stays an option once mark images exist. `docs/part-sheets/skins.png` is kept as a colour reference only: the tones come from `scripts/face_tones.py`.
+
 Gemini does not always follow the cell count (it made 20 cells instead of 16), so read the sheet and list one id per cell in reading order; `-` skips a cell. Because every sheet's head geometry comes from the same prompt, hair, eyes, brows and so on line up with each other. The eye line lands near y=685 on the canvas, not at the 580 drawn on `_template.png`; the drawn SVG placeholders and the template guide use the older proportions, so mix drawn and imported parts only until the face sheet is imported.
+
+## Re-run these (the first attempts missed)
+**Accessories:** the sheet came back drawn in magenta, so the key colour erased it. Paste the STYLE + LAYOUT block, then:
+```
+SHEET: ACCESSORIES ONLY. Draw ONLY the accessory on the magenta head, nothing else, and draw every accessory in REAL colours that contain no magenta, pink or purple (so it can be told apart from the head): sports headband matte black with a white stripe; thin round glasses with black frames and clear lenses; small silver stud earring on the left ear; silver hair clip on the right side; over-ear headphones black with red cushions around the neck. Cell 1 empty silhouette, then in that order. Outline everything in dark ink.
+```
+**Noses and the common marks** (the marks sheet drew only scars): 
+```
+SHEET: NOSES ONLY, 3x3. Draw ONLY a nose on the magenta head at 53% of the cell height, as a few dark ink lines and one hard shadow shape, no skin tone. Cell 1 empty silhouette, then: small simple, straight defined, pointed narrow, broad, upturned, hooked, flat wide, long thin, button.
+```
+```
+SHEET: MARKS, 3x3. Draw ONLY the listed mark on the magenta head. Use clearly NON-magenta colours (skin-tone brown, white, grey, dark ink). Cell 1 empty silhouette, then: white plaster/bandage on the left cheek, small dark mole under the right eye, freckles across the nose and cheeks, dark eyebags under both eyes, purple-blue bruise on the right cheekbone, plaster across the bridge of the nose, split lip, black eye around the left eye.
+```
