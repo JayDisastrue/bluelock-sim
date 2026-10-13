@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import { content } from '../content'
-import { buildIdList } from './idlist'
+import { buildIdList, buildRosterDoc } from './idlist'
 
 describe('docs/IDS.md', () => {
   it('lists every id and is up to date (run `npm run ids` if this fails)', () => {
@@ -12,5 +12,8 @@ describe('docs/IDS.md', () => {
     for (const id of Object.keys(content.scripts)) expect(doc).toContain(`\`${id}\``)
     expect(doc).toContain('`changePosition`')
     expect(doc).toContain('`heavy_lid`')
+  })
+  it('docs/ROSTER.md is up to date (run `npm run ids`)', () => {
+    expect(readFileSync('docs/ROSTER.md', 'utf8')).toBe(buildRosterDoc(content))
   })
 })

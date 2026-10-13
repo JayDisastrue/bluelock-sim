@@ -29,87 +29,8 @@
 | `tomas` | Tomás Ferreira | original (placeholder) |
 | `kisaragi` | Ayame Kisaragi | original (placeholder) |
 
-### Reserved cast (art slots for future features)
-Every id below can already take art at `public/assets/portraits/<id>.png`. **In game** = it exists in `src/content/characters`; **reserved** = the id and name are set aside but nothing is written yet. `?` marks a name whose spelling should be checked (`docs/CANON_NOTES.md`). Never rename an id that is in the game: saves refer to it.
-| id | name | group | region | role | status |
-| --- | --- | --- | --- | --- | --- |
-| `isagi` | Yoichi Isagi | canon | japan | striker / protagonist | in game |
-| `bachira` | Meguru Bachira | canon | japan | winger | in game |
-| `barou` | Shoei Barou | canon | japan | striker | in game |
-| `chigiri` | Hyoma Chigiri | canon | japan | winger | in game |
-| `kunigami` | Rensuke Kunigami | canon | japan | striker | in game |
-| `raichi` | Jingo Raichi ? | canon | japan | striker | in game |
-| `gagamaru` | Gin Gagamaru | canon | japan | goalkeeper | in game |
-| `nagi` | Seishiro Nagi | canon | japan | striker | in game |
-| `reo` | Reo Mikage | canon | japan | midfielder | in game |
-| `rin` | Rin Itoshi | canon | japan | midfielder / striker | in game |
-| `sae` | Sae Itoshi | canon | world | midfielder | in game |
-| `noel_noa` | Noel Noa | canon | world | striker, the world's best | in game |
-| `oliver_aiku` | Oliver Aiku | canon | japan | midfielder | in game |
-| `ego` | Jinpachi Ego | canon | staff | Blue Lock project head | in game |
-| `anri` | Anri Teieri | canon | staff | Ego's assistant | in game |
-| `niko` | Ikki Niko | canon | japan | midfielder | reserved |
-| `hiori` | Yo Hiori | canon | japan | striker | reserved |
-| `karasu` | Tabito Karasu | canon | japan | midfielder | reserved |
-| `kiyora` | Jin Kiyora ? | canon | japan | midfielder | reserved |
-| `shido` | Ryusei Shido | canon | japan | striker | reserved |
-| `yukimiya` | Kenyu Yukimiya | canon | japan | striker | reserved |
-| `tsurugi` | Zantetsu Tsurugi | canon | japan | defender | reserved |
-| `himizu` | Aiki Himizu | canon | japan | midfielder | reserved |
-| `aryu` | Jyubei Aryu ? | canon | japan | striker | reserved |
-| `kurona` | Ranze Kurona ? | canon | japan | midfielder | reserved |
-| `tokimitsu` | Aoshi Tokimitsu ? | canon | japan | midfielder | reserved |
-| `igarashi` | Gurimu Igarashi ? | canon | japan | winger | reserved |
-| `otoya` | Eita Otoya ? | canon | japan | forward | reserved |
-| `junichi_wanima` | Junichi Wanima | canon | japan | forward | reserved |
-| `keisuke_wanima` | Keisuke Wanima | canon | japan | forward | reserved |
-| `kaiser` | Michael Kaiser | canon | world | striker | reserved |
-| `ness` | Alexis Ness | canon | world | midfielder | reserved |
-| `chevalier` | Charles Chevalier | canon | world | winger | reserved |
-| `prince` | Chris Prince | canon | world | striker | reserved |
-| `snuffy` | Marc Snuffy | canon | world | midfielder | reserved |
-| `loki` | Julian Loki ? | canon | world | striker | reserved |
-| `lavinho` | Lavinho | canon | world | striker | reserved |
-| `luna` | Leonardo Luna | canon | world | midfielder | reserved |
-| `onazi` | Innocent Onazi | canon | world | forward | reserved |
-| `cavasoz` | Pablo Cavasoz ? | canon | world | player | reserved |
-| `hugo` | Vivian Hugo ? | canon | world | player | reserved |
-| `knight` | Teddy Knight ? | canon | world | player | reserved |
-| `achanpong` | Achanpong ? | canon | world | player | reserved |
-| `lockhart` | Lockhart ? | canon | world | player | reserved |
-| `lorenzo` | Lorenzo ? | canon | world | player | reserved |
-| `sora` | Sora Kaizuka | original | japan | left winger | in game |
-| `reiji` | Reiji Hasegawa | original | japan | academy captain | in game |
-| `mio` | Mio Tachibana | original | media | journalist | in game |
-| `haruka` | Haruka Shirane | original | family | the player's sister | in game |
-| `dante` | Dante Cavalli | original | world | centre-back | in game |
-| `lukas` | Lukas Brandt | original | world | forward | in game |
-| `tomas` | Tomás Ferreira | original | world | midfielder | in game |
-| `kisaragi` | Ayame Kisaragi | original | staff | sponsor executive | in game |
-| `taiga_mochizuki` | Taiga Mochizuki | original | japan | defender, Team rival | reserved |
-| `kaede_minase` | Kaede Minase | original | japan | winger | reserved |
-| `jun_arakawa` | Jun Arakawa | original | japan | box-to-box midfielder | reserved |
-| `shin_tadano` | Shin Tadano | original | japan | fan-favourite benchwarmer | reserved |
-| `daichi_morita` | Daichi Morita | original | japan | goalkeeper | reserved |
-| `nao_fujimura` | Nao Fujimura | original | japan | sweeper | reserved |
-| `takeru_sano` | Takeru Sano | original | japan | hometown rival | reserved |
-| `mika_ishida` | Mika Ishida | original | family | hometown friend | reserved |
-| `coach_hara` | Coach Hara | original | family | hometown youth coach | reserved |
-| `goro_kurobane` | Goro Kurobane | original | staff | veteran assistant coach | reserved |
-| `yuna_sakurai` | Yuna Sakurai | original | staff | team physio | reserved |
-| `rika_ogasawara` | Rika Ogasawara | original | staff | match data analyst | reserved |
-| `dr_kuwabara` | Dr. Kuwabara | original | staff | sports psychologist | reserved |
-| `ayase_kuroda` | Ayase Kuroda | original | staff | player agent | reserved |
-| `emi_hoshino` | Emi Hoshino | original | media | streamer and commentator | reserved |
-| `yuri_tanaka` | Yuri Tanaka | original | media | rival reporter | reserved |
-| `elias_wright` | Elias Wright | original | world | English winger | reserved |
-| `mateo_ruiz` | Mateo Ruiz | original | world | Spanish pivot | reserved |
-| `ilya_volkov` | Ilya Volkov | original | world | Russian goalkeeper | reserved |
-| `amara_diallo` | Amara Diallo | original | world | French full-back | reserved |
-| `kofi_mensah` | Kofi Mensah | original | world | Ghanaian sprinter | reserved |
-| `luca_bianchi` | Luca Bianchi | original | world | Italian playmaker | reserved |
-| `hana_yoo` | Hana Yoo | original | world | Korean prodigy | reserved |
-| `chen_wei` | Chen Wei | original | world | Chinese playmaker | reserved |
+### Reserved cast
+523 character ids are reserved (218 from the series, 305 original), plus unnamed squad slots `<teamId>_fill_NN`. Every one can already take art at `public/assets/portraits/<id>.png`. The full tables (every character, every team, who is in the game) are in [`docs/ROSTER.md`](ROSTER.md). Never rename an id that is in the game: saves refer to it.
 
 Extra: `player` is your own character (`portraits/player.png` overrides the whole creator mix).
 Expression art: `<id>_<emotion>.png` with emotion one of `neutral` `smirk` `furious` `shocked` `despair` `flow` `metavision` `devoured`.
@@ -148,7 +69,7 @@ Face files are `<shape>__<tone>.png`; shapes `oval round square long heart sharp
 | accessory | `headband` `glasses` `earring` `hair_clip` `headphones` |
 
 ## Backgrounds: `public/assets/backgrounds/<id>.jpg` (1920 × 1080)
-All 73 ids already work in scene scripts (a plain colour fallback shows until art is imported).
+All 131 ids already work in scene scripts (a plain colour fallback shows until art is imported).
 | group | ids |
 | --- | --- |
 | Used by the current scenes | `black` `letter` `room_z` `cafeteria` `locker_room` `training_pitch` `tunnel` `stadium` `monitor_wall` `ego_office` `old_pitch` `academy_gate` `street_cage` `bench_dusk` |
@@ -156,14 +77,39 @@ All 73 ids already work in scene scripts (a plain colour fallback shows until ar
 | Pitches and courts | `tag_test_arena` `first_selection_field` `second_selection_field` `training_pitch_night` `training_pitch_rain` `pitch_sunrise` `pitch_snow` `indoor_court` `futsal_court` `riverside_pitch` `penalty_spot` `goal_mouth_close` |
 | Home and everyday life | `hometown_street` `school_gym` `school_classroom` `school_rooftop` `convenience_store` `train_station` `airport_gate` `bus_window` `bedroom_night` `family_kitchen` `hospital_room` `shrine_steps` `festival_night` `beach_dusk` `cafe` |
 | The world stage | `u20_stadium_day` `u20_stadium_night` `stadium_tunnel_roar` `press_conference` `hotel_room` `city_night` `locker_room_europe` `training_ground_europe` |
+| Match day | `stadium_stands_wide` `stadium_crowd_close` `pitch_centre_circle` `pitch_corner_flag` `pitch_penalty_area` `pitch_touchline` `dugout` `bench_row` `substitution_board` `halftime_locker` `pre_match_tunnel` `pitch_floodlights_night` `pitch_rain_heavy` `stadium_empty` `scoreboard_goal` `trophy_room` `award_stage` `mixed_zone` |
+| Venues and places from the series | `stadium_munchen` `stadium_manshine` `stadium_barcha` `stadium_paris` `stadium_ubers` `stadium_japan_national` `stadium_u20_final` `champ_nou` `bm_clubhouse` `jfu_hq` `mikage_corp` `lagos_orphanage` `relaxation_theater` `wild_card_room` `blue_lock_exterior` |
+| Transitions and cards | `wipe_black` `wipe_white` `flash_white` `speedlines` `title_card` `chapter_card` `week_card` `loading_pitch` `split_diagonal` `ink_splash` `halftone_red` `halftone_blue` `countdown_board` |
+| Cutscene moods | `flashback_sepia` `dream_field` `childhood_pitch` `rain_window` `empty_dorm` `silhouette_stage` `spotlight_floor` `tv_static` `phone_screen` `social_feed` `news_broadcast` `video_review_room` |
 | Abstract and effect backdrops | `white_void` `red_void` `memory_haze` `flow_field` `metavision_grid` `scoreboard_closeup` `newspaper_wall` |
 
 ## Sound ids (reserved, wired by hand in `manifest.json`, see `ASSETS.md`)
-- Music: `memory-hush` `envelope` `selection-tension` `dorm-calm` `main-menu` `creation` `hub-day` `hub-night` `training-montage` `match-kickoff` `match-tension` `match-flow` `match-metavision` `goal-celebrate` `goal-conceded` `half-time` `post-match-quiet` `selection-announce` `elimination` `ego-lecture` `rival-theme` `bond-warm` `betrayal` `awakening` `tag-test` `first-selection` `second-selection` `u20-anthem` `credits`
-- SFX: `don` `impact-hit` `impact-big` `page-flip` `panel-slam` `choice-hover` `choice-confirm` `ripple-chime` `ripple-bad` `shot-strike` `ball-net` `post-hit` `whistle` `crowd-roar` `crowd-gasp` `tackle` `sprint` `heartbeat` `flow-on` `metavision-on` `devoured-sting` `menu-click` `save-ok` `error` `phone-buzz` `door-slide` `locker-slam` `rain` `wind` `typing`
+**Music** (60):
+| group | ids |
+| --- | --- |
+| Used by scenes today | `memory-hush` `envelope` `selection-tension` `dorm-calm` |
+| Menus and hub | `main-menu` `creation` `hub-day` `hub-night` `hub-tense` `hub-warm` `save-load` `gallery` `credits` |
+| Story moods | `ego-lecture` `rival-theme` `bond-warm` `betrayal` `awakening` `loss` `resolve` `reunion` `confession` `flashback` `dread` `comic-relief` `quiet-night` `press-pressure` `sponsor-intrigue` |
+| Arcs and selections | `arc-intro` `tag-test` `first-selection` `second-selection` `third-selection` `neo-egoist-league` `u20-japan` `u20-world-cup` `worlds-best` `selection-announce` `elimination` `rank-up` |
+| Training | `training-montage` `training-hard` `training-calm` `minigame` |
+| Matches | `match-kickoff` `match-tension` `match-flow` `match-metavision` `match-desperate` `match-comeback` `match-lead` `goal-celebrate` `goal-conceded` `half-time` `full-time-win` `full-time-loss` `full-time-draw` `penalty-shootout` `post-match-quiet` `u20-anthem` |
 
-## Team ids (reserved for rosters and fixtures)
-`team_z` `team_v` `team_y` `team_w` `team_x` `blue_lock_eleven` `u20_japan` `bastard_munchen` `pxg` `manshine_city` `ubers` `barcha` `academy_team` `street_crew` `hometown_club` `rival_academy`
+**SFX** (87):
+| group | ids |
+| --- | --- |
+| Used today | `don` |
+| Interface | `menu-click` `menu-back` `choice-hover` `choice-confirm` `choice-timer-tick` `choice-timeout` `save-ok` `load-ok` `error` `notification` `text-blip` `page-flip` `tab-switch` `dice-roll` `unlock` `level-up` `rank-up-sting` |
+| Manga and cutscene | `impact-hit` `impact-big` `panel-slam` `panel-slide` `speedlines-whoosh` `ripple-chime` `ripple-bad` `flow-on` `flow-off` `metavision-on` `metavision-off` `devoured-sting` `ego-sting` `heartbeat` `heartbeat-fast` `breath` `gasp` `transition-whoosh` `transition-slam` `camera-shutter` `glass-break` `thunder` |
+| Football | `shot-strike` `shot-curve` `pass-short` `pass-long` `ball-kick-soft` `ball-kick-hard` `ball-bounce` `ball-net` `post-hit` `bar-hit` `save-dive` `keeper-catch` `tackle` `slide-tackle` `sprint` `dribble-touch` `header` `whistle-short` `whistle-long` `card-show` `var-beep` `scoreboard-tick` `goal-horn` |
+| Crowd | `crowd-roar` `crowd-gasp` `crowd-groan` `crowd-chant` `crowd-boo` `crowd-cheer-small` `crowd-clap` `commentator-excited` |
+| World | `door-slide` `door-open` `locker-slam` `footsteps-grass` `footsteps-concrete` `footsteps-corridor` `keyboard` `phone-buzz` `paper-rustle` `elevator-ding` `monitor-hum` `vending-machine` `shower` `rain` `wind` `train-pass` |
+
+**Ambience loops** (20): `dorm-night` `canteen-chatter` `corridor-hum` `monitor-room` `training-pitch-day` `training-pitch-night` `rain-pitch` `stadium-empty` `stadium-crowd-low` `stadium-crowd-full` `locker-room` `tunnel-echo` `press-room` `city-night` `hometown-day` `school-gym` `train-station` `hospital` `beach` `festival`
+
+## Other reserved ids
+- Series arcs (for the long campaign): `introduction` `first_selection` `second_selection` `third_selection` `neo_egoist_league` `u20_japan` `u20_world_cup` `worlds_best`
+- Items (shop and rewards): `boots_speed` `boots_control` `boots_power` `boots_grip` `shin_guards` `gloves_keeper` `captain_armband` `training_weights` `resistance_band` `recovery_boots` `energy_drink` `protein_meal` `sleep_mask` `ice_pack` `tactical_notebook` `match_footage` `rival_dossier` `lucky_charm` `hometown_photo` `sponsor_contract` `jersey_team_z` `jersey_team_v` `jersey_blue_lock_eleven` `jersey_u20_japan` `headband` `wristband`
+- Teams: 141 ids, see [`docs/ROSTER.md`](ROSTER.md)
 
 ## Voice
 - Random clips: `public/assets/voice/<characterId>/*.mp3` (optional `<emotion>/` subfolders). Character ids: see Characters above, plus `player`.
