@@ -21,3 +21,9 @@ player/accessory/<id>.png    glasses, headband, earrings, ...
 - **Mixing:** slots mix freely, so you can import only hair and keep the drawn eyes until you add eye images.
 
 Then run `npm run assets:scan` and refresh. The full id list lives in `docs/IDS.md`. Built-in placeholder ids: face `oval round square long heart sharp`; hair `spiky swept shaggy buzz undercut curly long mohawk bob ponytail side_part topknot wavy pixie afro braid`; eyes `sharp round narrow droopy upturned wide almond heavy_lid`; brow `straight thick thin arched angled soft`; nose `small straight pointed broad`; mark `none scar bandage mole freckles eyebags bruise`; accessory `none headband glasses earring hair_clip`.
+
+## Generated from Gemini sheets
+`scripts/slice_sheet.py` cuts a Gemini parts sheet into these layers (see `docs/PART_SHEET_PROMPTS.md`). Those layers share one head geometry (head top y=290, ear row y=652, ear to ear 540 px), which is why the eye line sits near y=685 here rather than at the 580 drawn on `_template.png`.
+- `face/<shape>__<tone>.png`: head shapes in the eight skin tones (`pale fair light medium tan brown deep ebony`, see `PALETTES.skin`). The creator shows the shapes and lets the skin swatch pick the file.
+- Hair is black art; the hair-colour swatches recolour it with a gradient map in the browser, so you do not need a file per colour.
+- Eyes keep their own iris colour for now.

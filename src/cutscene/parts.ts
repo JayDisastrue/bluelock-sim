@@ -20,6 +20,33 @@ export const PALETTES = {
   accent: ['#ffffff', '#f5d142', '#e5233b', '#6ea0ff', '#101014', '#4fd18b'],
 } as const
 
+/** Skin-tone names, in the order of PALETTES.skin. Imported face art is stored per tone as `<shape>__<tone>.png`. */
+export const SKIN_NAMES = ['pale', 'fair', 'light', 'medium', 'tan', 'brown', 'deep', 'ebony'] as const
+const TONE_SEP = '__'
+const hexRgb = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16))
+/** Index of the palette skin tone closest to `hex`. */
+export function skinIndex(hex: string): number {
+  const c = hexRgb(hex.length === 7 ? hex : '#f0d0b0')
+  let best = 0, bd = Infinity
+  PALETTES.skin.forEach((p, i) => { const d = hexRgb(p).reduce((a, v, k) => a + (v - c[k]!) ** 2, 0); if (d < bd) { bd = d; best = i } })
+  return best
+}
+export const faceShape = (id: string) => id.split(TONE_SEP)[0]!
+export const faceId = (shape: string, skinHex: string) => `${shape}${TONE_SEP}${SKIN_NAMES[skinIndex(skinHex)]}`
+/** True when the face art is imported per skin tone (so the skin swatch picks the file, not a fill colour). */
+export const usesToneFaces = (parts: Manifest['playerParts']) => Object.keys(parts?.face ?? {}).some((id) => id.includes(TONE_SEP))
+/** The face shapes on offer (tone suffix dropped). */
+export function faceShapes(parts: Manifest['playerParts']): string[] {
+  if (!usesToneFaces(parts)) return optionsFor('face', parts).map((o) => o.id)
+  return [...new Set(Object.keys(parts?.face ?? {}).map(faceShape))]
+}
+export function setFaceShape(spec: PortraitSpec, shape: string, parts: Manifest['playerParts']): PortraitSpec {
+  return { ...spec, face: usesToneFaces(parts) ? faceId(shape, spec.skin) : shape }
+}
+export function setSkin(spec: PortraitSpec, hex: string, parts: Manifest['playerParts']): PortraitSpec {
+  return { ...spec, skin: hex, ...(usesToneFaces(parts) ? { face: faceId(faceShape(spec.face), hex) } : {}) }
+}
+
 export const optionLabel = (id: string) => id.replace(/_/g, ' ')
 
 export interface PartOption {
@@ -43,9 +70,17 @@ export function optionsFor(slot: PartSlot, parts: Manifest['playerParts']): Part
 /** Replaces any part id that isn't offered any more (e.g. the default drawn hair once hair images exist) with the first offered one. */
 export function normalizePortrait(spec: PortraitSpec, parts: Manifest['playerParts']): PortraitSpec {
   let out = spec
+  if (usesToneFaces(parts)) {
+    // tone faces: the skin colour is one of the palette tones, and the face file follows it
+    const shapes = faceShapes(parts)
+    const shape = shapes.includes(faceShape(spec.face)) ? faceShape(spec.face) : shapes[0]!
+    const skin = PALETTES.skin[skinIndex(spec.skin)]!
+    out = { ...out, skin, face: faceId(shape, skin) }
+    if (out.skin === spec.skin && out.face === spec.face) out = spec
+  }
   for (const slot of PART_SLOTS) {
     const opts = optionsFor(slot, parts)
-    if (!opts.some((o) => o.id === spec[slot])) out = { ...out, [slot]: (opts.find((o) => o.id === 'none') ?? opts[0])!.id }
+    if (!opts.some((o) => o.id === out[slot])) out = { ...out, [slot]: (opts.find((o) => o.id === 'none') ?? opts[0])!.id }
   }
   return out
 }
@@ -55,9 +90,10 @@ const pick = <T,>(xs: readonly T[], rand: () => number): T => xs[Math.min(xs.len
 /** A fully random look, mixing every slot (imported ids included). */
 export function randomPortrait(rand: () => number = Math.random, parts?: Manifest['playerParts']): PortraitSpec {
   const one = (slot: PartSlot) => pick(optionsFor(slot, parts), rand).id
+  const skin = pick(PALETTES.skin, rand)
   return {
-    skin: pick(PALETTES.skin, rand),
-    face: one('face'),
+    skin,
+    face: usesToneFaces(parts) ? faceId(pick(faceShapes(parts), rand), skin) : one('face'),
     hair: one('hair'),
     hairColor: pick(PALETTES.hairColor, rand),
     eyes: one('eyes'),
@@ -74,5 +110,10 @@ export function randomPortrait(rand: () => number = Math.random, parts?: Manifes
 }
 
 export function randomSlot(spec: PortraitSpec, slot: PartSlot, rand: () => number = Math.random, parts?: Manifest['playerParts']): PortraitSpec {
+  if (slot === 'face' && usesToneFaces(parts)) return setFaceShape(spec, pick(faceShapes(parts), rand), parts)
   return { ...spec, [slot]: pick(optionsFor(slot, parts), rand).id }
+}
+
+export function randomSkin(spec: PortraitSpec, rand: () => number = Math.random, parts?: Manifest['playerParts']): PortraitSpec {
+  return setSkin(spec, pick(PALETTES.skin, rand), parts)
 }

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { content } from '../content'
 import { applyEffects } from './effects'
 import { rollFate } from './fate'
+import { RARITY_INFO } from './schemas'
 import { buildRipple } from './ripple'
 import { newState } from '../test/helpers'
 import { createGame } from './newGame'
@@ -24,6 +25,38 @@ describe('rolled fate', () => {
     expect(rollFate(weapons, () => 0.1).foot).toBe('right')
     expect(rollFate(weapons, () => 0.6).foot).toBe('left')
     expect(rollFate(weapons, () => 0.95).foot).toBe('both')
+  })
+  it('rolls by rarity weight and never rolls mythic', () => {
+    let seed = 7
+    const rand = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647 }
+    const n = 20000, count: Record<string, number> = {}
+    for (let i = 0; i < n; i++) { const r = content.weapons[rollFate(weapons, rand).weapon]!.rarity; count[r] = (count[r] ?? 0) + 1 }
+    expect(count.mythic ?? 0).toBe(0)
+    // epic's only seedable-eligible weapons are rolled: expected tier shares from the weights of tiers that have eligible weapons
+    const present = Object.entries(RARITY_INFO).filter(([r, i]) => i.startWeight > 0 && weapons.some((w) => w.rarity === r && w.seedable))
+    const total = present.reduce((a, [, i]) => a + i.startWeight, 0)
+    for (const [r, info] of present) expect((count[r] ?? 0) / n).toBeCloseTo(info.startWeight / total, 1)
+    expect((count.common ?? 0)).toBeGreaterThan(count.uncommon ?? 0)
+    expect((count.uncommon ?? 0)).toBeGreaterThan(count.rare ?? 0)
+  })
+  it('pins the weapon roll by value', () => {
+    expect(content.weapons[rollFate(weapons, () => 0.0).weapon]?.rarity).toBe('common')
+    expect(content.weapons[rollFate(weapons, () => 0.999).weapon]?.rarity).toBe('legendary')
+  })
+})
+
+describe('weapon catalogue', () => {
+  it('has ~40 weapons, unique ids, 3 levels each, all categories and the target rarity mix', () => {
+    expect(new Set(weapons.map((w) => w.id)).size).toBe(weapons.length)
+    for (const w of weapons) expect(w.levels).toHaveLength(3)
+    const by = (r: string) => weapons.filter((w) => w.rarity === r).length
+    expect([by('common'), by('uncommon'), by('rare'), by('epic'), by('legendary'), by('mythic')]).toEqual([10, 9, 8, 6, 5, 3])
+    expect(new Set(weapons.map((w) => w.category)).size).toBe(8)
+    expect(weapons.some((w) => w.source === 'original') && weapons.some((w) => w.source === 'inspired')).toBe(true)
+  })
+  it('no mythic is start-eligible and story-only weapons say how they are obtained', () => {
+    for (const w of weapons.filter((w) => w.rarity === 'mythic')) expect(w.seedable).toBe(false)
+    for (const w of weapons.filter((w) => !w.seedable || ['legendary', 'mythic'].includes(w.rarity))) expect(w.obtain, w.id).toBeTruthy()
   })
 })
 

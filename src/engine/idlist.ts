@@ -1,4 +1,4 @@
-import { ACCESSORY_IDS, AURAS, BG_IDS, BROW_IDS, BeatSchema, EFFECT_TYPES, EGO_TYPES, EMOTIONS, EYE_IDS, FACE_IDS, HAIR_IDS, MARK_IDS, NOSE_IDS, POSITIONS, REL_FIELDS, REL_STATUSES, REP_AXES, RES_KEYS, SKILLS, TONES } from './schemas'
+import { ACCESSORY_IDS, AURAS, BG_IDS, BROW_IDS, BeatSchema, EFFECT_TYPES, EGO_TYPES, EMOTIONS, EYE_IDS, FACE_IDS, HAIR_IDS, MARK_IDS, NOSE_IDS, POSITIONS, REL_FIELDS, REL_STATUSES, RARITY_INFO, REP_AXES, RES_KEYS, SKILLS, TONES } from './schemas'
 import { collectFlagRefs } from './refs'
 import type { ContentDB } from './types'
 
@@ -40,7 +40,7 @@ ${list(BG_IDS)}
 ${table(['id', 'name', 'locked'], Object.values(c.origins).map((o) => [`\`${o.id}\``, o.name, o.locked ? 'yes (unlock via playthrough/Sandbox)' : 'no']))}
 
 ## Weapons
-${table(['id', 'name', 'levels', 'starting weapon'], Object.values(c.weapons).map((w) => [`\`${w.id}\``, w.name, w.levels.map((l) => l.name).join(' → '), w.seedable ? 'can be rolled' : 'no']))}
+${table(['id', 'name', 'rarity', 'category', 'source', 'levels', 'starting weapon'], Object.values(c.weapons).map((w) => [`\`${w.id}\``, w.name, `${RARITY_INFO[w.rarity].label} (${w.rarity})`, w.category, w.source, w.levels.map((l) => l.name).join(' → '), w.seedable ? 'can be rolled' : 'no']))}
 
 ## Traits
 ${table(['id', 'name'], Object.values(c.traits).map((t) => [`\`${t.id}\``, t.name]))}

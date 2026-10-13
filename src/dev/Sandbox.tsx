@@ -2,12 +2,13 @@ import { useState } from 'react'
 import { content } from '../content'
 import { createPreviewApi } from '../engine/preview'
 import { useMeta } from '../engine/meta'
-import { ORIGIN_IDS, POSITIONS, REL_FIELDS, REL_STATUSES, SKILLS, type Position, type RelStatus } from '../engine/schemas'
+import { ORIGIN_IDS, POSITIONS, RARITIES, REL_FIELDS, REL_STATUSES, SKILLS, type Position, type RelStatus } from '../engine/schemas'
 import { DEFAULT_PORTRAIT } from '../cutscene/previewPlayer'
 import { ensureRel, getRel } from '../engine/relationships'
 import { useGame } from '../engine/store'
 import { previewState } from '../ui/previewState'
 import { useUi } from '../ui/uiStore'
+import { RarityBadge } from '../ui/RarityBadge'
 import { FlagInspector } from './FlagInspector'
 
 const TABS = ['Skills', 'Weapons & Traits', 'Relationships', 'Flags', 'Time & Resources', 'Scenes & Arcs', 'Unlocks'] as const
@@ -84,11 +85,11 @@ export function Sandbox() {
 
       {s && tab === 'Weapons & Traits' && (
         <div style={{ display: 'grid', gap: 10 }}>
-          {Object.values(content.weapons).map((w) => {
+          {[...Object.values(content.weapons)].sort((a, b) => RARITIES.indexOf(a.rarity) - RARITIES.indexOf(b.rarity)).map((w) => {
             const cur = s.weapons[w.id]
             return (
               <div key={w.id} style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
-                <b style={{ width: 130 }}>{w.name}</b>
+                <b style={{ width: 170 }}>{w.name}</b><RarityBadge rarity={w.rarity} /><span style={{ color: '#9fa6b8', width: 80 }}>{w.category}</span>
                 <select aria-label={`${w.name} level`} value={cur?.level ?? 0} onChange={(e) => sandbox((d) => { const l = Number(e.target.value); if (l === 0) delete d.weapons[w.id]; else d.weapons[w.id] = { level: l, corrupted: d.weapons[w.id]?.corrupted ?? false } })}>
                   <option value={0}>not owned</option>{w.levels.map((l, i) => <option key={l.name} value={i + 1}>Lv{i + 1} {l.name}</option>)}
                 </select>

@@ -24,34 +24,45 @@ await page.screenshot({ path: `${OUT}/50-wizard-identity.png` })
 await page.getByTestId('next').click()
 
 // ── appearance: big selection, mix and match, dice ──
-const count = async (slot) => page.locator(`[data-testid^="part-${slot}-"]`).count()
+const tab = async (slot) => { await page.getByTestId(`tab-${slot}`).click() }
+const count = async (slot) => { await tab(slot); return page.locator(`[data-testid^="part-${slot}-"]`).count() }
 const counts = { hair: await count('hair'), eyes: await count('eyes'), face: await count('face'), brow: await count('brow'), nose: await count('nose'), mark: await count('mark'), accessory: await count('accessory') }
 ok('large selection of parts per slot', counts.hair >= 16 && counts.eyes >= 8 && counts.face >= 6 && counts.brow >= 6 && counts.nose >= 4 && counts.mark >= 7 && counts.accessory >= 5, JSON.stringify(counts))
 await page.screenshot({ path: `${OUT}/51-wizard-appearance.png`, fullPage: true })
 const preview = () => page.locator('[aria-label="Portrait preview"] svg').first().innerHTML()
 const base = await preview()
-await page.getByTestId('part-hair-bob').click()
-await page.getByTestId('part-eyes-heavy_lid').click()
-await page.getByTestId('part-face-square').click()
-await page.getByTestId('part-accessory-glasses').click()
-ok('mix-and-match: picked parts are selected', (await page.getByTestId('part-hair-bob').getAttribute('aria-checked')) === 'true' && (await page.getByTestId('part-eyes-heavy_lid').getAttribute('aria-checked')) === 'true')
+await tab('hair'); await page.getByTestId('part-hair-bob').click()
+const hairOn = (await page.getByTestId('part-hair-bob').getAttribute('aria-checked')) === 'true'
+await tab('eyes'); await page.getByTestId('part-eyes-heavy_lid').click()
+const eyesOn = (await page.getByTestId('part-eyes-heavy_lid').getAttribute('aria-checked')) === 'true'
+await tab('face'); await page.getByTestId('part-face-square').click()
+await tab('accessory'); await page.getByTestId('part-accessory-glasses').click()
+await tab('hair')
+ok('mix-and-match: picked parts are selected', hairOn && eyesOn && (await page.getByTestId('part-hair-bob').getAttribute('aria-checked')) === 'true')
 ok('the preview changes when parts change', (await preview()) !== base)
 const seen = new Set()
 for (let i = 0; i < 8; i++) { await page.getByTestId('randomize-all').click(); seen.add(await preview()) }
 ok('randomize everything produces different looks', seen.size >= 6, `${seen.size}/8 distinct`)
+await tab('hair')
 const h0 = await preview(); let changed = false
 for (let i = 0; i < 12 && !changed; i++) { await page.getByTestId('dice-Random Hair').click(); changed = (await preview()) !== h0 }
 ok('per-slot dice work', changed)
 await page.screenshot({ path: `${OUT}/52-wizard-randomized.png` })
-await page.getByTestId('part-hair-ponytail').click(); await page.getByTestId('part-face-sharp').click()
+await tab('hair'); await page.getByTestId('part-hair-ponytail').click(); await tab('face'); await page.getByTestId('part-face-sharp').click()
+await tab('skin'); await page.getByTestId('skin-brown').click()
+ok('skin tone picks the matching face art', (await page.getByTestId('skin-brown').getAttribute('aria-checked')) === 'true')
+await tab('colours'); await page.getByRole('radio', { name: /Hair colour #b0463c/i }).click()
+ok('hair colour tints imported hair', (await preview()).includes('feColorMatrix'))
 await page.getByTestId('next').click()
 
 // ── origin, then rolled weapon ──
 await page.getByTestId('origin-street_renegade').click()
 await page.getByTestId('next').click()
 const weapons = new Set([await page.getByTestId('weapon-value').innerText()])
-for (let i = 0; i < 40; i++) { await page.getByTestId('dice-Re-roll weapon').click(); weapons.add(await page.getByTestId('weapon-value').innerText()) }
-ok('starting weapon is random and re-rollable (never the non-seedable one)', weapons.size >= 3 && ![...weapons].includes('Hunter Press'), [...weapons].join(' / '))
+const tiers = new Set([await page.getByTestId('rarity-badge').first().getAttribute('data-rarity')])
+for (let i = 0; i < 60; i++) { await page.getByTestId('dice-Re-roll weapon').click(); weapons.add(await page.getByTestId('weapon-value').innerText()); tiers.add(await page.getByTestId('rarity-badge').first().getAttribute('data-rarity')) }
+ok('starting weapon is random and re-rollable (never the non-seedable ones)', weapons.size >= 3 && ![...weapons].some((n) => /hunter press|sovereign strike/i.test(n)), [...weapons].join(' / '))
+ok('rarity badge shown with a label, never mythic at start', tiers.has('common') && !tiers.has('mythic') && (await page.getByTestId('rarity-badge').first().innerText()).trim().length > 2, [...tiers].join(','))
 const rolledWeapon = await page.getByTestId('weapon-value').innerText()
 await page.screenshot({ path: `${OUT}/53-wizard-weapon.png` })
 await page.getByTestId('next').click()
@@ -68,8 +79,8 @@ const d = JSON.parse(await page.evaluate(() => localStorage.getItem('blel.autosa
 ok('saved game: position is ST', d.player.position === 'ST')
 ok('saved game: rolled weapon is the starting weapon', d.player.weaponSeed && Object.keys(d.weapons).includes(d.player.weaponSeed))
 ok('confirm screen showed the rolled foot', new RegExp(d.player.handedness === 'both' ? 'two-footed' : `${d.player.handedness}-footed`).test(confirmText), `foot=${d.player.handedness}`)
-ok('saved game: chosen look persisted (ponytail, sharp face)', d.player.portrait.hair === 'ponytail' && d.player.portrait.face === 'sharp')
+ok('saved game: chosen look persisted (ponytail, sharp face)', d.player.portrait.hair === 'ponytail' && d.player.portrait.face.startsWith('sharp'))
 await page.screenshot({ path: `${OUT}/54-hub-after.png` })
-ok('hub shows position and foot', /ST · (left|right|two)-?/.test(await page.getByTestId('hub').innerText()) || /footed/.test(await page.getByTestId('hub').innerText()))
+ok('hub shows position and foot', /ST · (left|right|two)-?/i.test(await page.getByTestId('hub').innerText()) || /footed/i.test(await page.getByTestId('hub').innerText()))
 console.log('\nBROWSER ERRORS:', errors.length ? '\n' + errors.join('\n') : 'none')
 await browser.close()

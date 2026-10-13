@@ -420,8 +420,28 @@ export const OriginSchema = z.object({
 export type Origin = z.infer<typeof OriginSchema>
 export type OriginInput = z.input<typeof OriginSchema>
 
+export const RARITIES = ['common', 'uncommon', 'rare', 'epic', 'legendary', 'mythic'] as const
+export type Rarity = (typeof RARITIES)[number]
+export const WEAPON_CATEGORIES = ['shooting', 'dribbling', 'passing', 'vision', 'movement', 'defense', 'physical', 'mental'] as const
+export type WeaponCategory = (typeof WEAPON_CATEGORIES)[number]
+/** Display names for each rarity tier, and the glyph shown beside it (so rarity never relies on colour alone). */
+export const RARITY_INFO: Record<Rarity, { label: string; glyph: string; startWeight: number }> = {
+  common: { label: 'Fundamental', glyph: '●', startWeight: 50 },
+  uncommon: { label: 'Refined', glyph: '◆', startWeight: 28 },
+  rare: { label: 'Specialist', glyph: '★', startWeight: 14 },
+  epic: { label: 'Egoist', glyph: '★★', startWeight: 6 },
+  legendary: { label: 'New Generation XI', glyph: '★★★', startWeight: 2 },
+  mythic: { label: 'World XI', glyph: '✦', startWeight: 0 },
+}
+
 export const WeaponSchema = z.object({
   id: z.string(),
+  rarity: z.enum(RARITIES),
+  category: z.enum(WEAPON_CATEGORIES),
+  /** original invention, or a concept inspired by canon abilities (always with an original name) */
+  source: z.enum(['original', 'inspired']),
+  /** how the story grants non-start weapons */
+  obtain: z.string().optional(),
   name: z.string(),
   summary: z.string(),
   levels: z.array(z.object({ name: z.string(), desc: z.string() })).length(3),
@@ -431,7 +451,7 @@ export const WeaponSchema = z.object({
   counters: z.array(z.string()),
   /** can be picked as the starting weapon seed */
   seedable: z.boolean().default(true),
-})
+}).refine((w) => !(w.rarity === 'mythic' && w.seedable), { message: 'mythic weapons are story-only and cannot be start-eligible' })
 export type Weapon = z.infer<typeof WeaponSchema>
 export type WeaponInput = z.input<typeof WeaponSchema>
 
